@@ -22,10 +22,10 @@ public class Bot : MonoBehaviour
         }
     }
 
-    /*private void OnCollisionEnter(Collision other) {
+    private void OnCollisionEnter(Collision other) {
         if (other.gameObject.CompareTag("Bullet")){
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
-    }*/
+    }
 }
