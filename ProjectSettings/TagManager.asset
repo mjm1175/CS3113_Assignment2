@@ -4,12 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Key
   - Key0
   - Key1
   - Key2
   - Bullet
   - Enemy
+  - Key3
   layers:
   - Default
   - TransparentFX

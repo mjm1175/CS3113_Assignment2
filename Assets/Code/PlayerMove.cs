@@ -55,6 +55,16 @@ public class PlayerMove : MonoBehaviour
                 PublicVars.hasKey[i] = true;
             }
         }
+        /* if bullets are a trigger*/
+        if (other.gameObject.CompareTag("Enemy")){
+            Destroy(other.gameObject);
+            if (health <= 5){
+                // die
+                SceneManager.LoadScene("Dead");
+            } else {
+                health -= 5;
+            }
+        }
 
         /*if (other.CompareTag("Key0")){
             Destroy(other.gameObject);
@@ -81,5 +91,16 @@ public class PlayerMove : MonoBehaviour
                 health -= 5;
             }
         }
+
+        /* if bullet is collision
+        if (other.gameObject.CompareTag("Bullet")){
+            Destroy(other.gameObject);
+            if (health <= 5){
+                // die
+                SceneManager.LoadScene("Dead");
+            } else {
+                health -= 5;
+            }
+        }*/
     }
 }
