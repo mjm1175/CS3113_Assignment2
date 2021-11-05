@@ -25,6 +25,8 @@ public class Game : MonoBehaviour
         
         Room boss = new Room("BossScene", prereqRooms: new Room[] { start, path0, path2 });
 
+        //Room end = new Room("Win", prereqRooms: new Room[] { boss });
+
         Rooms = new List<Room>() { start, path0, path1, path2, boss };
 
         PublicVars.Game = this;
