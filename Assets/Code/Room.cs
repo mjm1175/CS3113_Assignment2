@@ -14,21 +14,21 @@ public class Room
     public static Room CurrentRoom { get; protected set; }
 
     public Room[] PrereqRooms { get; private set; }
-    public RoomManager RoomPrefab { get; private set; }
+    public Scene RoomScene { get; private set; }
     public bool IsCompleted { get; private set; }
 
     /// <summary>Create a new room</summary>
-    /// <param name="prefabPath">
-    /// The path to the prefab of the room relative to any <c>Resources</c> folder, which must have the <c>RoomManager</c> script
+    /// <param name="roomScene">
+    /// The scene name of the room
     /// </param>
     /// <param name="prereqRooms">The prerequisite rooms that have to be completed before entering this room</param>
     /// <exception cref="System.ArgumentException">
-    /// When prefabPath is invalid
+    /// When roomScene is invalid
     /// </exception>
-    public Room(string prefabPath, Room[] prereqRooms = null)
+    public Room(string roomScene, Room[] prereqRooms = null)
     {
-        RoomPrefab = Resources.Load<RoomManager>(prefabPath);
-        if (RoomPrefab == null) throw new ArgumentException("The room prefab does not exist or does not have a RoomManager");
+        RoomScene = SceneManager.GetSceneByName(roomScene);
+        if (RoomScene == null || !RoomScene.IsValid()) throw new ArgumentException("The room scene does not exist or is not valid");
         PrereqRooms = prereqRooms;
         CandidateRooms.Add(this);
     }
@@ -54,14 +54,7 @@ public class Room
     public void Enter(Door door)
     {
         CandidateRooms.Remove(this);
-        CreateRoom(door);
         CurrentRoom = this;
-    }
-
-    /// <summary>Instantiate the room GameObject using prefab</summary>
-    public RoomManager CreateRoom(Door door)
-    {
-        /// <TODO>Properly configure the anchor point to instantiate the room at the door</TODO>
-        return GameObject.Instantiate(RoomPrefab);
+        SceneManager.LoadScene(RoomScene.name);
     }
 }
