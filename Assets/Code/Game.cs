@@ -12,6 +12,7 @@ public class Game : MonoBehaviour
         {
             Destroy(gameObject);
             return;
+        }
         DontDestroyOnLoad(this);
         //Room start = new Room("SampleScene");
         //Room path0 = new Room("Path0");
