@@ -5,7 +5,7 @@ public class Door : MonoBehaviour
     public string levelToLoad;
     public bool locked = true;
     public int doorCode = 0;
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player") && !locked)
@@ -13,4 +13,5 @@ public class Door : MonoBehaviour
             Room.CurrentRoom.Complete().FindNextRoom().Enter();
         }
     }
+
 }

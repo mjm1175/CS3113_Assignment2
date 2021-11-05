@@ -1264,6 +1264,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 91d652779ec7140488b6b8e360497937, type: 3}
   m_PrefabInstance: {fileID: 988645994}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1225297399 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 524012664533127850, guid: 0f9b3ca8f22074b44b1109b31b498745, type: 3}
+  m_PrefabInstance: {fileID: 524012664544793332}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &1225297404
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225297399}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.37560526
+  m_Center: {x: -0.00000023841858, y: 0.24957463, z: 0.06544113}
 --- !u!1001 &1265788239
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1681,6 +1699,19 @@ MonoBehaviour:
   levelToLoad: 
   locked: 0
   doorCode: 0
+--- !u!65 &1385761980
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385761978}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9185378, y: 7.0227094, z: 3.5072649}
+  m_Center: {x: 0.00000050914434, y: 0.7043451, z: -1.7432706}
 --- !u!1001 &1390637896
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2857,6 +2888,10 @@ PrefabInstance:
     - target: {fileID: 524012664533127850, guid: 0f9b3ca8f22074b44b1109b31b498745, type: 3}
       propertyPath: m_Name
       value: Bucket_of_Water
+      objectReference: {fileID: 0}
+    - target: {fileID: 524012664533127850, guid: 0f9b3ca8f22074b44b1109b31b498745, type: 3}
+      propertyPath: m_TagString
+      value: Water
       objectReference: {fileID: 0}
     - target: {fileID: 524012664533127850, guid: 0f9b3ca8f22074b44b1109b31b498745, type: 3}
       propertyPath: m_StaticEditorFlags

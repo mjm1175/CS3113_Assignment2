@@ -12,6 +12,7 @@ public class PlayerMove : MonoBehaviour
     public Transform spawnPoint;
     public GameObject bulletPrefab;
     public int bulletForce = 200;
+    public int attackDamage = 5;
     int health = 100;
     public Text healthText;
 
@@ -58,6 +59,23 @@ public class PlayerMove : MonoBehaviour
                 health -= 5;
             }
         }
+
+        /* if water bucket are a trigger*/
+        if (other.gameObject.CompareTag("Water"))
+        {
+            //Destroy(other.gameObject);
+            foreach (Transform child in other.gameObject.transform)
+            {
+                Destroy(child.gameObject);
+            }
+            health += 20;
+        }
+
+        if (other.gameObject.CompareTag("Boost"))
+        {
+            Destroy(other.gameObject);
+            attackDamage += 5;
+        }
     }
 
     private void OnCollisionEnter(Collision other) {
@@ -70,6 +88,7 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
+
         /* if bullet is collision
         if (other.gameObject.CompareTag("Bullet")){
             Destroy(other.gameObject);
@@ -81,4 +100,5 @@ public class PlayerMove : MonoBehaviour
             }
         }*/
     }
+
 }
