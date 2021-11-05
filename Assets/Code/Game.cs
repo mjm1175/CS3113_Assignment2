@@ -7,6 +7,11 @@ public class Game : MonoBehaviour
 
     private void Awake()
     {
+        // If the game already exists
+        if (PublicVars.Game != null)
+        {
+            Destroy(gameObject);
+            return;
         DontDestroyOnLoad(this);
         Room start = new Room("SampleScene");
         Room path0 = new Room("Path0");
