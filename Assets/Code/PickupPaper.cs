@@ -14,12 +14,12 @@ public class PickupPaper : MonoBehaviour
     }
 
     private void OnTriggerStay(Collider other) {
-        // TODO: add message for how to pickup
         if (other.CompareTag("Player")){
             pickupText.enabled = true;
             if (Input.GetKeyDown("j")){
                 pickupText.enabled = false;
                 storyText.enabled = true; 
+                PublicVars.paper_count++;
                 Destroy(gameObject);   
             }
         }
