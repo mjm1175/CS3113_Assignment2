@@ -7,14 +7,16 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
-    NavMeshAgent _navMeshAgent;
     Camera mainCam;
+    public Animator Animator;
     public Transform spawnPoint;
     public GameObject bulletPrefab;
     public int bulletForce = 200;
     public int attackDamage = 5;
-    int health = 100;
     public Text healthText;
+
+    int health = 100;
+    NavMeshAgent _navMeshAgent;
 
     void Start()
     {
@@ -24,6 +26,7 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+        Animator.SetBool("IsMoving", _navMeshAgent.velocity.magnitude > 0.2f);
         healthText.text = health.ToString();
         // left click to walk
         if(Input.GetMouseButtonDown(0)){
