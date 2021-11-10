@@ -79,6 +79,12 @@ public class PlayerMove : MonoBehaviour
             Destroy(other.gameObject);
             attackDamage += 5;
         }
+
+        if (other.gameObject.CompareTag(""))
+        {
+            Destroy(other.gameObject);
+
+        }
     }
 
     private void OnCollisionEnter(Collision other) {
