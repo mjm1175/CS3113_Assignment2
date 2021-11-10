@@ -1,32 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(Movement))]
 public class Player : MonoBehaviour
 {
     Camera mainCam;
-    public Animator Animator;
     public Transform spawnPoint;
     public GameObject bulletPrefab;
     public int bulletForce = 200;
     public int attackDamage = 5;
     public Text healthText;
 
+    private Movement _movement;
+
     int health = 100;
-    NavMeshAgent _navMeshAgent;
 
     void Start()
     {
-        _navMeshAgent = GetComponent<NavMeshAgent>();
         mainCam = Camera.main;      // tag lookup, not instant, that's why cache
+        _movement = GetComponent<Movement>();
     }
 
     void Update()
     {
-        Animator.SetBool("IsMoving", _navMeshAgent.velocity.magnitude > 0.2f);
         healthText.text = health.ToString();
         // left click to walk
         if (Input.GetMouseButtonDown(0))
@@ -36,7 +33,7 @@ public class Player : MonoBehaviour
             if (Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out hit, 200))
             {      // last param is length of ray; shorter is more efficient longer is more accurate
                 // uses AI to navigate around mesh to this point
-                _navMeshAgent.destination = hit.point;
+                _movement.SetDestination(hit.point);
                 // can be used for enemies too; not dependent on mouse; destination could be player
             }
         }
