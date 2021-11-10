@@ -22,9 +22,7 @@ public class PathEditor : Editor
                                 bot.PathPoints[i - 1], bot.PathPoints[i], Color.white, null, 5f);
         }
 
-        bot.PathPoints[0] = bot.transform.position;
-
-        for (int i = 1; i < bot.PathPoints.Length; i++)
+        for (int i = 0; i < bot.PathPoints.Length; i++)
         {
             bot.PathPoints[i] = Handles.PositionHandle(
                 new Vector3(bot.PathPoints[i].x, bot.transform.position.y, bot.PathPoints[i].z), bot.transform.rotation

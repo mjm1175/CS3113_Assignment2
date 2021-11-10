@@ -1,42 +1,91 @@
+using System.Linq;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+
 
 [RequireComponent(typeof(Movement))]
 public class FlashlightBot : MonoBehaviour
 {
+    BotState CurrentState;
     GameObject player;
 
-    /// <value>The points for patrolling</value>
+    [Tooltip("The points for patrolling")]
     public Vector3[] PathPoints = new Vector3[] { };
-    public float speed = 1.0f;
+    [Tooltip("The interval between moving from points to points")]
+    public float MovementInterval = 2f;
+    [Tooltip("The time to stay at each point")]
+    public float TimeToStay = 1f;
 
     Movement _movement;
+    int _lastVisitedPoint = -1;
+    IEnumerator<Vector3> _patrolEnumerator;
+    float _lastMoveTimeElapsed;
+    float _stayedTimeElapsed;
 
     void Start()
     {
         _movement = GetComponent<Movement>();
         player = GameObject.FindGameObjectWithTag("Player");
-
-        StartCoroutine(BasicWalk());
-        //StartCoroutine(LookForPlayer());
+        CurrentState = BotState.IDLE;
+        _patrolEnumerator = NextPoint();
+        _lastMoveTimeElapsed = MovementInterval;
+        _stayedTimeElapsed = 0;
     }
 
-    IEnumerator MoveObject(Vector3 endPos, float time)
+    private void Update()
     {
-        _movement.SetDestination(endPos);
-        yield return new WaitForSeconds(time);
+        if (_lastMoveTimeElapsed < MovementInterval) _lastMoveTimeElapsed += Time.deltaTime;
+        // Always transit from idle state to patrol state
+        switch (CurrentState)
+        {
+            case BotState.IDLE:
+                CurrentState = BotState.PATROL;
+                break;
+            case BotState.PATROL:
+                if (_movement.IsMoving)
+                    _stayedTimeElapsed = 0;
+                else
+                    _stayedTimeElapsed += Time.deltaTime;
+
+                // If the agent is not moving and there is the next point to visit, we keep on going
+                if (_lastMoveTimeElapsed >= MovementInterval && _stayedTimeElapsed >= TimeToStay && !_movement.IsMoving && _patrolEnumerator.MoveNext())
+                {
+                    _lastMoveTimeElapsed = 0;
+                    _movement.SetDestination(_patrolEnumerator.Current);
+                }
+                break;
+            case BotState.ALERT:
+                StartCoroutine(LookForPlayer());
+                break;
+        }
     }
 
-    IEnumerator BasicWalk()
+    IEnumerator<Vector3> NextPoint()
     {
-        // Keep moving from point to point
-        for (int i = 0; ; i++, i %= PathPoints.Length)
-            yield return StartCoroutine(MoveObject(PathPoints[i], 3.0f));
+        if (PathPoints.Length == 0) yield break;
+
+        // When the last visited point is -1, we go to the nearest point
+        if (_lastVisitedPoint == -1)
+        {
+            _lastVisitedPoint = PathPoints
+                .Select((point, index) => (point, index))
+                .OrderBy(item => Vector3.Distance(item.point, player.transform.position))
+                .First().index;
+            yield return PathPoints[_lastVisitedPoint];
+        }
+
+        while (CurrentState == BotState.PATROL)
+        {
+            _lastVisitedPoint %= PathPoints.Length;
+            Debug.Log(_lastVisitedPoint);
+            yield return PathPoints[_lastVisitedPoint++];
+        }
     }
 
     IEnumerator LookForPlayer()
     {
-        while (true)
+        while (CurrentState == BotState.ALERT)
         {
             yield return new WaitForSeconds(.5f);       // time to adjust path; slower = dumber
             _movement.SetDestination(player.transform.position);

@@ -5,8 +5,12 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Movement : MonoBehaviour
 {
-    /// <value>The animator is not mandatory</value>
-    private Animator _animator;
+    [Tooltip("Non-mandatory animator object to animate the moving object")]
+    public Animator Animator;
+
+    /// <value>Whether the agent is moving or not</value>
+    public bool IsMoving => _navMeshAgent.velocity.magnitude > PublicVars.MINIMUM_MOVEMENT_SPEED;
+
     private NavMeshAgent _navMeshAgent;
 
     private void Start()
@@ -16,7 +20,7 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        _animator?.SetBool("IsMoving", _navMeshAgent.velocity.magnitude > 0.2f);
+        Animator?.SetBool("IsMoving", IsMoving);
     }
 
     public void SetDestination(Vector3 destination)
