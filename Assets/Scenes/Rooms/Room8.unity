@@ -2182,7 +2182,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &369034639
 PrefabInstance:
@@ -8004,6 +8004,18 @@ PrefabInstance:
       value: Bot
       objectReference: {fileID: 0}
     - target: {fileID: 7128578777680027940, guid: 2e947ca0a81a686439b046ddce989c93, type: 3}
+      propertyPath: FrontAlertAngle
+      value: 43.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7128578777680027940, guid: 2e947ca0a81a686439b046ddce989c93, type: 3}
+      propertyPath: SideAlertDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7128578777680027940, guid: 2e947ca0a81a686439b046ddce989c93, type: 3}
+      propertyPath: FrontAlertDistance
+      value: 4.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 7128578777680027940, guid: 2e947ca0a81a686439b046ddce989c93, type: 3}
       propertyPath: PathPoints.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -8687,7 +8699,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5987503776062071187, guid: 06268c02c84a74949a24d1ee68ca68e7, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5987503776062071187, guid: 06268c02c84a74949a24d1ee68ca68e7, type: 3}
       propertyPath: m_LocalPosition.x
