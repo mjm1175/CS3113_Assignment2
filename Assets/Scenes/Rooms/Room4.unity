@@ -1932,7 +1932,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1743537859050268, guid: 3cbb80945b533fc48b6379a688829730, type: 3}
       propertyPath: m_TagString
-      value: Boost
+      value: Poison
       objectReference: {fileID: 0}
     - target: {fileID: 4762396254282262, guid: 3cbb80945b533fc48b6379a688829730, type: 3}
       propertyPath: m_RootOrder
@@ -2787,6 +2787,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Torch (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 115752, guid: 731670d05affd0045a25600d2045889f, type: 3}
+      propertyPath: m_TagString
+      value: Poison
+      objectReference: {fileID: 0}
     - target: {fileID: 119998, guid: 731670d05affd0045a25600d2045889f, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -3185,6 +3189,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4517712413205353209, guid: 04cd23fc5a982b54e8fc5b9114a4e378, type: 3}
+      propertyPath: healthText
+      value: 
+      objectReference: {fileID: 826743316}
     - target: {fileID: 8300045071609167011, guid: 04cd23fc5a982b54e8fc5b9114a4e378, type: 3}
       propertyPath: m_Name
       value: Player

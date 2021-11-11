@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 [RequireComponent(typeof(Movement))]
 public class Player : MonoBehaviour
@@ -14,7 +15,10 @@ public class Player : MonoBehaviour
 
     private Movement _movement;
 
-    int health = 100;
+    public int health = 100;
+
+    bool poison = false;
+    bool nausea = false;
 
     void Start()
     {
@@ -50,6 +54,18 @@ public class Player : MonoBehaviour
                 newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * bulletForce);
             }
         }
+
+        if (poison == true)
+        {
+            StartCoroutine(PoisonTime());
+            poison = false;
+        }
+
+        if (nausea == true)
+        {
+            StartCoroutine(NauseaTime());
+            nausea = false;
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -80,13 +96,28 @@ public class Player : MonoBehaviour
             health += 20;
         }
 
-        if (other.gameObject.CompareTag("Boost"))
+        // if the player picks up a "power" energy drink
+        if (other.gameObject.CompareTag("Power"))
         {
             Destroy(other.gameObject);
             attackDamage += 5;
         }
 
-        if (other.gameObject.CompareTag(""))
+        // if the player picks up a "poison" energy drink
+        if (other.gameObject.CompareTag("Poison"))
+        {
+            Destroy(other.gameObject);
+            poison = true;
+        }
+
+        // if the player picks up a "nausea" energy drink
+        if (other.gameObject.CompareTag("Nausea"))
+        {
+            Destroy(other.gameObject);
+            nausea = true; 
+        }
+
+        if (other.gameObject.CompareTag("Boost"))
         {
             Destroy(other.gameObject);
 
@@ -119,6 +150,26 @@ public class Player : MonoBehaviour
                 health -= 5;
             }
         }*/
+    }
+
+    IEnumerator PoisonTime()
+    {
+        int ticks = 0;
+        int totalTicks = 5;
+
+        while (ticks < totalTicks)
+        {
+            ticks++;
+            health -= 5;  // Player takes 5 damage
+            yield return new WaitForSecondsRealtime(1);  // every 1 second
+        }
+    }
+
+    IEnumerator NauseaTime()
+    {
+        _movement.SetSpeed(_movement.GetSpeed() / 2);
+        yield return new WaitForSeconds(5);
+        _movement.SetSpeed(_movement.GetSpeed() * 2);
     }
 
 }

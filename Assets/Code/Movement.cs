@@ -23,6 +23,16 @@ public class Movement : MonoBehaviour
         Animator?.SetBool("IsMoving", IsMoving);
     }
 
+    public void SetSpeed(float newSpeed)
+    {
+        _navMeshAgent.speed = newSpeed;
+    }
+
+    public float GetSpeed()
+    {
+        return _navMeshAgent.speed;
+    }
+
     public void SetDestination(Vector3 destination)
     {
         _navMeshAgent.destination = destination;

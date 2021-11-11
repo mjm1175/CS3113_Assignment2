@@ -12,6 +12,9 @@ TagManager:
   - Key3
   - Water
   - Boost
+  - Power
+  - Poison
+  - Nausea
   layers:
   - Default
   - TransparentFX
