@@ -17,6 +17,14 @@ public class FlashlightBot : MonoBehaviour
     [Tooltip("The time to stay at each point")]
     public float TimeToStay = 1f;
 
+    [Tooltip("The maximum distance for the bot to detect the player")]
+    public float FrontAlertDistance = 100;
+    [Range(0, 360)]
+    [Tooltip("The angle that defines the front alert area")]
+    public float FrontAlertAngle = 60;
+    [Tooltip("The radius around the bot to detect the player")]
+    public float SideAlertDistance = 20;
+
     Movement _movement;
     int _lastVisitedPoint = -1;
     IEnumerator<Vector3> _patrolEnumerator;
@@ -36,6 +44,13 @@ public class FlashlightBot : MonoBehaviour
     private void Update()
     {
         if (_lastMoveTimeElapsed < MovementInterval) _lastMoveTimeElapsed += Time.deltaTime;
+        if (DetectFront())
+        {
+            _lastVisitedPoint = -1;
+            _patrolEnumerator = NextPoint();
+            CurrentState = BotState.ALERT;
+        }
+
         // Always transit from idle state to patrol state
         switch (CurrentState)
         {
@@ -44,7 +59,9 @@ public class FlashlightBot : MonoBehaviour
                 break;
             case BotState.PATROL:
                 if (_movement.IsMoving)
+                {
                     _stayedTimeElapsed = 0;
+                }
                 else
                     _stayedTimeElapsed += Time.deltaTime;
 
@@ -56,7 +73,7 @@ public class FlashlightBot : MonoBehaviour
                 }
                 break;
             case BotState.ALERT:
-                StartCoroutine(LookForPlayer());
+                _movement.SetDestination(player.transform.position);
                 break;
         }
     }
@@ -100,5 +117,22 @@ public class FlashlightBot : MonoBehaviour
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
+    }
+
+    /// <summary>Detect whether there is a player in front of you or not</summary>
+    private bool DetectFront()
+    {
+        for (float i = -FrontAlertAngle / 2; i <= FrontAlertAngle / 2; i += 7)
+        {
+            RaycastHit hit;
+            Ray ray = new Ray(transform.position, Quaternion.AngleAxis(i, Vector3.up) * transform.forward);
+
+            if (Physics.Raycast(ray, out hit, FrontAlertDistance) && hit.collider.CompareTag("Player"))
+            {
+                return true;
+            }
+            Debug.DrawLine(transform.position, transform.position + Quaternion.AngleAxis(i, Vector3.up) * transform.forward * FrontAlertDistance, Color.white, 2);
+        }
+        return false;
     }
 }
