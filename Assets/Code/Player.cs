@@ -133,6 +133,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        Debug.Log("collding");
         if (other.gameObject.CompareTag("Enemy"))
         {
             if (health <= 5)
