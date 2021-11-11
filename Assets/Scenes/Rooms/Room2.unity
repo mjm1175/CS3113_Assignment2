@@ -1976,8 +1976,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelToLoad: 
-  locked: 0
+  locked: 1
   doorCode: 0
+  player: {fileID: 0}
 --- !u!1 &1185788492246966276 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7510647111307571935, guid: 0fa937f68b8f6bd49b34bf334ae2bb7e, type: 3}
@@ -1998,6 +1999,7 @@ MonoBehaviour:
   levelToLoad: 
   locked: 0
   doorCode: 0
+  player: {fileID: 0}
 --- !u!65 &1185788492246966278
 BoxCollider:
   m_ObjectHideFlags: 0

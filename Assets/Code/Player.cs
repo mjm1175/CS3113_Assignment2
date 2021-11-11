@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     bool poison = false;
     bool nausea = false;
 
+    public bool gotKey = false;
+
     void Start()
     {
         mainCam = Camera.main;      // tag lookup, not instant, that's why cache
@@ -88,6 +90,7 @@ public class Player : MonoBehaviour
         /* if water bucket are a trigger*/
         if (other.gameObject.CompareTag("Water"))
         {
+            PublicVars.got_key = true;
             //Destroy(other.gameObject);
             foreach (Transform child in other.gameObject.transform)
             {
@@ -99,6 +102,7 @@ public class Player : MonoBehaviour
         // if the player picks up a "power" energy drink
         if (other.gameObject.CompareTag("Power"))
         {
+            PublicVars.got_key = true;
             Destroy(other.gameObject);
             attackDamage += 5;
         }
@@ -106,6 +110,7 @@ public class Player : MonoBehaviour
         // if the player picks up a "poison" energy drink
         if (other.gameObject.CompareTag("Poison"))
         {
+            PublicVars.got_key = true;
             Destroy(other.gameObject);
             poison = true;
         }
@@ -113,14 +118,16 @@ public class Player : MonoBehaviour
         // if the player picks up a "nausea" energy drink
         if (other.gameObject.CompareTag("Nausea"))
         {
+            PublicVars.got_key = true;
             Destroy(other.gameObject);
             nausea = true; 
         }
 
         if (other.gameObject.CompareTag("Boost"))
         {
+            PublicVars.got_key = true;
             Destroy(other.gameObject);
-
+            StartCoroutine(BoostTime());
         }
     }
 
@@ -170,6 +177,13 @@ public class Player : MonoBehaviour
         _movement.SetSpeed(_movement.GetSpeed() / 2);
         yield return new WaitForSeconds(5);
         _movement.SetSpeed(_movement.GetSpeed() * 2);
+    }
+
+    IEnumerator BoostTime()
+    {
+        _movement.SetSpeed(_movement.GetSpeed() * 2);
+        yield return new WaitForSeconds(5);
+        _movement.SetSpeed(_movement.GetSpeed() / 2);
     }
 
 }
