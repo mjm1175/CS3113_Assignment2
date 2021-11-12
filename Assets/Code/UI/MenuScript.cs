@@ -18,6 +18,7 @@ public class MenuScript : MonoBehaviour
         #elif (UNITY_STANDALONE) 
             Application.Quit();
         #elif (UNITY_WEBGL)
+            // TODO: change to not show button at all
             Application.OpenURL("about:blank");
         #endif
     }
