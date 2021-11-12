@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
 public class Collectable : MonoBehaviour
 {
     [Tooltip("The name (and the display name) of the collectable")]

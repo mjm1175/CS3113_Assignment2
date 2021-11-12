@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class Game : MonoBehaviour
 {
-    public List<Room> Rooms;
-
     private void Awake()
     {
         // If the game already exists
@@ -14,6 +12,8 @@ public class Game : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(this);
+
+        // Initialize the rooms
 
         Room start = new Room("Corridor");
 
