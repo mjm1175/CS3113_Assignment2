@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        healthText.text = health.ToString();
+        if (healthText) healthText.text = health.ToString();
         // left click to walk
         if (Input.GetMouseButtonDown(0))
         {
@@ -120,7 +120,7 @@ public class Player : MonoBehaviour
         {
             PublicVars.got_key = true;
             Destroy(other.gameObject);
-            nausea = true; 
+            nausea = true;
         }
 
         if (other.gameObject.CompareTag("Boost"))

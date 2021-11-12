@@ -44,7 +44,7 @@ public class FlashlightBot : MonoBehaviour
     private void Update()
     {
         if (_lastMoveTimeElapsed < MovementInterval) _lastMoveTimeElapsed += Time.deltaTime;
-        if (DetectFront())
+        if (CurrentState == BotState.PATROL && DetectFront())
         {
             _lastVisitedPoint = -1;
             _patrolEnumerator = NextPoint();
@@ -95,7 +95,6 @@ public class FlashlightBot : MonoBehaviour
         while (CurrentState == BotState.PATROL)
         {
             _lastVisitedPoint %= PathPoints.Length;
-            Debug.Log(_lastVisitedPoint);
             yield return PathPoints[_lastVisitedPoint++];
         }
     }
@@ -131,7 +130,6 @@ public class FlashlightBot : MonoBehaviour
             {
                 return true;
             }
-            Debug.DrawLine(transform.position, transform.position + Quaternion.AngleAxis(i, Vector3.up) * transform.forward * FrontAlertDistance, Color.white, 2);
         }
         return false;
     }
