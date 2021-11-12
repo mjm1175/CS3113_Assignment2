@@ -84,7 +84,7 @@ public class Room
         /// <TODO>Optimize this</TODO>
         var next = CandidateRooms
                         .Where(room => room.PrereqRooms == null || room.PrereqRooms.All(prereq => { Debug.Log($"[{room.RoomId}] checking my prereq {prereq.RoomId} which is {(prereq.IsCompleted ? "" : "not ")}completed"); return prereq.IsCompleted; }))
-                        .First();
+                        .FirstOrDefault();
         Debug.Log($"entering {next.RoomId}");
         if (next == null) throw new InvalidOperationException("Not enough candidate rooms to choose from!");
         return next;
