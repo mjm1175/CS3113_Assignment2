@@ -15,11 +15,35 @@ public class Room
     public static Room CurrentRoom { get; protected set; }
 
     public string RoomId { get; private set; }
-    public Room[] PrereqRooms { get; private set; }
+    public IEnumerable<Room> PrereqRooms { get; private set; }
     public string RoomScene { get; private set; }
     public bool IsCompleted { get; private set; }
 
     private static List<Room> candidates = new List<Room>();
+
+    /// <summary>
+    /// Register a series of rooms sequentially.
+    /// <br />
+    /// Each room will has its previous room as the prerequisite.
+    /// The prerequisite for the first room can be given by <paramref name="initialPrereq" />
+    /// </summary>
+    /// <param name="initialPrereq">
+    /// The prerequisite for the first room
+    /// </param>
+    /// <returns>The last room created in the sequence</returns>
+    public static Room RegisterSequentialRooms(IEnumerable<string> roomIds, IEnumerable<Room> initialPrereq = null)
+    {
+        if (roomIds.Count() == 0) return null;
+
+        Room prevRoom = new Room(roomIds.First(), prereqRooms: initialPrereq);
+        Debug.Log($"{prevRoom.RoomId}'s prereq is {initialPrereq.First().RoomId}");
+        foreach (string roomId in roomIds.Skip(1))
+        {
+            Debug.Log($"{roomId}'s prereq is {prevRoom.RoomId}");
+            prevRoom = new Room(roomId, prereqRooms: new Room[] { prevRoom });
+        }
+        return prevRoom;
+    }
 
     /// <summary>Enter the room by Room ID update the current room</summary>
     public static void Enter(string RoomId)
@@ -35,7 +59,7 @@ public class Room
     /// The scene name of the room (same as <paramref name="roomId" /> when null)
     /// </param>
     /// <param name="prereqRooms">The prerequisite rooms that have to be completed before entering this room</param>
-    public Room(string roomId, string roomScene = null, Room[] prereqRooms = null)
+    public Room(string roomId, string roomScene = null, IEnumerable<Room> prereqRooms = null)
     {
         RoomId = roomId;
         RoomScene = roomScene ?? roomId;
@@ -59,8 +83,9 @@ public class Room
     {
         /// <TODO>Optimize this</TODO>
         var next = CandidateRooms
-                        .Where(room => room.PrereqRooms == null || room.PrereqRooms.All(prereq => prereq.IsCompleted))
+                        .Where(room => room.PrereqRooms == null || room.PrereqRooms.All(prereq => { Debug.Log($"[{room.RoomId}] checking my prereq {prereq.RoomId} which is {(prereq.IsCompleted ? "" : "not ")}completed"); return prereq.IsCompleted; }))
                         .First();
+        Debug.Log($"entering {next.RoomId}");
         if (next == null) throw new InvalidOperationException("Not enough candidate rooms to choose from!");
         return next;
     }

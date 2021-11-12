@@ -7,6 +7,13 @@ public class Door : MonoBehaviour
     public int doorCode = 0;
     public GameObject player;
 
+    private Room _currentRoom;
+
+    private void Start()
+    {
+        _currentRoom = Room.CurrentRoom;
+    }
+
     private void Update()
     {
         if (PublicVars.got_key == true)
@@ -14,13 +21,13 @@ public class Door : MonoBehaviour
             locked = false;
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player") && !locked)
         {
-            Room.CurrentRoom.Complete().FindNextRoom().Enter();
             PublicVars.got_key = false;
-            //other.gameObject.GetComponent<T>().gotKey = false;
+            _currentRoom.Complete().FindNextRoom().Enter();
         }
     }
 

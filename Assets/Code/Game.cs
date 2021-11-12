@@ -14,20 +14,19 @@ public class Game : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(this);
-        //Room start = new Room("SampleScene");
-        //Room path0 = new Room("Path0");
-        //Room path2 = new Room("Path2", prereqRooms: new Room[] { start });
 
         Room start = new Room("Corridor");
-        Room path0 = new Room("Room1");
-        Room path1 = new Room("Room2", prereqRooms: new Room[] { start });
-        Room path2 = new Room("Room3", prereqRooms: new Room[] { start });
-        
-        Room boss = new Room("BossScene", prereqRooms: new Room[] { start, path0, path2 });
 
-        //Room end = new Room("Win", prereqRooms: new Room[] { boss });
+        List<string> roomIds = new List<string>();
 
-        Rooms = new List<Room>() { start, path0, path1, path2, boss };
+        for (int i = 1; i <= 8; i++)
+        {
+            roomIds.Add($"Room{i}");
+        }
+
+        Room lastNormalRoom = Room.RegisterSequentialRooms(roomIds, new Room[] { start });
+
+        Room boss = new Room("BossScene", prereqRooms: new Room[] { lastNormalRoom });
 
         PublicVars.Game = this;
         start.Enter();
