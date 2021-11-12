@@ -36,10 +36,8 @@ public class Room
         if (roomIds.Count() == 0) return null;
 
         Room prevRoom = new Room(roomIds.First(), prereqRooms: initialPrereq);
-        Debug.Log($"{prevRoom.RoomId}'s prereq is {initialPrereq.First().RoomId}");
         foreach (string roomId in roomIds.Skip(1))
         {
-            Debug.Log($"{roomId}'s prereq is {prevRoom.RoomId}");
             prevRoom = new Room(roomId, prereqRooms: new Room[] { prevRoom });
         }
         return prevRoom;
@@ -83,9 +81,8 @@ public class Room
     {
         /// <TODO>Optimize this</TODO>
         var next = CandidateRooms
-                        .Where(room => room.PrereqRooms == null || room.PrereqRooms.All(prereq => { Debug.Log($"[{room.RoomId}] checking my prereq {prereq.RoomId} which is {(prereq.IsCompleted ? "" : "not ")}completed"); return prereq.IsCompleted; }))
+                        .Where(room => room.PrereqRooms == null || room.PrereqRooms.All(prereq => prereq.IsCompleted))
                         .FirstOrDefault();
-        Debug.Log($"entering {next.RoomId}");
         if (next == null) throw new InvalidOperationException("Not enough candidate rooms to choose from!");
         return next;
     }
