@@ -14,16 +14,17 @@ public class Door : MonoBehaviour
         _currentRoom = Room.CurrentRoom;
     }
 
-    private void Update()
-    {
-        if (PublicVars.got_key == true)
-        {
-            locked = false;
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
+        Inventory inventory;
+        if (other.TryGetComponent<Inventory>(out inventory))
+        {
+            if (inventory.CheckItem(ItemType.Key, doorCode))
+            {
+                locked = false;
+            }
+        }
+
         if (other.gameObject.CompareTag("Player") && !locked)
         {
             PublicVars.got_key = false;

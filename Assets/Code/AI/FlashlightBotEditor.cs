@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEditor;
-using UnityEngine.UIElements;
-using UnityEditor.UIElements;
 
 
 [CustomEditor(typeof(FlashlightBot))]
@@ -29,11 +27,24 @@ public class PathEditor : Editor
                                 bot.PathPoints[i - 1], bot.PathPoints[i], Color.white, null, 5f);
         }
 
+        EditorGUI.BeginChangeCheck();
+
+        Vector3[] points = new Vector3[bot.PathPoints.Length];
+
         for (int i = 0; i < bot.PathPoints.Length; i++)
         {
-            bot.PathPoints[i] = Handles.PositionHandle(
-                new Vector3(bot.PathPoints[i].x, bot.transform.position.y, bot.PathPoints[i].z), bot.transform.rotation
+            points[i] = Handles.PositionHandle(
+                bot.PathPoints[i], bot.transform.rotation
             );
+        }
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            Undo.RecordObject(bot, "Updated path points");
+            for (int i = 0; i < bot.PathPoints.Length; i++)
+            {
+                bot.PathPoints[i] = points[i];
+            }
         }
     }
 }

@@ -204,6 +204,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4521960353665844}
   - component: {fileID: 8354308744889340262}
+  - component: {fileID: 7389410140958098027}
+  - component: {fileID: 4966736126778086677}
   m_Layer: 0
   m_Name: Pliers
   m_TagString: Untagged
@@ -239,3 +241,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06fa27c897ed6a54f9a82ae381a4910c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &7389410140958098027
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968301911228824}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.5, z: 0.5}
+  m_Center: {x: 0, y: 0.25, z: 0}
+--- !u!114 &4966736126778086677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968301911228824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b7f9f937af19a49b104f757363e6d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Wirecutter
+  IsPersistent: 1
+  ItemType: 2
+  Data: 0
