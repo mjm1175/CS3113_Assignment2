@@ -731,6 +731,7 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
@@ -744,6 +745,8 @@ PrefabInstance:
       value: Corridor2
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> Stashed changes
     - target: {fileID: 7510647111307569529, guid: 0fa937f68b8f6bd49b34bf334ae2bb7e, type: 3}
       propertyPath: m_TagString
       value: Door2
@@ -751,9 +754,12 @@ PrefabInstance:
     - target: {fileID: 7510647112608364738, guid: 0fa937f68b8f6bd49b34bf334ae2bb7e, type: 3}
       propertyPath: m_Enabled
       value: 0
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
 =======
 >>>>>>> 504e3a6deb8e72d88a21b8c3e575f9c008a7ecd4
+=======
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 7630310304033888537, guid: 0fa937f68b8f6bd49b34bf334ae2bb7e, type: 3}
       propertyPath: m_Name
@@ -2905,6 +2911,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
@@ -2922,6 +2929,10 @@ PrefabInstance:
 >>>>>>> Stashed changes
 =======
 >>>>>>> 504e3a6deb8e72d88a21b8c3e575f9c008a7ecd4
+=======
+      propertyPath: m_Enabled
+      value: 0
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
@@ -3929,6 +3940,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
@@ -3942,6 +3954,8 @@ PrefabInstance:
       value: Corridor3
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> Stashed changes
     - target: {fileID: 2540214728075796722, guid: 394ec85fc384749409bb7d51c5130981, type: 3}
       propertyPath: m_TagString
       value: Door3
@@ -3953,9 +3967,12 @@ PrefabInstance:
     - target: {fileID: 2540214729460476655, guid: 394ec85fc384749409bb7d51c5130981, type: 3}
       propertyPath: m_Enabled
       value: 0
+<<<<<<< Updated upstream
 >>>>>>> Stashed changes
 =======
 >>>>>>> 504e3a6deb8e72d88a21b8c3e575f9c008a7ecd4
+=======
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 394ec85fc384749409bb7d51c5130981, type: 3}
