@@ -9,8 +9,20 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 946909f6b64d58247a73428f6ac37891
   - enabled: 1
+    path: Assets/Scenes/Cell.unity
+    guid: 7d33ce1109d139f48915b83c4d88bee6
+  - enabled: 1
     path: Assets/Scenes/Corridor.unity
     guid: 6e210a33218644041954ef9f3860ab8f
+  - enabled: 1
+    path: Assets/Scenes/Corridor1.unity
+    guid: e96196410b956414dbac8a26449ea38b
+  - enabled: 1
+    path: Assets/Scenes/Corridor2.unity
+    guid: 265d01efefc47954b95bb3597dbb9fd6
+  - enabled: 1
+    path: Assets/Scenes/Corridor3.unity
+    guid: d5bee5d5f9861814b8aa321685b97187
   - enabled: 1
     path: Assets/Scenes/Rooms/Room1.unity
     guid: 07ecb1f006a167247b956dbd3130cb2a
