@@ -234,6 +234,18 @@ public class Player : MonoBehaviour
         }
     }
 
+        /* if bullet is collision
+        if (other.gameObject.CompareTag("Bullet")){
+            Destroy(other.gameObject);
+            if (health <= 5){
+                // die
+                SceneManager.LoadScene("Dead");
+            } else {
+                health -= 5;
+            }
+        }*/
+    }
+
     IEnumerator PoisonTime()
     {
         int ticks = 0;
