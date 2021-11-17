@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using TMPro;
 
 [RequireComponent(typeof(Movement))]
 public class Player : MonoBehaviour
@@ -11,7 +12,7 @@ public class Player : MonoBehaviour
     public GameObject bulletPrefab;
     public int bulletForce = 200;
     public int attackDamage = 5;
-    public Text healthText;
+    public TextMeshProUGUI healthText;
 
     private Movement _movement;
 
