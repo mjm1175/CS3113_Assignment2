@@ -14,5 +14,8 @@ public static class PublicVars
     public const float MINIMUM_MOVEMENT_SPEED = 0.2f;
 
     /// <value>The step size for ray cast detection in degrees</value>
-    public const float ALERT_DETECTION_STEP = 7;
+    public const float ALERT_DETECTION_STEP = 7f;
+
+    /// <value>The minimum distance before the enemy stops moving towards the player</value>
+    public const float MINIMUM_CHASE_DISTANCE = 1;
 }

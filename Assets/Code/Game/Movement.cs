@@ -23,6 +23,26 @@ public class Movement : MonoBehaviour
         Animator?.SetBool("IsMoving", IsMoving);
     }
 
+    public void SetAttacking(bool isAttacking)
+    {
+        if (Animator?.GetBool("IsAttacking") != isAttacking)
+        {
+            Animator?.SetBool("IsAttacking", isAttacking);
+            Animator?.SetTrigger("Animate");
+        }
+    }
+
+    public void Die()
+    {
+        if (!Animator?.GetBool("IsDead") ?? false)
+        {
+            _navMeshAgent.speed = 0;
+            _navMeshAgent.enabled = false;
+            Animator?.SetBool("IsDead", true);
+            Animator?.SetTrigger("Animate");
+        }
+    }
+
     public void SetSpeed(float newSpeed)
     {
         _navMeshAgent.speed = newSpeed;
@@ -35,6 +55,7 @@ public class Movement : MonoBehaviour
 
     public void SetDestination(Vector3 destination)
     {
-        _navMeshAgent.destination = destination;
+        if (_navMeshAgent.enabled)
+            _navMeshAgent.destination = destination;
     }
 }
