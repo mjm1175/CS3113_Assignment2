@@ -14,7 +14,7 @@ public class Game : MonoBehaviour
         DontDestroyOnLoad(this);
 
         // Initialize the rooms
-
+        
         Room start = new Room("Corridor");
         Room cell = new Room("Cell");
         Room c1 = new Room("Corridor1");
@@ -23,7 +23,7 @@ public class Game : MonoBehaviour
 
         List<string> roomIds = new List<string>();
 
-        for (int i = 1; i <= 8; i++)
+        for (int i = 1; i <= 11; i++)
         {
             roomIds.Add($"Room{i}");
         }

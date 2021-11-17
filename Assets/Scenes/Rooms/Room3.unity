@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.63964283, g: 0.63964283, b: 0.7338973, a: 1}
+  m_IndirectSpecularColor: {r: 0.5254071, g: 0.5254071, b: 0.6416234, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1592,6 +1592,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 5.6699996
       objectReference: {fileID: 0}
+    - target: {fileID: 7510647111307569529, guid: 0fa937f68b8f6bd49b34bf334ae2bb7e, type: 3}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     - target: {fileID: 7630310304033888537, guid: 0fa937f68b8f6bd49b34bf334ae2bb7e, type: 3}
       propertyPath: m_Name
       value: RoomTemplate
@@ -1623,7 +1627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644b43a8918de1a45917b90d9ec264ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: 
+  RoomToLoad: 
   locked: 0
   doorCode: 0
   player: {fileID: 0}
