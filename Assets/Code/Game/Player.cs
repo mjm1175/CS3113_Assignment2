@@ -4,9 +4,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 <<<<<<< Updated upstream
 using TMPro;
-=======
 using System.Collections.Generic;
->>>>>>> Stashed changes
 
 [RequireComponent(typeof(Movement))]
 public class Player : MonoBehaviour
@@ -191,6 +189,31 @@ public class Player : MonoBehaviour
         {
             LoadNextRoom(currRoom, 0);
         }
+
+        //Debug.Log((currRoom));
+        //if (getKey(currRoom) == "true")
+        if (gotKey[currRoom] == "true")
+            {
+            if (other.gameObject.CompareTag("Door1"))
+            {
+                LoadNextRoom(currRoom, 1);
+            }
+            if (other.gameObject.CompareTag("Door2"))
+            {
+                LoadNextRoom(currRoom, 2);
+            }
+            if (other.gameObject.CompareTag("Door3"))
+            {
+                LoadNextRoom(currRoom, 3);
+            }
+        }
+        /*
+        if (other.gameObject.CompareTag("DoorBk"))
+        {
+            LoadNextRoom(currRoom, -1);
+        }*/
+        
+    }
 
         //Debug.Log((currRoom));
         //if (getKey(currRoom) == "true")
