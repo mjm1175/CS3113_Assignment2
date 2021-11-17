@@ -43,7 +43,7 @@ public class Room
         return prevRoom;
     }
 
-    /// <summary>Enter the room by Room ID update the current room</summary>
+    /// <summary>Enter the room by Room ID. Note that this will ignore the prerequisites</summary>
     public static void Enter(string RoomId)
     {
         CandidateRooms.Find(room => room.RoomId == RoomId).Enter();
