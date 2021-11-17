@@ -13,10 +13,7 @@ public class Player : MonoBehaviour
     public int bulletForce = 200;
     public int attackDamage = 5;
     public TextMeshProUGUI healthText;
-
     private Movement _movement;
-
-    public int health = 100;
 
     bool poison = false;
     bool nausea = false;
@@ -31,7 +28,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (healthText) healthText.text = health.ToString();
+        if (healthText) healthText.text = PublicVars.health.ToString();
         // left click to walk
         if (Input.GetMouseButtonDown(0))
         {
@@ -77,14 +74,14 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             Destroy(other.gameObject);
-            if (health <= 5)
+            if (PublicVars.health <= 5)
             {
                 // die
                 SceneManager.LoadScene("Dead");
             }
             else
             {
-                health -= 5;
+                PublicVars.health -= 5;
             }
         }
 
@@ -97,7 +94,7 @@ public class Player : MonoBehaviour
             {
                 Destroy(child.gameObject);
             }
-            health += 20;
+            PublicVars.health += 20;
         }
 
         // if the player picks up a "power" energy drink
@@ -137,28 +134,16 @@ public class Player : MonoBehaviour
         Debug.Log("collding");
         if (other.gameObject.CompareTag("Enemy"))
         {
-            if (health <= 5)
+            if (PublicVars.health <= 5)
             {
                 // die
                 SceneManager.LoadScene("Dead");
             }
             else
             {
-                health -= 5;
+                PublicVars.health -= 5;
             }
         }
-
-
-        /* if bullet is collision
-        if (other.gameObject.CompareTag("Bullet")){
-            Destroy(other.gameObject);
-            if (health <= 5){
-                // die
-                SceneManager.LoadScene("Dead");
-            } else {
-                health -= 5;
-            }
-        }*/
     }
 
     IEnumerator PoisonTime()
@@ -169,7 +154,7 @@ public class Player : MonoBehaviour
         while (ticks < totalTicks)
         {
             ticks++;
-            health -= 5;  // Player takes 5 damage
+            PublicVars.health -= 5;  // Player takes 5 damage
             yield return new WaitForSecondsRealtime(1);  // every 1 second
         }
     }
