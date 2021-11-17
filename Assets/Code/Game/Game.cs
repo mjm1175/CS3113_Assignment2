@@ -16,6 +16,10 @@ public class Game : MonoBehaviour
         // Initialize the rooms
 
         Room start = new Room("Corridor");
+        Room cell = new Room("Cell");
+        Room c1 = new Room("Corridor1");
+        Room c2 = new Room("Corridor2");
+        Room c3 = new Room("Corridor3");
 
         List<string> roomIds = new List<string>();
 
@@ -29,6 +33,7 @@ public class Game : MonoBehaviour
         Room boss = new Room("BossScene", prereqRooms: new Room[] { lastNormalRoom });
 
         PublicVars.Game = this;
-        start.Enter();
+        cell.Enter();
+        //start.Enter();
     }
 }

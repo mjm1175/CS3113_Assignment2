@@ -7,8 +7,8 @@ public class MenuScript : MonoBehaviour
 {
     public void StartBtn()
     {
-        // TODO: change if starting scene changes
-        SceneManager.LoadScene("Corridor");
+        // TODO: change if starting scene changes; make sure all public vars are reset
+        SceneManager.LoadScene("Cell");
     }
 
     public void Quit()

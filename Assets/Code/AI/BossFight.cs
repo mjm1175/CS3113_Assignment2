@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BossFight : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class BossFight : MonoBehaviour
     public GameObject player;
     public GameObject projectileStartingPos;
     int health = 200;
-    public Text healthText;
+    public TextMeshProUGUI healthText;
     
     void Start()
     {
