@@ -15,9 +15,11 @@ public class PathEditor : Editor
     {
         bot = (FlashlightBot)target;
 
-        Handles.color = new Color(255, 255, 255, 0.5f);
+        Handles.color = new Color(255, 255, 255, 0.1f);
 
         Handles.DrawSolidArc(bot.transform.position, Vector3.up, Quaternion.AngleAxis(-bot.FrontAlertAngle / 2, Vector3.up) * bot.transform.forward, bot.FrontAlertAngle, bot.FrontAlertDistance);
+
+        Handles.DrawSolidDisc(bot.transform.position, Vector3.up, bot.SideAlertDistance);
 
         if (bot.PathPoints.Length == 0) return;
 

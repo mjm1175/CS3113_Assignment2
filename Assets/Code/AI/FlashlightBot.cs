@@ -44,7 +44,7 @@ public class FlashlightBot : MonoBehaviour
     private void Update()
     {
         if (_lastMoveTimeElapsed < MovementInterval) _lastMoveTimeElapsed += Time.deltaTime;
-        if (CurrentState == BotState.PATROL && DetectFront())
+        if (CurrentState == BotState.PATROL && (DetectFront() || DetectSide()))
         {
             _lastVisitedPoint = -1;
             _patrolEnumerator = NextPoint();
@@ -121,7 +121,19 @@ public class FlashlightBot : MonoBehaviour
     /// <summary>Detect whether there is a player in front of you or not</summary>
     private bool DetectFront()
     {
-        for (float i = -FrontAlertAngle / 2; i <= FrontAlertAngle / 2; i += 7)
+        return RayCastSector(-FrontAlertAngle / 2, FrontAlertAngle / 2);
+    }
+
+    /// <summary>Detect whether there is a player around you or not</summary>
+    private bool DetectSide()
+    {
+        return RayCastSector(0, 360);
+    }
+
+    /// <summary>Detect whether there is a player within a sector</summary>
+    private bool RayCastSector(float start, float end)
+    {
+        for (float i = start; i <= end; i += PublicVars.ALERT_DETECTION_STEP)
         {
             RaycastHit hit;
             Ray ray = new Ray(transform.position, Quaternion.AngleAxis(i, Vector3.up) * transform.forward);
