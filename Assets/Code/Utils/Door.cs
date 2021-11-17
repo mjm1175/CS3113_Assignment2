@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    public string levelToLoad;
+    [Tooltip("When unset, we will proceed to the next room by default; this hardcodes the next room to enter by id otherwise")]
+    public string RoomToLoad;
     public bool locked = true;
     public int doorCode = 0;
     public GameObject player;
@@ -27,8 +28,12 @@ public class Door : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player") && !locked)
         {
-            PublicVars.got_key = false;
-            _currentRoom.Complete().FindNextRoom().Enter();
+            _currentRoom.Complete();
+
+            if (RoomToLoad.Length > 0)
+                Room.Enter(RoomToLoad);
+            else
+                _currentRoom.FindNextRoom().Enter();
         }
     }
 

@@ -44,12 +44,6 @@ public class FlashlightBot : MonoBehaviour
     private void Update()
     {
         if (_lastMoveTimeElapsed < MovementInterval) _lastMoveTimeElapsed += Time.deltaTime;
-        if (CurrentState == BotState.PATROL && DetectFront())
-        {
-            _lastVisitedPoint = -1;
-            _patrolEnumerator = NextPoint();
-            CurrentState = BotState.ALERT;
-        }
 
         // Always transit from idle state to patrol state
         switch (CurrentState)
@@ -58,6 +52,13 @@ public class FlashlightBot : MonoBehaviour
                 CurrentState = BotState.PATROL;
                 break;
             case BotState.PATROL:
+                if (DetectFront() || DetectSide())
+                {
+                    _lastVisitedPoint = -1;
+                    _patrolEnumerator = NextPoint();
+                    CurrentState = BotState.ALERT;
+                }
+
                 if (_movement.IsMoving)
                 {
                     _stayedTimeElapsed = 0;
@@ -73,10 +74,15 @@ public class FlashlightBot : MonoBehaviour
                 }
                 break;
             case BotState.ALERT:
-                _movement.SetDestination(player.transform.position);
+                Vector3 playerPos = player.transform.position, botPos = transform.position;
+                // Make sure that we keep some distance from the player
+                _movement.SetDestination(playerPos + (botPos - playerPos).normalized * PublicVars.MINIMUM_CHASE_DISTANCE);
+                _movement.SetAttacking(Vector3.Distance(playerPos, botPos) <= 2 * PublicVars.MINIMUM_CHASE_DISTANCE);
                 break;
         }
     }
+
+    public void Hit() { return; }
 
     IEnumerator<Vector3> NextPoint()
     {
@@ -114,19 +120,32 @@ public class FlashlightBot : MonoBehaviour
         {
             PublicVars.kill_count++;
             Destroy(other.gameObject);
-            Destroy(gameObject);
+            _movement.Die();
+            Destroy(gameObject, 2);
         }
     }
 
     /// <summary>Detect whether there is a player in front of you or not</summary>
     private bool DetectFront()
     {
-        for (float i = -FrontAlertAngle / 2; i <= FrontAlertAngle / 2; i += 7)
+        return RayCastSector(-FrontAlertAngle / 2, FrontAlertAngle / 2, FrontAlertDistance);
+    }
+
+    /// <summary>Detect whether there is a player around you or not</summary>
+    private bool DetectSide()
+    {
+        return RayCastSector(-180, 180, SideAlertDistance);
+    }
+
+    /// <summary>Detect whether there is a player within a sector</summary>
+    private bool RayCastSector(float start, float end, float distance)
+    {
+        for (float i = start; i <= end; i += PublicVars.ALERT_DETECTION_STEP)
         {
             RaycastHit hit;
             Ray ray = new Ray(transform.position, Quaternion.AngleAxis(i, Vector3.up) * transform.forward);
 
-            if (Physics.Raycast(ray, out hit, FrontAlertDistance) && hit.collider.CompareTag("Player"))
+            if (Physics.Raycast(ray, out hit, distance) && hit.collider.CompareTag("Player"))
             {
                 return true;
             }
