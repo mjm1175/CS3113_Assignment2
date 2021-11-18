@@ -18,6 +18,11 @@ public class Room
     public string RoomScene { get; private set; }
     public bool IsCompleted { get; private set; }
 
+    public int DoorCount { get; private set; }
+    public RoomEdge[] ConnectedRoomEdges { get; private set; }
+
+    private int _edgeCreated = 0;
+
     private static List<Room> candidates = new List<Room>();
 
     /// <summary>
@@ -51,11 +56,13 @@ public class Room
     /// <param name="roomScene">
     /// The scene name of the room (same as <paramref name="roomId" /> when null)
     /// </param>
-    public Room(string roomId, string roomScene = null)
+    public Room(string roomId, int doorCount = 2, string roomScene = null)
     {
         RoomId = roomId;
         RoomScene = roomScene ?? roomId;
         CandidateRooms.Add(this);
+        DoorCount = doorCount;
+        ConnectedRoomEdges = new RoomEdge[doorCount];
     }
 
     /// <summary>Mark this room as completed and return itself</summary>
@@ -88,4 +95,46 @@ public class Room
         }
     }
 
+    public void EnterDoor(int doorIndex)
+    {
+        try
+        {
+            ConnectedRoomEdges[doorIndex].ConnectedRoom.Enter();
+        }
+        catch (NullReferenceException)
+        {
+            throw new ArgumentException($"Door {doorIndex} in {RoomId} is not associated with any other rooms");
+        }
+    }
+
+    /// <summary>Connect this room to another</summary>
+    /// <param name="room">
+    /// The room to be connected with
+    /// </param>
+    /// <param name="fromDoorIndex">
+    /// The door to enter within the current room
+    /// </param>
+    /// <param name="toDoorIndex">
+    /// The door where you will exit in the target room
+    /// </param>
+    public void Connect(Room room, int fromDoorIndex, int toDoorIndex)
+    {
+        AddRoomEdge(room, fromDoorIndex);
+        room.AddRoomEdge(this, toDoorIndex);
+    }
+
+    protected void AddRoomEdge(Room room, int doorIndex)
+    {
+        ValidateDoorIndex(doorIndex);
+        RoomEdge edge = new RoomEdge(doorIndex, room);
+        this.ConnectedRoomEdges[doorIndex] = edge;
+        _edgeCreated++;
+    }
+
+    private void ValidateDoorIndex(int index)
+    {
+        if (index >= DoorCount) throw new ArgumentException($"{index} is not a valid index for the doors in {RoomId}");
+        if (ConnectedRoomEdges[index].IsTaken) throw new ArgumentException($"{index} has already been taken for {RoomId}");
+        if (_edgeCreated == DoorCount) throw new ArgumentException($"No more RoomEdges can be added to {RoomId}");
+    }
 }

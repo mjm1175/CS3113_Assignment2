@@ -25,7 +25,7 @@ public class Door : MonoBehaviour
         Inventory inventory;
         if (other.TryGetComponent<Inventory>(out inventory))
         {
-            if (inventory.CheckItem(ItemType.Key, doorCode))
+            if (inventory.CheckItem(ItemType.Key, doorIndex))
             {
                 locked = false;
             }
@@ -33,21 +33,26 @@ public class Door : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
-            if (!locked || (PublicVars.paper_count >= numPapers)){
+            if (!locked || (PublicVars.paper_count >= numPapers))
+            {
                 _currentRoom.Complete();
 
                 if (RoomToLoad.Length > 0)
                     Room.Enter(RoomToLoad);
                 else
-                    _currentRoom.FindNextRoom().Enter();                
-            } else {
+                    _currentRoom.EnterDoor(doorIndex);
+            }
+            else
+            {
                 lockedText.enabled = true;
             }
         }
     }
 
-    private void OnTriggerExit(Collider other) {
-        if (other.CompareTag("Player")){
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
             lockedText.enabled = false;
         }
     }
