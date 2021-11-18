@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
+    TransitionManager _transitionManager;
+    
     private void Awake()
     {
         // If the game already exists
@@ -43,6 +45,16 @@ public class Game : MonoBehaviour
         Room boss = new Room("BossScene");
 
         PublicVars.Game = this;
-        Room.Enter(SceneManager.GetActiveScene().name);
+        Room.Enter(SceneManager.GetActiveScene().name);        
+    }
+    void Start()
+    {
+        _transitionManager = FindObjectOfType<TransitionManager>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //_transitionManager.LoadScene("Start");
     }
 }

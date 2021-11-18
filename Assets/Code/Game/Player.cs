@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
 
     public AudioSource poisonedSound;
     public AudioSource nauseaedSound;
+    public AudioSource drinkingSound;
+    public AudioSource doorOpening;
     void Start()
     {
         mainCam = Camera.main;      // tag lookup, not instant, that's why cache
@@ -160,7 +162,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        string currRoom = SceneManager.GetActiveScene().name;
+        //string currRoom = SceneManager.GetActiveScene().name;
 
         /* if water bucket are a trigger*/
         if (other.gameObject.CompareTag("Water"))
@@ -169,6 +171,7 @@ public class Player : MonoBehaviour
 
             //setKey(currRoom, "true");
             //Destroy(other.gameObject);
+            drinkingSound.Play();
             foreach (Transform child in other.gameObject.transform)
             {
                 Destroy(child.gameObject);
@@ -180,7 +183,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Power"))
         {
             PublicVars.got_key = true;
-
+            drinkingSound.Play();
             //setKey(currRoom, "true");
             Destroy(other.gameObject);
             attackDamage += 5;
@@ -190,7 +193,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Poison"))
         {
             PublicVars.got_key = true;
-
+            drinkingSound.Play();
             //setKey(currRoom, "true");
             Destroy(other.gameObject);
             poison = true;
@@ -200,7 +203,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Nausea"))
         {
             PublicVars.got_key = true;
-
+            drinkingSound.Play();
             //setKey(currRoom, "true");
             Destroy(other.gameObject);
             nausea = true;
@@ -209,17 +212,22 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Boost"))
         {
             PublicVars.got_key = true;
-
+            drinkingSound.Play();
             //setKey(currRoom, "true");
             Destroy(other.gameObject);
             StartCoroutine(BoostTime());
         }
 
-        /*
+        
         if (other.gameObject.CompareTag("Door"))
         {
-            LoadNextRoom(currRoom, 0);
-        }*/
+            if (other.gameObject.GetComponent<Door>().locked == true)
+            {
+                doorOpening.Play();
+            }
+            //doorOpening.Play();
+            //LoadNextRoom(currRoom, 0);
+        }
         
     }
 

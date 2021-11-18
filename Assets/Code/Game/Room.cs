@@ -99,6 +99,11 @@ public class Room
         return next;
     }
 
+    public void PlaySound(AudioSource sound)
+    {
+        sound.Play();
+    }
+
     /// <summary>Enter the room and update the current room</summary>
     public void Enter(int doorIndex = 0)
     {
