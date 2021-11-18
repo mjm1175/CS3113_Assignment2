@@ -100,6 +100,9 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   MovementInterval: 2
   TimeToStay: 1
+  FrontAlertDistance: 100
+  FrontAlertAngle: 60
+  SideAlertDistance: 20
 --- !u!1001 &1396466209914593400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111,6 +114,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 784f924595f5d5940a4cd78f44537047, type: 2}
+    - target: {fileID: 4193399212240928780, guid: 5358fd1db56fd5f4ebd3a9185f223155, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7465294887362724044, guid: 5358fd1db56fd5f4ebd3a9185f223155, type: 3}
       propertyPath: m_Name
       value: Man_Full
