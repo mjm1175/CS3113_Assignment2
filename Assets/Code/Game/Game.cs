@@ -30,9 +30,9 @@ public class Game : MonoBehaviour
             roomIds.Add($"Room{i}");
         }
 
-        Room lastNormalRoom = Room.RegisterSequentialRooms(roomIds, new Room[] { start });
+        Room lastNormalRoom = Room.RegisterSequentialRooms(roomIds);
 
-        Room boss = new Room("BossScene", prereqRooms: new Room[] { lastNormalRoom });
+        Room boss = new Room("BossScene");
 
         PublicVars.Game = this;
         cell.Enter();

@@ -6,7 +6,7 @@ public class Door : MonoBehaviour
     [Tooltip("When unset, we will proceed to the next room by default; this hardcodes the next room to enter by id otherwise")]
     public string RoomToLoad;
     public bool locked = true;
-    public int doorCode = 0;
+    public int doorIndex = 0;
     public int numPapers = 0;
     //public GameObject player;
 

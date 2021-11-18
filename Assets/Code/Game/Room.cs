@@ -9,13 +9,12 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class Room
 {
-    /// <value>We will select from the candidate rooms whenever one room is completed</value>
+    /// <value>We maintain a reference to all the rooms available</value>
     public static List<Room> CandidateRooms => candidates;
     /// <value>The most recent room the player entered</value>
     public static Room CurrentRoom { get; protected set; }
 
     public string RoomId { get; private set; }
-    public IEnumerable<Room> PrereqRooms { get; private set; }
     public string RoomScene { get; private set; }
     public bool IsCompleted { get; private set; }
 
@@ -23,22 +22,16 @@ public class Room
 
     /// <summary>
     /// Register a series of rooms sequentially.
-    /// <br />
-    /// Each room will has its previous room as the prerequisite.
-    /// The prerequisite for the first room can be given by <paramref name="initialPrereq" />
     /// </summary>
-    /// <param name="initialPrereq">
-    /// The prerequisite for the first room
-    /// </param>
     /// <returns>The last room created in the sequence</returns>
-    public static Room RegisterSequentialRooms(IEnumerable<string> roomIds, IEnumerable<Room> initialPrereq = null)
+    public static Room RegisterSequentialRooms(IEnumerable<string> roomIds)
     {
         if (roomIds.Count() == 0) return null;
 
-        Room prevRoom = new Room(roomIds.First(), prereqRooms: initialPrereq);
+        Room prevRoom = new Room(roomIds.First());
         foreach (string roomId in roomIds.Skip(1))
         {
-            prevRoom = new Room(roomId, prereqRooms: new Room[] { prevRoom });
+            prevRoom = new Room(roomId);
         }
         return prevRoom;
     }
@@ -46,7 +39,9 @@ public class Room
     /// <summary>Enter the room by Room ID. Note that this will ignore the prerequisites</summary>
     public static void Enter(string RoomId)
     {
-        CandidateRooms.Find(room => room.RoomId == RoomId).Enter();
+        Room room = CandidateRooms.Find(room => room.RoomId == RoomId);
+        if (room == null) throw new ArgumentException($"The room {RoomId} cannot be found");
+        room.Enter();
     }
 
     /// <summary>Create a new room</summary>
@@ -56,13 +51,11 @@ public class Room
     /// <param name="roomScene">
     /// The scene name of the room (same as <paramref name="roomId" /> when null)
     /// </param>
-    /// <param name="prereqRooms">The prerequisite rooms that have to be completed before entering this room</param>
-    public Room(string roomId, string roomScene = null, IEnumerable<Room> prereqRooms = null)
+    public Room(string roomId, string roomScene = null)
     {
         RoomId = roomId;
         RoomScene = roomScene ?? roomId;
-        PrereqRooms = prereqRooms;
-        CandidateRooms.Insert(UnityEngine.Random.Range(0, CandidateRooms.Count), this);
+        CandidateRooms.Add(this);
     }
 
     /// <summary>Mark this room as completed and return itself</summary>
@@ -79,9 +72,7 @@ public class Room
     /// </exception>
     public Room FindNextRoom()
     {
-        /// <TODO>Optimize this</TODO>
         var next = CandidateRooms
-                        .Where(room => room.PrereqRooms == null || room.PrereqRooms.All(prereq => prereq.IsCompleted))
                         .FirstOrDefault();
         if (next == null) throw new InvalidOperationException("Not enough candidate rooms to choose from!");
         return next;
@@ -90,7 +81,6 @@ public class Room
     /// <summary>Enter the room update the current room</summary>
     public void Enter()
     {
-        CandidateRooms.Remove(this);
         CurrentRoom = this;
         if (SceneManager.GetActiveScene().name != RoomScene)
         {
