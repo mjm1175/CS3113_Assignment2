@@ -13,10 +13,13 @@ public class Room
     public static List<Room> CandidateRooms => candidates;
     /// <value>The most recent room the player entered</value>
     public static Room CurrentRoom { get; protected set; }
+    /// <value>The most recent checkpoint</value>
+    public static Room CurrentCheckPoint { get; private set; }
 
     public string RoomId { get; private set; }
     public string RoomScene { get; private set; }
     public bool IsCompleted { get; private set; }
+    public bool IsCheckPoint { get; private set; }
 
     public int DoorCount { get; private set; }
     public RoomEdge[] ConnectedRoomEdges { get; private set; }
@@ -63,6 +66,17 @@ public class Room
         room.Enter();
     }
 
+    public static void EnterCheckPoint()
+    {
+        if (CurrentCheckPoint == null)
+        {
+            Debug.LogWarning("There is no checkpoint to enter");
+            return;
+        }
+
+        CurrentCheckPoint.Enter(-1);
+    }
+
     /// <summary>Create a new room</summary>
     /// <param name="roomId">
     /// The string id of the room
@@ -70,13 +84,15 @@ public class Room
     /// <param name="roomScene">
     /// The scene name of the room (same as <paramref name="roomId" /> when null)
     /// </param>
-    public Room(string roomId, int doorCount = 2, string roomScene = null)
+    public Room(string roomId, int doorCount = 2, bool isCheckPoint = false, string roomScene = null)
     {
         RoomId = roomId;
         RoomScene = roomScene ?? roomId;
         CandidateRooms.Add(this);
         DoorCount = doorCount;
         ConnectedRoomEdges = new RoomEdge[doorCount];
+        IsCheckPoint = isCheckPoint;
+        CurrentCheckPoint = null;
     }
 
     /// <summary>Mark this room as completed and return itself</summary>
@@ -109,6 +125,7 @@ public class Room
     {
         PublicVars.LastEnteredDoorIndex = doorIndex;
         CurrentRoom = this;
+        if (IsCheckPoint) CurrentCheckPoint = this;
         if (SceneManager.GetActiveScene().name != RoomScene)
         {
             SceneManager.LoadScene(RoomScene);

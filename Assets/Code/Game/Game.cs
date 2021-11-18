@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -5,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Game : MonoBehaviour
 {
     TransitionManager _transitionManager;
-    
+
     private void Awake()
     {
         // If the game already exists
@@ -18,12 +19,12 @@ public class Game : MonoBehaviour
 
         // Initialize the rooms
 
-        Room start = new Room("Corridor", 4);
-        Room cell = new Room("Cell", 1);
-        Room c1 = new Room("Corridor1", 7);
-        Room c2 = new Room("Corridor2");
-        Room c3 = new Room("Corridor3");
-        Room c4 = new Room("Corridor4");
+        Room start = new Room("Corridor", 4, true);
+        Room cell = new Room("Cell", 1, true);
+        Room c1 = new Room("Corridor1", 7, true);
+        Room c2 = new Room("Corridor2", isCheckPoint: true);
+        Room c3 = new Room("Corridor3", isCheckPoint: true);
+        Room c4 = new Room("Corridor4", isCheckPoint: true);
 
         cell.Connect(start, 0);
         start.Connect(c1, 1);
@@ -45,7 +46,14 @@ public class Game : MonoBehaviour
         Room boss = new Room("BossScene");
 
         PublicVars.Game = this;
-        Room.Enter(SceneManager.GetActiveScene().name);        
+        try
+        {
+            Room.Enter(SceneManager.GetActiveScene().name);
+        }
+        catch (ArgumentException)
+        {
+            Debug.LogWarning($"{SceneManager.GetActiveScene().name} is not a existing room");
+        }
     }
     void Start()
     {
