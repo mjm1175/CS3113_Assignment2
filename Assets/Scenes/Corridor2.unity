@@ -5256,6 +5256,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: locked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: numPapers
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: RoomToLoad
+      value: Corridor4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
 --- !u!4 &7510647112572571759 stripped
