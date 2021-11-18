@@ -100,9 +100,9 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   MovementInterval: 2
   TimeToStay: 1
-  FrontAlertDistance: 100
+  FrontAlertDistance: 16
   FrontAlertAngle: 60
-  SideAlertDistance: 20
+  SideAlertDistance: 2
 --- !u!1001 &1396466209914593400
 PrefabInstance:
   m_ObjectHideFlags: 0
