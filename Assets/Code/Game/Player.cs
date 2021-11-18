@@ -46,6 +46,10 @@ public class Player : MonoBehaviour
             }
         }
 
+        if (PublicVars.health >= 0){
+            SceneManager.LoadScene("Dead");
+        }
+
         /*// right click to shoot
         if (Input.GetMouseButtonDown(1))
         {
@@ -119,10 +123,14 @@ public class Player : MonoBehaviour
 
         // while player is within the light they take 5 damage every 2 seconds
         if (other.CompareTag("GuardLight")){
-            //if (coroutine != null) return;
-            //coroutine = healthDecay();
             StartCoroutine(healthDecay());
         }   
+
+        // win state
+        if (other.CompareTag("Fence")){
+            SceneManager.LoadScene("Win");
+        }
+
         /* if water bucket are a trigger*/
         if (other.gameObject.CompareTag("Water"))
         {
@@ -202,10 +210,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerExit(Collider other) {
         if (other.CompareTag("GuardLight")){
-            //if (coroutine == null) return;
             StopAllCoroutines();
-            //StopCoroutine(coroutine);
-            //coroutine = null;
         }
     }
 

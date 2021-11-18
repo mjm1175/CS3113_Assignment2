@@ -20,6 +20,7 @@ TagManager:
   - Door2
   - Door3
   - GuardLight
+  - Fence
   layers:
   - Default
   - TransparentFX
