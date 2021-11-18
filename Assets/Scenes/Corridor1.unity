@@ -660,8 +660,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 10609870}
     - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: doorIndex
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
       propertyPath: RoomToLoad
-      value: Room5
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: SpawnOffset.x
+      value: -1.6500049
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: SpawnOffset.z
+      value: 1.4172497
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
@@ -1366,8 +1378,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 10609870}
     - target: {fileID: 2540214729460476655, guid: 394ec85fc384749409bb7d51c5130981, type: 3}
+      propertyPath: doorIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540214729460476655, guid: 394ec85fc384749409bb7d51c5130981, type: 3}
       propertyPath: RoomToLoad
-      value: Room3
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540214729460476655, guid: 394ec85fc384749409bb7d51c5130981, type: 3}
+      propertyPath: SpawnOffset.x
+      value: 1.6295384
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540214729460476655, guid: 394ec85fc384749409bb7d51c5130981, type: 3}
+      propertyPath: SpawnOffset.z
+      value: -2.020977
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 394ec85fc384749409bb7d51c5130981, type: 3}
@@ -1977,6 +2001,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: doorIndex
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: SpawnOffset.x
+      value: 1.8273066
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: SpawnOffset.z
+      value: -2.0662193
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
 --- !u!4 &881917373 stripped
@@ -2396,8 +2432,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 10609870}
     - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: doorIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
       propertyPath: RoomToLoad
-      value: Room1
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: SpawnOffset.x
+      value: -1.571589
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: SpawnOffset.z
+      value: 1.7671394
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
@@ -3362,17 +3410,29 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: doorIndex
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
       propertyPath: numPapers
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
       propertyPath: RoomToLoad
-      value: Corridor4
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
       propertyPath: lockedText
       value: 
       objectReference: {fileID: 2090432499}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: SpawnOffset.x
+      value: 1.100385
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: SpawnOffset.z
+      value: 2.0343628
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
 --- !u!4 &1340684151 stripped
@@ -5628,8 +5688,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 10609870}
     - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: doorIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
       propertyPath: RoomToLoad
-      value: Room2
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: SpawnOffset.x
+      value: 2.0262353
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: SpawnOffset.z
+      value: -1.863142
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
@@ -5794,6 +5866,14 @@ PrefabInstance:
     - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
       propertyPath: RoomToLoad
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: SpawnOffset.x
+      value: -0.876673
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: SpawnOffset.z
+      value: -1.3288536
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}

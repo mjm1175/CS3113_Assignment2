@@ -11,6 +11,8 @@ public static class PublicVars
     public static int health = 100;
     public static List<Item> Items = new List<Item>();
 
+    public static int LastEnteredDoorIndex;
+
     /// <value>The minimum magnitude of speed to be considered moving</value>
     public const float MINIMUM_MOVEMENT_SPEED = 0.2f;
 

@@ -8,15 +8,20 @@ public class Door : MonoBehaviour
     public bool locked = true;
     public int doorIndex = 0;
     public int numPapers = 0;
-    //public GameObject player;
 
-    private Room _currentRoom;
+    [Tooltip("The position where we will spawn the player when entering this door")]
+    public Vector3 SpawnOffset;
+
     public Text lockedText = null;
 
     private void Start()
     {
-        _currentRoom = Room.CurrentRoom;
         if (lockedText) lockedText.enabled = false;
+        if (PublicVars.LastEnteredDoorIndex == doorIndex)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null && SpawnOffset != null) player.transform.position = transform.position + SpawnOffset;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -35,12 +40,13 @@ public class Door : MonoBehaviour
         {
             if (!locked || (PublicVars.paper_count >= numPapers))
             {
-                _currentRoom.Complete();
+                Room currentRoom = Room.CurrentRoom;
+                currentRoom.Complete();
 
                 if (RoomToLoad.Length > 0)
                     Room.Enter(RoomToLoad);
                 else
-                    _currentRoom.EnterDoor(doorIndex);
+                    currentRoom.EnterDoor(doorIndex);
             }
             else
             {

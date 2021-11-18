@@ -1433,6 +1433,14 @@ PrefabInstance:
       propertyPath: RoomToLoad
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2540214729460476655, guid: 394ec85fc384749409bb7d51c5130981, type: 3}
+      propertyPath: SpawnOffset.x
+      value: -2.3015318
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540214729460476655, guid: 394ec85fc384749409bb7d51c5130981, type: 3}
+      propertyPath: SpawnOffset.z
+      value: -0.90768623
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 394ec85fc384749409bb7d51c5130981, type: 3}
 --- !u!1001 &659627031
@@ -2936,6 +2944,14 @@ PrefabInstance:
       propertyPath: RoomToLoad
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: SpawnOffset.x
+      value: -0.82552433
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: SpawnOffset.z
+      value: -1.2464933
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
 --- !u!4 &1546182013 stripped
@@ -3716,6 +3732,14 @@ PrefabInstance:
       propertyPath: RoomToLoad
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7510647112608364738, guid: 0fa937f68b8f6bd49b34bf334ae2bb7e, type: 3}
+      propertyPath: SpawnOffset.x
+      value: 1.7939084
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510647112608364738, guid: 0fa937f68b8f6bd49b34bf334ae2bb7e, type: 3}
+      propertyPath: SpawnOffset.z
+      value: 1.4551811
+      objectReference: {fileID: 0}
     - target: {fileID: 7630310304033888537, guid: 0fa937f68b8f6bd49b34bf334ae2bb7e, type: 3}
       propertyPath: m_Name
       value: RoomTemplate
@@ -3739,6 +3763,14 @@ PrefabInstance:
     - target: {fileID: 8372196569684777116, guid: 0fa937f68b8f6bd49b34bf334ae2bb7e, type: 3}
       propertyPath: RoomToLoad
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8372196569684777116, guid: 0fa937f68b8f6bd49b34bf334ae2bb7e, type: 3}
+      propertyPath: SpawnOffset.x
+      value: -0.8102956
+      objectReference: {fileID: 0}
+    - target: {fileID: 8372196569684777116, guid: 0fa937f68b8f6bd49b34bf334ae2bb7e, type: 3}
+      propertyPath: SpawnOffset.z
+      value: -1.172677
       objectReference: {fileID: 0}
     - target: {fileID: 8657689096031406421, guid: 0fa937f68b8f6bd49b34bf334ae2bb7e, type: 3}
       propertyPath: m_LocalPosition.x

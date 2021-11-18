@@ -36,9 +36,23 @@ public class Room
         Room prevRoom = new Room(roomIds.First());
         foreach (string roomId in roomIds.Skip(1))
         {
-            prevRoom = new Room(roomId);
+            Room currentRoom = new Room(roomId);
+            prevRoom.Connect(currentRoom, 1, 0);
+            prevRoom = currentRoom;
         }
         return prevRoom;
+    }
+
+    public static void BulkConnectRooms(Room corridor, int startDoorIndex, IEnumerable<string> roomIds)
+    {
+        if (roomIds.Count() == 0) return;
+
+        int doorIndex = startDoorIndex;
+        foreach (string roomId in roomIds)
+        {
+            Room currentRoom = new Room(roomId);
+            corridor.Connect(currentRoom, doorIndex++, 0);
+        }
     }
 
     /// <summary>Enter the room by Room ID. Note that this will ignore the prerequisites</summary>
@@ -85,9 +99,10 @@ public class Room
         return next;
     }
 
-    /// <summary>Enter the room update the current room</summary>
-    public void Enter()
+    /// <summary>Enter the room and update the current room</summary>
+    public void Enter(int doorIndex = 0)
     {
+        PublicVars.LastEnteredDoorIndex = doorIndex;
         CurrentRoom = this;
         if (SceneManager.GetActiveScene().name != RoomScene)
         {
@@ -97,14 +112,13 @@ public class Room
 
     public void EnterDoor(int doorIndex)
     {
-        try
+        RoomEdge edge = ConnectedRoomEdges[doorIndex];
+        if (!edge.IsTaken)
         {
-            ConnectedRoomEdges[doorIndex].ConnectedRoom.Enter();
+            Debug.LogWarning($"Door {doorIndex} in {RoomId} is not associated with any other rooms");
+            return;
         }
-        catch (NullReferenceException)
-        {
-            throw new ArgumentException($"Door {doorIndex} in {RoomId} is not associated with any other rooms");
-        }
+        edge.ConnectedRoom.Enter(edge.ConnectedDoorIndex);
     }
 
     /// <summary>Connect this room to another</summary>
@@ -117,16 +131,24 @@ public class Room
     /// <param name="toDoorIndex">
     /// The door where you will exit in the target room
     /// </param>
-    public void Connect(Room room, int fromDoorIndex, int toDoorIndex)
+    public void Connect(Room room, int fromDoorIndex, int toDoorIndex = 0)
     {
-        AddRoomEdge(room, fromDoorIndex);
-        room.AddRoomEdge(this, toDoorIndex);
+        AddRoomEdge(room, fromDoorIndex, toDoorIndex);
+        room.AddRoomEdge(this, toDoorIndex, fromDoorIndex);
     }
 
-    protected void AddRoomEdge(Room room, int doorIndex)
+    protected void AddRoomEdge(Room room, int doorIndex, int connectedDoorIndex)
     {
-        ValidateDoorIndex(doorIndex);
-        RoomEdge edge = new RoomEdge(doorIndex, room);
+        try
+        {
+            ValidateDoorIndex(doorIndex);
+        }
+        catch (ArgumentException e)
+        {
+            Debug.LogWarning(e);
+            return;
+        }
+        RoomEdge edge = new RoomEdge(doorIndex, connectedDoorIndex, room);
         this.ConnectedRoomEdges[doorIndex] = edge;
         _edgeCreated++;
     }

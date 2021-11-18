@@ -4594,6 +4594,14 @@ PrefabInstance:
       propertyPath: RoomToLoad
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: SpawnOffset.x
+      value: 1.6223478
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: SpawnOffset.z
+      value: 1.1199465
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
 --- !u!4 &7510647111239155162 stripped

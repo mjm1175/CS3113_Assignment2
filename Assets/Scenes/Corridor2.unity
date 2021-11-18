@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4770,11 +4770,11 @@ Transform:
   - {fileID: 1576036690}
   - {fileID: 80394680}
   - {fileID: 136886759}
-  - {fileID: 1869196219}
   - {fileID: 1917818946}
   - {fileID: 2014828354}
-  - {fileID: 1903595053}
   - {fileID: 1507460201}
+  - {fileID: 1903595053}
+  - {fileID: 1869196219}
   - {fileID: 1735830180}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -5549,6 +5549,14 @@ PrefabInstance:
     - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
       propertyPath: RoomToLoad
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: SpawnOffset.x
+      value: -1.2089458
+      objectReference: {fileID: 0}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: SpawnOffset.z
+      value: -1.7608051
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
