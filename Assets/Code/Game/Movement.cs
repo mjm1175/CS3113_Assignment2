@@ -10,6 +10,8 @@ public class Movement : MonoBehaviour
 
     /// <value>Whether the agent is moving or not</value>
     public bool IsMoving => _navMeshAgent.velocity.magnitude > PublicVars.MINIMUM_MOVEMENT_SPEED;
+    public bool IsAttacking => Animator?.GetBool("IsAttacking") ?? false;
+    public float AngularSpeed => _navMeshAgent.angularSpeed;
 
     private NavMeshAgent _navMeshAgent;
 
@@ -27,6 +29,7 @@ public class Movement : MonoBehaviour
     {
         if (Animator?.GetBool("IsAttacking") != isAttacking)
         {
+            _navMeshAgent.updateRotation = !isAttacking;
             Animator?.SetBool("IsAttacking", isAttacking);
             Animator?.SetTrigger("Animate");
         }

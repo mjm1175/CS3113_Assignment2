@@ -19,5 +19,6 @@ public static class PublicVars
     public const float ALERT_DETECTION_STEP = 7f;
 
     /// <value>The minimum distance before the enemy stops moving towards the player</value>
-    public const float MINIMUM_CHASE_DISTANCE = 1;
+    public const float MINIMUM_CHASE_DISTANCE = 1.2f;
+    public const int ENEMY_DAMAGE = 5;
 }

@@ -14,8 +14,11 @@ public class FlashlightBot : MonoBehaviour
     public Vector3[] PathPoints = new Vector3[] { };
     [Tooltip("The interval between moving from points to points")]
     public float MovementInterval = 2f;
+    public float DamageInterval = 1f;
     [Tooltip("The time to stay at each point")]
     public float TimeToStay = 1f;
+    [Tooltip("Time to attack after the bot stops at a certain point")]
+    public float TimeToAttack = 0.2f;
 
     [Tooltip("The maximum distance for the bot to detect the player")]
     public float FrontAlertDistance = 100;
@@ -30,6 +33,8 @@ public class FlashlightBot : MonoBehaviour
     IEnumerator<Vector3> _patrolEnumerator;
     float _lastMoveTimeElapsed;
     float _stayedTimeElapsed;
+    float _withinDistanceTimeElapsed;
+    float _lastDamageTimeElapsed;
 
     void Start()
     {
@@ -39,11 +44,18 @@ public class FlashlightBot : MonoBehaviour
         _patrolEnumerator = NextPoint();
         _lastMoveTimeElapsed = MovementInterval;
         _stayedTimeElapsed = 0;
+        _withinDistanceTimeElapsed = 0;
+        _lastDamageTimeElapsed = DamageInterval;
     }
 
     private void Update()
     {
+        if (_lastDamageTimeElapsed < DamageInterval) _lastDamageTimeElapsed += Time.deltaTime;
         if (_lastMoveTimeElapsed < MovementInterval) _lastMoveTimeElapsed += Time.deltaTime;
+        if (_movement.IsMoving)
+            _stayedTimeElapsed = 0;
+        else
+            _stayedTimeElapsed += Time.deltaTime;
 
         // Always transit from idle state to patrol state
         switch (CurrentState)
@@ -59,13 +71,6 @@ public class FlashlightBot : MonoBehaviour
                     CurrentState = BotState.ALERT;
                 }
 
-                if (_movement.IsMoving)
-                {
-                    _stayedTimeElapsed = 0;
-                }
-                else
-                    _stayedTimeElapsed += Time.deltaTime;
-
                 // If the agent is not moving and there is the next point to visit, we keep on going
                 if (_lastMoveTimeElapsed >= MovementInterval && _stayedTimeElapsed >= TimeToStay && !_movement.IsMoving && _patrolEnumerator.MoveNext())
                 {
@@ -75,9 +80,34 @@ public class FlashlightBot : MonoBehaviour
                 break;
             case BotState.ALERT:
                 Vector3 playerPos = player.transform.position, botPos = transform.position;
+                if (Vector3.Distance(playerPos, botPos) <= PublicVars.MINIMUM_CHASE_DISTANCE * 2)
+                    _withinDistanceTimeElapsed += Time.deltaTime;
+                else
+                    _withinDistanceTimeElapsed = 0;
+
+                if (_movement.IsAttacking)
+                {
+                    Vector3 target = playerPos - botPos;
+                    target.y = 0;
+                    Quaternion rotation = Quaternion.LookRotation(target);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Mathf.Clamp(_movement.AngularSpeed * Time.deltaTime, 0, 1));
+                    if (_lastDamageTimeElapsed >= DamageInterval && _withinDistanceTimeElapsed > 0)
+                    {
+                        _lastDamageTimeElapsed = 0;
+                        PublicVars.health -= PublicVars.ENEMY_DAMAGE;
+                    }
+                }
+
                 // Make sure that we keep some distance from the player
-                _movement.SetDestination(playerPos + (botPos - playerPos).normalized * PublicVars.MINIMUM_CHASE_DISTANCE);
-                _movement.SetAttacking(Vector3.Distance(playerPos, botPos) <= 2 * PublicVars.MINIMUM_CHASE_DISTANCE);
+                if (_withinDistanceTimeElapsed >= TimeToAttack)
+                {
+                    _movement.SetDestination(botPos);
+                    _movement.SetAttacking(true);
+                }
+                else
+                    _movement.SetDestination(playerPos + (botPos - playerPos).normalized * PublicVars.MINIMUM_CHASE_DISTANCE);
+
+                if (_movement.IsMoving) _movement.SetAttacking(false);
                 break;
         }
     }
@@ -124,31 +154,32 @@ public class FlashlightBot : MonoBehaviour
         }
     }*/
 
-    /// <summary>Detect whether there is a player in front of you or not</summary>
+    /// <summary>Detect whether the player in front of you or not</summary>
     private bool DetectFront()
     {
         return RayCastSector(-FrontAlertAngle / 2, FrontAlertAngle / 2, FrontAlertDistance);
     }
 
-    /// <summary>Detect whether there is a player around you or not</summary>
+    /// <summary>Detect whether the player around you or not</summary>
     private bool DetectSide()
     {
         return RayCastSector(-180, 180, SideAlertDistance);
     }
 
-    /// <summary>Detect whether there is a player within a sector</summary>
+    /// <summary>Detect whether the player within a sector</summary>
     private bool RayCastSector(float start, float end, float distance)
     {
-        for (float i = start; i <= end; i += PublicVars.ALERT_DETECTION_STEP)
-        {
-            RaycastHit hit;
-            Ray ray = new Ray(transform.position, Quaternion.AngleAxis(i, Vector3.up) * transform.forward);
+        Vector3 botToPlayer = player.transform.position - transform.position;
+        float angle = Vector3.Angle(transform.forward, botToPlayer);
 
-            if (Physics.Raycast(ray, out hit, distance) && hit.collider.CompareTag("Player"))
-            {
-                return true;
-            }
-        }
-        return false;
+        if (botToPlayer.magnitude > distance) return false;
+        if (angle < start || angle > end) return false;
+
+        RaycastHit hit;
+        Ray ray = new Ray(transform.position, botToPlayer.normalized);
+        Physics.Raycast(ray, out hit, botToPlayer.magnitude, ~Physics.IgnoreRaycastLayer);
+        Debug.Log(hit.collider.gameObject);
+        Debug.DrawRay(transform.position, botToPlayer, (hit.collider.gameObject == player) ? Color.red : Color.white, (hit.collider.gameObject == player) ? 1f : 0.1f);
+        return hit.collider.gameObject == player;
     }
 }
