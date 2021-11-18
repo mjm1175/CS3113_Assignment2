@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Corridor3.unity
     guid: d5bee5d5f9861814b8aa321685b97187
   - enabled: 1
+    path: Assets/Scenes/Corridor4.unity
+    guid: 297688d37a147d94cac8348e74db66dd
+  - enabled: 1
     path: Assets/Scenes/Rooms/Room1.unity
     guid: 07ecb1f006a167247b956dbd3130cb2a
   - enabled: 1

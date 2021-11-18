@@ -20,6 +20,8 @@ public class Game : MonoBehaviour
         Room c1 = new Room("Corridor1");
         Room c2 = new Room("Corridor2");
         Room c3 = new Room("Corridor3");
+        Room c4 = new Room("Corridor4");
+
 
         List<string> roomIds = new List<string>();
 

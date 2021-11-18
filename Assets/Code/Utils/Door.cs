@@ -6,7 +6,8 @@ public class Door : MonoBehaviour
     public string RoomToLoad;
     public bool locked = true;
     public int doorCode = 0;
-    public GameObject player;
+    public int numPapers = 0;
+    //public GameObject player;
 
     private Room _currentRoom;
 
@@ -17,6 +18,7 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // don't think we are using keys for doors anymore
         Inventory inventory;
         if (other.TryGetComponent<Inventory>(out inventory))
         {
@@ -26,14 +28,16 @@ public class Door : MonoBehaviour
             }
         }
 
-        if (other.gameObject.CompareTag("Player") && !locked)
+        if (other.gameObject.CompareTag("Player"))
         {
-            _currentRoom.Complete();
+            if (!locked || (PublicVars.paper_count >= numPapers)){
+                _currentRoom.Complete();
 
-            if (RoomToLoad.Length > 0)
-                Room.Enter(RoomToLoad);
-            else
-                _currentRoom.FindNextRoom().Enter();
+                if (RoomToLoad.Length > 0)
+                    Room.Enter(RoomToLoad);
+                else
+                    _currentRoom.FindNextRoom().Enter();                
+            }
         }
     }
 
