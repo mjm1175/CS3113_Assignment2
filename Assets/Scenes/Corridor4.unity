@@ -1045,6 +1045,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 548787683}
     - target: {fileID: 2540214729460476655, guid: 394ec85fc384749409bb7d51c5130981, type: 3}
+      propertyPath: doorIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2540214729460476655, guid: 394ec85fc384749409bb7d51c5130981, type: 3}
       propertyPath: RoomToLoad
       value: Corridor3
       objectReference: {fileID: 0}
@@ -1779,6 +1783,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 548787683}
     - target: {fileID: 7510647112608364738, guid: 0fa937f68b8f6bd49b34bf334ae2bb7e, type: 3}
+      propertyPath: doorIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510647112608364738, guid: 0fa937f68b8f6bd49b34bf334ae2bb7e, type: 3}
       propertyPath: RoomToLoad
       value: Boss
       objectReference: {fileID: 0}
@@ -1798,6 +1806,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 548787683}
+    - target: {fileID: 8372196569684777116, guid: 0fa937f68b8f6bd49b34bf334ae2bb7e, type: 3}
+      propertyPath: doorIndex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8372196569684777116, guid: 0fa937f68b8f6bd49b34bf334ae2bb7e, type: 3}
       propertyPath: RoomToLoad
       value: Corridor2
@@ -2703,6 +2715,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 548787683}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: doorIndex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
       propertyPath: RoomToLoad
       value: Corridor1

@@ -665,7 +665,7 @@ PrefabInstance:
       objectReference: {fileID: 10609870}
     - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
       propertyPath: doorIndex
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
       propertyPath: RoomToLoad
@@ -1387,7 +1387,7 @@ PrefabInstance:
       objectReference: {fileID: 10609870}
     - target: {fileID: 2540214729460476655, guid: 394ec85fc384749409bb7d51c5130981, type: 3}
       propertyPath: doorIndex
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2540214729460476655, guid: 394ec85fc384749409bb7d51c5130981, type: 3}
       propertyPath: RoomToLoad
@@ -3493,7 +3493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
       propertyPath: doorIndex
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
       propertyPath: numPapers
@@ -5775,7 +5775,7 @@ PrefabInstance:
       objectReference: {fileID: 10609870}
     - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
       propertyPath: doorIndex
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
       propertyPath: RoomToLoad
@@ -5953,6 +5953,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 10609870}
+    - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
+      propertyPath: doorIndex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
       propertyPath: RoomToLoad
       value: Corridor
