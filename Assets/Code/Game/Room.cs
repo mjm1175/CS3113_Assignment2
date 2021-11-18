@@ -53,7 +53,7 @@ public class Room
         int doorIndex = startDoorIndex;
         foreach (string roomId in roomIds)
         {
-            Room currentRoom = new Room(roomId);
+            Room currentRoom = FindOrCreateRoomById(roomId);
             corridor.Connect(currentRoom, doorIndex++, 0);
         }
     }
@@ -61,7 +61,7 @@ public class Room
     /// <summary>Enter the room by Room ID. Note that this will ignore the prerequisites</summary>
     public static void Enter(string RoomId)
     {
-        Room room = CandidateRooms.Find(room => room.RoomId == RoomId);
+        Room room = FindRoomById(RoomId);
         if (room == null) throw new ArgumentException($"The room {RoomId} cannot be found");
         room.Enter();
     }
@@ -77,6 +77,18 @@ public class Room
         CurrentCheckPoint.Enter(-1);
     }
 
+    public static Room FindRoomById(string roomId)
+    {
+        return CandidateRooms.Find(room => room.RoomId == roomId);
+    }
+
+    public static Room FindOrCreateRoomById(string roomId)
+    {
+        Room room = FindRoomById(roomId);
+        if (room == null) room = new Room(roomId);
+        return room;
+    }
+
     /// <summary>Create a new room</summary>
     /// <param name="roomId">
     /// The string id of the room
@@ -86,6 +98,7 @@ public class Room
     /// </param>
     public Room(string roomId, int doorCount = 2, bool isCheckPoint = false, string roomScene = null)
     {
+        if (FindRoomById(roomId) != null) throw new ArgumentException($"The roomId {roomId} has already been taken");
         RoomId = roomId;
         RoomScene = roomScene ?? roomId;
         CandidateRooms.Add(this);
