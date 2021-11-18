@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5254071, g: 0.5254071, b: 0.6416234, a: 1}
+  m_IndirectSpecularColor: {r: 0.63964283, g: 0.63964283, b: 0.7338973, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1800,7 +1800,7 @@ PrefabInstance:
       objectReference: {fileID: 548787683}
     - target: {fileID: 8372196569684777116, guid: 0fa937f68b8f6bd49b34bf334ae2bb7e, type: 3}
       propertyPath: RoomToLoad
-      value: Cell
+      value: Corridor2
       objectReference: {fileID: 0}
     - target: {fileID: 8657689096031406421, guid: 0fa937f68b8f6bd49b34bf334ae2bb7e, type: 3}
       propertyPath: m_LocalPosition.x

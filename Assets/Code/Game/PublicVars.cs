@@ -6,7 +6,6 @@ public static class PublicVars
 
     // Player vars
     public static int paper_count = 0;
-    public static int kill_count = 0;
     public static bool got_key = false;
     public static int health = 100;
     public static List<Item> Items = new List<Item>();

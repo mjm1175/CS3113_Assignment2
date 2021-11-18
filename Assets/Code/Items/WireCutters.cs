@@ -13,11 +13,6 @@ public class WireCutters : MonoBehaviour
     {
         pickupText.enabled = false;   
         storyText.enabled = false; 
-
-        if (PublicVars.kill_count != 0)
-        {
-            gameObject.SetActive(false);
-        }
     }
 
     private void OnTriggerStay(Collider other) {

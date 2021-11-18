@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        // right click to shoot
+        /*// right click to shoot
         if (Input.GetMouseButtonDown(1))
         {
             // raycast; drawing vector & what gets hit
@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
                 GameObject newBullet = Instantiate(bulletPrefab, spawnPoint.position, transform.rotation);
                 newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * bulletForce);
             }
-        }
+        }*/
 
         if (poison == true)
         {

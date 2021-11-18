@@ -114,16 +114,15 @@ public class FlashlightBot : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision other)
+    /*private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Bullet"))
         {
-            PublicVars.kill_count++;
             Destroy(other.gameObject);
             _movement.Die();
             Destroy(gameObject, 2);
         }
-    }
+    }*/
 
     /// <summary>Detect whether there is a player in front of you or not</summary>
     private bool DetectFront()

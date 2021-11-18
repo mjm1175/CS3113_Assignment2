@@ -51,7 +51,7 @@ public class BossFight : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision other) {
+    /*private void OnCollisionEnter(Collision other) {
         if (other.gameObject.CompareTag("Bullet")){
             Destroy(other.gameObject);
             if (health <= 5){
@@ -61,5 +61,5 @@ public class BossFight : MonoBehaviour
                 health -= 5;
             }
         }
-    }
+    }*/
 }

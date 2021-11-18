@@ -13,7 +13,6 @@ public class RestartScript : MonoBehaviour
 
         // cleanup
         PublicVars.paper_count = 0;
-        PublicVars.kill_count = 0;
         PublicVars.got_key = false;
         PublicVars.health = 100;
 
