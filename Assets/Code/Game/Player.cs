@@ -24,42 +24,12 @@ public class Player : MonoBehaviour
     public AudioSource poisonedSound;
     public AudioSource nauseaedSound;
     public AudioSource drinkingSound;
+    public AudioSource deathSound;
     public AudioSource doorOpening;
     void Start()
     {
         mainCam = Camera.main;      // tag lookup, not instant, that's why cache
         _movement = GetComponent<Movement>();
-        //mrp = GetComponent<ManualRoomPath>();
-
-        /*
-        corridorList.Add("Corridor", l1); // new List<string> { "Room3", "Room6", "Room4" });
-        corridorList.Add("Corridor2", new List<string> { "Room1", "Room8", "Room7" });
-        corridorList.Add("Corridor3", new List<string> { "Room2", "Room9", "Room10" });
-        corridorList.Add("Corridor4", new List<string> { "Room5", "Room12", "Room11" });
-
-        foreach (KeyValuePair<string, List<string>> rooms in corridorList)
-        {
-            //Debug.Log(rooms.Value[0]);
-            roomList.Add(rooms.Value[0], rooms.Key);
-            roomList.Add(rooms.Value[1], rooms.Key);
-            roomList.Add(rooms.Value[2], rooms.Key);
-
-            gotKey.Add(rooms.Value[0], "false");
-            gotKey.Add(rooms.Value[1], "false");
-            gotKey.Add(rooms.Value[2], "false");
-
-            gotKey.Add(rooms.Key, "true");
-        }
-
-        foreach (KeyValuePair<string, string> rooms in gotKey)
-        {
-            //Debug.Log(rooms.Key);
-            //Debug.Log(rooms.Value);
-        }
-        Debug.Log(SceneManager.GetActiveScene().name);*/
-        //Debug.Log(corridorList[SceneManager.GetActiveScene().name][0]);
-        //Debug.Log(corridorList[SceneManager.GetActiveScene().name][1]);
-        //Debug.Log(corridorList[SceneManager.GetActiveScene().name][2]);
     }
 
     void Update()
@@ -153,6 +123,7 @@ public class Player : MonoBehaviour
             Destroy(other.gameObject);
             if (PublicVars.health <= 5)
             {
+                deathSound.Play();
                 // die
                 SceneManager.LoadScene("Dead");
             }
@@ -238,6 +209,7 @@ public class Player : MonoBehaviour
         {
         if (PublicVars.health <= 5)
             {
+                deathSound.Play();
                 // die
                 SceneManager.LoadScene("Dead");
             }
