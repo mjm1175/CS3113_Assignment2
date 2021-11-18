@@ -19,6 +19,7 @@ TagManager:
   - Door1
   - Door2
   - Door3
+  - GuardLight
   layers:
   - Default
   - TransparentFX

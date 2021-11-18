@@ -10,9 +10,6 @@ using System.Collections.Generic;
 public class Player : MonoBehaviour
 {
     Camera mainCam;
-    public Transform spawnPoint;
-    public GameObject bulletPrefab;
-    public int bulletForce = 200;
     public int attackDamage = 5;
     public TextMeshProUGUI healthText;
     private Movement _movement;
@@ -26,6 +23,7 @@ public class Player : MonoBehaviour
     public AudioSource drinkingSound;
     public AudioSource deathSound;
     public AudioSource doorOpening;
+
     void Start()
     {
         mainCam = Camera.main;      // tag lookup, not instant, that's why cache
@@ -119,6 +117,12 @@ public class Player : MonoBehaviour
     {
         //string currRoom = SceneManager.GetActiveScene().name;
 
+        // while player is within the light they take 5 damage every 2 seconds
+        if (other.CompareTag("GuardLight")){
+            //if (coroutine != null) return;
+            //coroutine = healthDecay();
+            StartCoroutine(healthDecay());
+        }   
         /* if water bucket are a trigger*/
         if (other.gameObject.CompareTag("Water"))
         {
@@ -176,7 +180,7 @@ public class Player : MonoBehaviour
         
         if (other.gameObject.CompareTag("Door"))
         {
-            if (other.gameObject.GetComponent<Door>().locked == true)
+            if (other.gameObject.GetComponent<Door>().locked == false)
             {
                 doorOpening.Play();
             }
@@ -184,6 +188,25 @@ public class Player : MonoBehaviour
             //LoadNextRoom(currRoom, 0);
         }
         
+    }
+
+    IEnumerator healthDecay(){
+        deathSound.Play();
+
+        while (true)
+        {
+            PublicVars.health -= 5;  // Player takes 5 damage
+            yield return new WaitForSecondsRealtime(2);  // every 2 seconds
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.CompareTag("GuardLight")){
+            //if (coroutine == null) return;
+            StopAllCoroutines();
+            //StopCoroutine(coroutine);
+            //coroutine = null;
+        }
     }
 
     private void OnCollisionEnter(Collision other)
@@ -195,17 +218,6 @@ public class Player : MonoBehaviour
             PublicVars.paper_count = 0;
             Room.Enter("Corridor");
         }
-
-        /* if bullet is collision
-        if (other.gameObject.CompareTag("Bullet")){
-            Destroy(other.gameObject);
-            if (health <= 5){
-                // die
-                SceneManager.LoadScene("Dead");
-            } else {
-                health -= 5;
-            }
-        }*/
     }
 }
 
