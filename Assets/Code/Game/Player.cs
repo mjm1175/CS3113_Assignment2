@@ -21,20 +21,8 @@ public class Player : MonoBehaviour
     bool poison = false;
     bool nausea = false;
 
-    //public bool gotKey = false;
-
-    /*
-    // Dictionary of each corridor and their respective rooms
-    public Dictionary<string, List<string>> corridorList = new Dictionary<string, List<string>>();
-    public Dictionary<string, string> roomList = new Dictionary<string, string>();
-    // A dictionary with each scene and their respective keys
-    public Dictionary<string, string> gotKey = new Dictionary<string, string>();
-
-    public static List<string> l1 = new List<string> { "Room3", "Room6", "Room4" };
-    public static List<string> l2 = new List<string> { "Room1", "Room8", "Room7" };
-    public static List<string> l3 = new List<string> { "Room2", "Room9", "Room10" };
-    public static List<string> l4 = new List<string> { "Room5", "Room12", "Room11" };
-    */
+    public AudioSource poisonedSound;
+    public AudioSource nauseaedSound;
     void Start()
     {
         mainCam = Camera.main;      // tag lookup, not instant, that's why cache
@@ -130,6 +118,7 @@ public class Player : MonoBehaviour
     IEnumerator NauseaTime()
     {
         _movement.SetSpeed(_movement.GetSpeed() / 2);
+        nauseaedSound.Play();
         yield return new WaitForSeconds(5);
         _movement.SetSpeed(_movement.GetSpeed() * 2);
     }
@@ -137,6 +126,7 @@ public class Player : MonoBehaviour
     IEnumerator BoostTime()
     {
         _movement.SetSpeed(_movement.GetSpeed() * 2);
+        poisonedSound.Play();
         yield return new WaitForSeconds(5);
         _movement.SetSpeed(_movement.GetSpeed() / 2);
     }
@@ -228,29 +218,6 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Door"))
         {
             LoadNextRoom(currRoom, 0);
-        }
-
-        //Debug.Log((currRoom));
-        //if (getKey(currRoom) == "true")
-        if (gotKey[currRoom] == "true")
-            {
-            if (other.gameObject.CompareTag("Door1"))
-            {
-                LoadNextRoom(currRoom, 1);
-            }
-            if (other.gameObject.CompareTag("Door2"))
-            {
-                LoadNextRoom(currRoom, 2);
-            }
-            if (other.gameObject.CompareTag("Door3"))
-            {
-                LoadNextRoom(currRoom, 3);
-            }
-        }*/
-        /*
-        if (other.gameObject.CompareTag("DoorBk"))
-        {
-            LoadNextRoom(currRoom, -1);
         }*/
         
     }
