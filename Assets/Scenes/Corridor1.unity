@@ -5955,7 +5955,7 @@ PrefabInstance:
       objectReference: {fileID: 10609870}
     - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
       propertyPath: RoomToLoad
-      value: 
+      value: Corridor
       objectReference: {fileID: 0}
     - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
       propertyPath: SpawnOffset.x
