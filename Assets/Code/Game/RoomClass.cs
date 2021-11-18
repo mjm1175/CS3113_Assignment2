@@ -12,7 +12,7 @@ public class RoomClass : MonoBehaviour
         corridorList.Add("Corridor1", ("Room3", "Room6", "Room4"));
         corridorList.Add("Corridor2", ("Room1", "Room8", "Room7"));
         corridorList.Add("Corridor3", ("Room2", "Room9", "Room10"));
-        corridorList.Add("Corridor2", ("Room5", "Room", "Room11"));
+        corridorList.Add("Corridor4", ("Corridor1", "Corridor2", "Corridor3"));
 
         //foreach ((string key, string val1, string val2, string val3) in corridorList) {
 

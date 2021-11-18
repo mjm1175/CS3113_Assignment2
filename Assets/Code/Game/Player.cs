@@ -117,22 +117,6 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        /* if bullets are a trigger*/
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            Destroy(other.gameObject);
-            if (PublicVars.health <= 5)
-            {
-                deathSound.Play();
-                // die
-                SceneManager.LoadScene("Dead");
-            }
-            else
-            {
-                PublicVars.health -= 5;
-            }
-        }
-
         //string currRoom = SceneManager.GetActiveScene().name;
 
         /* if water bucket are a trigger*/
@@ -205,20 +189,12 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
     //Debug.Log("collding");
-    if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
-        if (PublicVars.health <= 5)
-            {
-                deathSound.Play();
-                // die
-                SceneManager.LoadScene("Dead");
-            }
-            else
-            {
-                PublicVars.health -= 5;
-            }
+            // reset to corridor, lose all papers
+            PublicVars.paper_count = 0;
+            Room.Enter("Corridor");
         }
-    }
 
         /* if bullet is collision
         if (other.gameObject.CompareTag("Bullet")){
@@ -231,4 +207,5 @@ public class Player : MonoBehaviour
             }
         }*/
     }
+}
 
