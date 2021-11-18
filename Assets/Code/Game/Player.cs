@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
-<<<<<<< Updated upstream
+
 using TMPro;
 using System.Collections.Generic;
 
@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
 
     //public bool gotKey = false;
 
+    /*
     // Dictionary of each corridor and their respective rooms
     public Dictionary<string, List<string>> corridorList = new Dictionary<string, List<string>>();
     public Dictionary<string, string> roomList = new Dictionary<string, string>();
@@ -33,14 +34,14 @@ public class Player : MonoBehaviour
     public static List<string> l2 = new List<string> { "Room1", "Room8", "Room7" };
     public static List<string> l3 = new List<string> { "Room2", "Room9", "Room10" };
     public static List<string> l4 = new List<string> { "Room5", "Room12", "Room11" };
-
+    */
     void Start()
     {
         mainCam = Camera.main;      // tag lookup, not instant, that's why cache
         _movement = GetComponent<Movement>();
         //mrp = GetComponent<ManualRoomPath>();
 
-
+        /*
         corridorList.Add("Corridor", l1); // new List<string> { "Room3", "Room6", "Room4" });
         corridorList.Add("Corridor2", new List<string> { "Room1", "Room8", "Room7" });
         corridorList.Add("Corridor3", new List<string> { "Room2", "Room9", "Room10" });
@@ -65,7 +66,7 @@ public class Player : MonoBehaviour
             //Debug.Log(rooms.Key);
             //Debug.Log(rooms.Value);
         }
-        Debug.Log(SceneManager.GetActiveScene().name);
+        Debug.Log(SceneManager.GetActiveScene().name);*/
         //Debug.Log(corridorList[SceneManager.GetActiveScene().name][0]);
         //Debug.Log(corridorList[SceneManager.GetActiveScene().name][1]);
         //Debug.Log(corridorList[SceneManager.GetActiveScene().name][2]);
@@ -113,162 +114,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        /* if bullets are a trigger*/
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            Destroy(other.gameObject);
-            if (PublicVars.health <= 5)
-            {
-                // die
-                SceneManager.LoadScene("Dead");
-            }
-            else
-            {
-                PublicVars.health -= 5;
-            }
-        }
-
-        string currRoom = SceneManager.GetActiveScene().name;
-
-        /* if water bucket are a trigger*/
-        if (other.gameObject.CompareTag("Water"))
-        {
-            //PublicVars.got_key = true;
-
-            setKey(currRoom, "true");
-            //Destroy(other.gameObject);
-            foreach (Transform child in other.gameObject.transform)
-            {
-                Destroy(child.gameObject);
-            }
-            PublicVars.health += 20;
-        }
-
-        // if the player picks up a "power" energy drink
-        if (other.gameObject.CompareTag("Power"))
-        {
-            PublicVars.got_key = true;
-
-            setKey(currRoom, "true");
-            Destroy(other.gameObject);
-            attackDamage += 5;
-        }
-
-        // if the player picks up a "poison" energy drink
-        if (other.gameObject.CompareTag("Poison"))
-        {
-            PublicVars.got_key = true;
-
-            setKey(currRoom, "true");
-            Destroy(other.gameObject);
-            poison = true;
-        }
-
-        // if the player picks up a "nausea" energy drink
-        if (other.gameObject.CompareTag("Nausea"))
-        {
-            PublicVars.got_key = true;
-
-            setKey(currRoom, "true");
-            Destroy(other.gameObject);
-            nausea = true;
-        }
-
-        if (other.gameObject.CompareTag("Boost"))
-        {
-            PublicVars.got_key = true;
-
-            setKey(currRoom, "true");
-            Destroy(other.gameObject);
-            StartCoroutine(BoostTime());
-        }
-
-        if (other.gameObject.CompareTag("Door"))
-        {
-            LoadNextRoom(currRoom, 0);
-        }
-
-        //Debug.Log((currRoom));
-        //if (getKey(currRoom) == "true")
-        if (gotKey[currRoom] == "true")
-            {
-            if (other.gameObject.CompareTag("Door1"))
-            {
-                LoadNextRoom(currRoom, 1);
-            }
-            if (other.gameObject.CompareTag("Door2"))
-            {
-                LoadNextRoom(currRoom, 2);
-            }
-            if (other.gameObject.CompareTag("Door3"))
-            {
-                LoadNextRoom(currRoom, 3);
-            }
-        }
-        /*
-        if (other.gameObject.CompareTag("DoorBk"))
-        {
-            LoadNextRoom(currRoom, -1);
-        }*/
-        
-    }
-
-        //Debug.Log((currRoom));
-        //if (getKey(currRoom) == "true")
-        if (gotKey[currRoom] == "true")
-            {
-            if (other.gameObject.CompareTag("Door1"))
-            {
-                LoadNextRoom(currRoom, 1);
-            }
-            if (other.gameObject.CompareTag("Door2"))
-            {
-                LoadNextRoom(currRoom, 2);
-            }
-            if (other.gameObject.CompareTag("Door3"))
-            {
-                LoadNextRoom(currRoom, 3);
-            }
-        }
-        /*
-        if (other.gameObject.CompareTag("DoorBk"))
-        {
-            LoadNextRoom(currRoom, -1);
-        }*/
-        
-    }
-
-    private void OnCollisionEnter(Collision other)
-    {
-        Debug.Log("collding");
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            if (PublicVars.health <= 5)
-            {
-                // die
-                SceneManager.LoadScene("Dead");
-            }
-            else
-            {
-                PublicVars.health -= 5;
-            }
-        }
-    }
-
-        /* if bullet is collision
-        if (other.gameObject.CompareTag("Bullet")){
-            Destroy(other.gameObject);
-            if (health <= 5){
-                // die
-                SceneManager.LoadScene("Dead");
-            } else {
-                health -= 5;
-            }
-        }*/
-    }
-
     IEnumerator PoisonTime()
     {
         int ticks = 0;
@@ -296,27 +141,7 @@ public class Player : MonoBehaviour
         _movement.SetSpeed(_movement.GetSpeed() / 2);
     }
 
-    public void LoadNextRoom(string currRoom, int doorNum)
-    {
-        if (doorNum == -1)
-        {
-            
-        }
-        else
-        {
-            if (roomList.ContainsKey(currRoom)) //[currRoom] != null)
-            {
-                SceneManager.LoadScene(roomList[currRoom]);
-            }
-            else if (corridorList.ContainsKey(currRoom))
-            {
-                Debug.Log(corridorList[currRoom][doorNum - 1]);
-                SceneManager.LoadScene(corridorList[currRoom][doorNum - 1]);
-            }
-        }
-        
-    }
-
+    /*
     public void setKey(string currRoom, string ifGotKey)
     {
         gotKey[currRoom] = ifGotKey;
@@ -325,6 +150,137 @@ public class Player : MonoBehaviour
     public string getKey(string currRoom)
     {
         return gotKey[currRoom];
+    }*/
+
+    void OnTriggerEnter(Collider other)
+    {
+        /* if bullets are a trigger*/
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(other.gameObject);
+            if (PublicVars.health <= 5)
+            {
+                // die
+                SceneManager.LoadScene("Dead");
+            }
+            else
+            {
+                PublicVars.health -= 5;
+            }
+        }
+
+        string currRoom = SceneManager.GetActiveScene().name;
+
+        /* if water bucket are a trigger*/
+        if (other.gameObject.CompareTag("Water"))
+        {
+            //PublicVars.got_key = true;
+
+            //setKey(currRoom, "true");
+            //Destroy(other.gameObject);
+            foreach (Transform child in other.gameObject.transform)
+            {
+                Destroy(child.gameObject);
+            }
+            PublicVars.health += 20;
+        }
+
+        // if the player picks up a "power" energy drink
+        if (other.gameObject.CompareTag("Power"))
+        {
+            PublicVars.got_key = true;
+
+            //setKey(currRoom, "true");
+            Destroy(other.gameObject);
+            attackDamage += 5;
+        }
+
+        // if the player picks up a "poison" energy drink
+        if (other.gameObject.CompareTag("Poison"))
+        {
+            PublicVars.got_key = true;
+
+            //setKey(currRoom, "true");
+            Destroy(other.gameObject);
+            poison = true;
+        }
+
+        // if the player picks up a "nausea" energy drink
+        if (other.gameObject.CompareTag("Nausea"))
+        {
+            PublicVars.got_key = true;
+
+            //setKey(currRoom, "true");
+            Destroy(other.gameObject);
+            nausea = true;
+        }
+
+        if (other.gameObject.CompareTag("Boost"))
+        {
+            PublicVars.got_key = true;
+
+            //setKey(currRoom, "true");
+            Destroy(other.gameObject);
+            StartCoroutine(BoostTime());
+        }
+
+        /*
+        if (other.gameObject.CompareTag("Door"))
+        {
+            LoadNextRoom(currRoom, 0);
+        }
+
+        //Debug.Log((currRoom));
+        //if (getKey(currRoom) == "true")
+        if (gotKey[currRoom] == "true")
+            {
+            if (other.gameObject.CompareTag("Door1"))
+            {
+                LoadNextRoom(currRoom, 1);
+            }
+            if (other.gameObject.CompareTag("Door2"))
+            {
+                LoadNextRoom(currRoom, 2);
+            }
+            if (other.gameObject.CompareTag("Door3"))
+            {
+                LoadNextRoom(currRoom, 3);
+            }
+        }*/
+        /*
+        if (other.gameObject.CompareTag("DoorBk"))
+        {
+            LoadNextRoom(currRoom, -1);
+        }*/
+        
     }
 
-}
+    private void OnCollisionEnter(Collision other)
+    {
+    //Debug.Log("collding");
+    if (other.gameObject.CompareTag("Enemy"))
+        {
+        if (PublicVars.health <= 5)
+            {
+                // die
+                SceneManager.LoadScene("Dead");
+            }
+            else
+            {
+                PublicVars.health -= 5;
+            }
+        }
+    }
+
+        /* if bullet is collision
+        if (other.gameObject.CompareTag("Bullet")){
+            Destroy(other.gameObject);
+            if (health <= 5){
+                // die
+                SceneManager.LoadScene("Dead");
+            } else {
+                health -= 5;
+            }
+        }*/
+    }
+

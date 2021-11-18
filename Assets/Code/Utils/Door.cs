@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Door : MonoBehaviour
 {
@@ -10,10 +11,12 @@ public class Door : MonoBehaviour
     //public GameObject player;
 
     private Room _currentRoom;
+    public Text lockedText = null;
 
     private void Start()
     {
         _currentRoom = Room.CurrentRoom;
+        if (lockedText) lockedText.enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,7 +40,15 @@ public class Door : MonoBehaviour
                     Room.Enter(RoomToLoad);
                 else
                     _currentRoom.FindNextRoom().Enter();                
+            } else {
+                lockedText.enabled = true;
             }
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.CompareTag("Player")){
+            lockedText.enabled = false;
         }
     }
 
