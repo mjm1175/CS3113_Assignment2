@@ -106,6 +106,7 @@ public class Player : MonoBehaviour
     {
         int ticks = 0;
         int totalTicks = 5;
+        poisonedSound.Play();
 
         while (ticks < totalTicks)
         {
@@ -126,7 +127,7 @@ public class Player : MonoBehaviour
     IEnumerator BoostTime()
     {
         _movement.SetSpeed(_movement.GetSpeed() * 2);
-        poisonedSound.Play();
+        
         yield return new WaitForSeconds(5);
         _movement.SetSpeed(_movement.GetSpeed() / 2);
     }
