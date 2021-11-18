@@ -51,7 +51,9 @@ public class Door : MonoBehaviour
             }
             else
             {
-                lockedText.enabled = true;
+                if (lockedText != null){
+                    lockedText.enabled = true;
+                }
             }
         }
     }
@@ -60,7 +62,9 @@ public class Door : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            lockedText.enabled = false;
+            if (lockedText != null){
+                lockedText.enabled = false;
+            }
         }
     }
 

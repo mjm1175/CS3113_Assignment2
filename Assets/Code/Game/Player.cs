@@ -46,22 +46,9 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (PublicVars.health >= 0){
+        if (PublicVars.health <= 0){
             SceneManager.LoadScene("Dead");
         }
-
-        /*// right click to shoot
-        if (Input.GetMouseButtonDown(1))
-        {
-            // raycast; drawing vector & what gets hit
-            RaycastHit hit;
-            if (Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out hit, 200))
-            {      // last param is length of ray; shorter is more efficient longer is more accurate
-                transform.LookAt(hit.point);
-                GameObject newBullet = Instantiate(bulletPrefab, spawnPoint.position, transform.rotation);
-                newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * bulletForce);
-            }
-        }*/
 
         if (poison == true)
         {
