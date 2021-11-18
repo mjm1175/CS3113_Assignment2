@@ -5,11 +5,6 @@ using UnityEditor;
 [CustomEditor(typeof(FlashlightBot))]
 public class PathEditor : Editor
 {
-    public override void OnInspectorGUI()
-    {
-        base.OnInspectorGUI();
-
-    }
     private FlashlightBot bot;
     private void OnSceneGUI()
     {
