@@ -40,6 +40,11 @@ public class Door : MonoBehaviour
             if (!locked || (PublicVars.PaperCount >= numPapers))
             {
                 Room currentRoom = Room.CurrentRoom;
+                if (currentRoom == null)
+                {
+                    Debug.LogWarning("Cannot load the current room");
+                    return;
+                }
                 currentRoom.Complete().EnterDoor(doorIndex);
             }
             else
