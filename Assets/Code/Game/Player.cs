@@ -95,7 +95,7 @@ public class Player : MonoBehaviour
     {
         _movement.SetSpeed(_movement.GetSpeed() * 2);
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(10);
         _movement.SetSpeed(_movement.GetSpeed() / 2);
     }
 
@@ -175,12 +175,15 @@ public class Player : MonoBehaviour
 
     IEnumerator healthDecay()
     {
-        PublicVars.TransitionManager.DeathSound.Play();
-
-        while (true)
+        if (PublicVars.Health >=0)
         {
-            PublicVars.Health -= 5;  // Player takes 5 damage
-            yield return new WaitForSecondsRealtime(2);  // every 2 seconds
+            PublicVars.TransitionManager.DeathSound.Play();
+
+            while (true)
+            {
+                PublicVars.Health -= 5;  // Player takes 5 damage
+                yield return new WaitForSecondsRealtime(2);  // every 2 seconds
+            }
         }
     }
 
