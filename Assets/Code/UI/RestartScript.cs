@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class RestartScript : MonoBehaviour
 {
-    public void Menu(){
+    public void Menu()
+    {
         PublicVars.Game.InitializeGame();
         PublicVars.TransitionManager.FadeToScene("Menu", PublicVars.GENERAL_FADE_TIME);
     }
@@ -15,6 +16,7 @@ public class RestartScript : MonoBehaviour
         {
             PublicVars.Reset(false);
             Room.EnterCheckPoint();
+            FenceScript.triggered = false;
         }
         else
         {

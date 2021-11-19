@@ -163,9 +163,6 @@ public class TransitionManager : MonoBehaviour
 
     private void UpdateVcam()
     {
-        Debug.Log(PublicVars.CameraConfig.OffsetX);
-        Debug.Log(PublicVars.CameraConfig.OffsetZ);
-        Debug.Log(PublicVars.CameraConfig.RotationY);
         _vcam = GameObject.FindWithTag("VCam")?.GetComponent<CinemachineVirtualCamera>();
         PositionCamera(PublicVars.CameraConfig);
         if (_vcam == null) Debug.LogWarning($"TransitionManager cannot find an instance of CinemachineVirtualCamera in {SceneManager.GetActiveScene().name}");

@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class FenceScript : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Player")){
-            if (other.GetComponent<Inventory>().CheckItem(ItemType.WireCutter)){
+    public static bool triggered = false;
+    private void OnTriggerEnter(Collider other)
+    {
+        if (triggered) return;
+        if (other.CompareTag("Player"))
+        {
+            if (other.GetComponent<Inventory>().CheckItem(ItemType.WireCutter))
+            {
+                triggered = true;
                 //PublicVars.TransitionManager.CrossFadeTo(PublicVars.TransitionManager.RegularMusic, PublicVars.MUSIC_TRANSITION_TIME);
                 //PublicVars.TransitionManager.WireCutSound.Play();
                 StartCoroutine(Delay());
