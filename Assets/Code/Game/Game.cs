@@ -52,7 +52,7 @@ public class Game : MonoBehaviour
         c3.Connect(c4, 3, 2);
 
         // Connect the rooms in c4
-        c4.Connect(boss, 3);
+        c4.Connect(boss, 3, 0);
 
         try
         {
