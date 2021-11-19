@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Revisit : MonoBehaviour
@@ -8,10 +7,10 @@ public class Revisit : MonoBehaviour
     void Start()
     {
         Room currentRoom = Room.CurrentRoom;
-        if (currentRoom != null && currentRoom.IsCompleted)
+        if (currentRoom == null || currentRoom.IsCompleted)
         {
-            //gameObject.SetActive(false);
-            Destroy(gameObject);
-        }
+            gameObject.SetActive(false);
+            return;
+        };
     }
 }

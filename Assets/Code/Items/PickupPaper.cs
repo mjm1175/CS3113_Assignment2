@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PickupPaper : MonoBehaviour
+public class PickupPaper : MonoBehaviour, ICollectable
 {
     public Text pickupText;
     public Text storyText;

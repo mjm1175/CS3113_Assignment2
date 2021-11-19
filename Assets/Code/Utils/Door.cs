@@ -13,9 +13,11 @@ public class Door : MonoBehaviour
     public Text lockedText = null;
 
     private bool _entered;
+    private Revisit _revisit;
 
     private void Start()
     {
+        _revisit = GameObject.FindObjectOfType<Revisit>();
         if (lockedText) lockedText.enabled = false;
         if (PublicVars.LastEnteredDoorIndex == doorIndex)
         {
@@ -50,7 +52,17 @@ public class Door : MonoBehaviour
                     Debug.LogWarning("Cannot load the current room");
                     return;
                 }
-                currentRoom.Complete().EnterDoor(doorIndex);
+                if (_revisit != null)
+                {
+                    ICollectable[] children = _revisit.GetComponentsInChildren<ICollectable>();
+                    if (children == null || children.Length == 0)
+                        currentRoom.Complete();
+                }
+                else
+                {
+                    currentRoom.Complete();
+                }
+                currentRoom.EnterDoor(doorIndex);
             }
             else
             {
