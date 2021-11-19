@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class TransitionManager : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class TransitionManager : MonoBehaviour
     private float _overlayFadingRate;
     private string _sceneToLoad;
     private string _startScene;
+    private CinemachineVirtualCamera _vcam;
 
     public void CrossFadeTo(AudioSource audioSource, float duration)
     {
@@ -77,6 +79,22 @@ public class TransitionManager : MonoBehaviour
         _startScene = SceneManager.GetActiveScene().name;
     }
 
+    public void PositionCamera(CineConfig config)
+    {
+        if (_vcam == null)
+        {
+            Debug.LogWarning("Cannot locate the vcam object");
+            return;
+        }
+
+        CinemachineTransposer transposer = _vcam.GetCinemachineComponent<CinemachineTransposer>();
+        Vector3 followOffset = transposer.m_FollowOffset;
+        Vector3 camRot = _vcam.transform.rotation.eulerAngles;
+
+        transposer.m_FollowOffset = new Vector3(config.OffsetX, followOffset.y, config.OffsetZ);
+        _vcam.transform.rotation = Quaternion.Euler(camRot.x, config.RotationY, camRot.z);
+    }
+
     private void Awake()
     {
         if (PublicVars.TransitionManager != null)
@@ -87,6 +105,7 @@ public class TransitionManager : MonoBehaviour
         DontDestroyOnLoad(this);
         PublicVars.TransitionManager = this;
 
+        UpdateVcam();
         _currentMusic = RegularMusic;
         RegularMusic.Play();
     }
@@ -132,14 +151,29 @@ public class TransitionManager : MonoBehaviour
         _isOverlayFading = false;
         if (_sceneToLoad != null)
         {
-            if (quickLoad) SceneManager.LoadScene(_sceneToLoad);
+            if (quickLoad)
+            {
+                SceneManager.LoadScene(_sceneToLoad);
+                UpdateVcam();
+            }
             else SceneManager.LoadSceneAsync(_sceneToLoad).completed += HandleComplete;
         }
         else if (_overlayAlpha < 0) ScreenOverlay.gameObject.SetActive(false);
     }
 
+    private void UpdateVcam()
+    {
+        Debug.Log(PublicVars.CameraConfig.OffsetX);
+        Debug.Log(PublicVars.CameraConfig.OffsetZ);
+        Debug.Log(PublicVars.CameraConfig.RotationY);
+        _vcam = GameObject.FindWithTag("VCam")?.GetComponent<CinemachineVirtualCamera>();
+        PositionCamera(PublicVars.CameraConfig);
+        if (_vcam == null) Debug.LogWarning($"TransitionManager cannot find an instance of CinemachineVirtualCamera in {SceneManager.GetActiveScene().name}");
+    }
+
     void HandleComplete(AsyncOperation operation)
     {
+        UpdateVcam();
         FadeOut(PublicVars.GENERAL_FADE_TIME);
     }
 }

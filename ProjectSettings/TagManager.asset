@@ -21,6 +21,7 @@ TagManager:
   - Door3
   - GuardLight
   - Fence
+  - VCam
   layers:
   - Default
   - TransparentFX

@@ -31,6 +31,8 @@ public static class PublicVars
     public const float ROOM_FADEOUT_TIME = 0.3f;
     public const float GENERAL_FADE_TIME = 0.5f;
 
+    public static CineConfig CameraConfig = CineConfig.Up;
+
     /// <summary>Reset all the public vars</summary>
     public static void Reset(bool hard)
     {

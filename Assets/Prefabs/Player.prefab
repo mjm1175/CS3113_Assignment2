@@ -992,6 +992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 4456377496701947177}
+  _hitAnimationCode: 0
 --- !u!114 &4517712413205353209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1006,12 +1007,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDamage: 5
   healthText: {fileID: 0}
-  poisonedSound: {fileID: 6652526449454385444}
-  nauseaedSound: {fileID: 6267972396169912910}
-  drinkingSound: {fileID: 188710191}
-  deathSound: {fileID: 1462048605}
-  doorOpening: {fileID: 5082742696829992719}
-  alertSound: {fileID: 7441471667708716930}
 --- !u!114 &4230218325598468399
 MonoBehaviour:
   m_ObjectHideFlags: 0

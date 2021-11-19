@@ -23,6 +23,7 @@ public class Room
     public string RoomScene { get; private set; }
     public bool IsCompleted { get; private set; }
     public bool IsCheckPoint { get; private set; }
+    public CineConfig CameraConfig { get; set; }
 
     public int DoorCount { get; private set; }
     public RoomEdge[] ConnectedRoomEdges { get; private set; }
@@ -123,6 +124,7 @@ public class Room
         IsCheckPoint = isCheckPoint;
         CurrentCheckPoint = null;
         EnemyAlert = false;
+        CameraConfig = CineConfig.Up;
     }
 
     /// <summary>Mark this room as completed and return itself</summary>
@@ -157,6 +159,7 @@ public class Room
         Room temp = CurrentRoom;
         CurrentRoom = this;
         if (IsCheckPoint) CurrentCheckPoint = this;
+        PublicVars.CameraConfig = CameraConfig;
         if (SceneManager.GetActiveScene().name != RoomScene)
         {
             if (doorIndex != -1) PublicVars.TransitionManager.DoorOpening.Play();
