@@ -151,14 +151,14 @@ public class Player : MonoBehaviour
             StartCoroutine(BoostTime());
         }
 
-
+        /*
         if (other.gameObject.CompareTag("Door"))
         {
             if (other.gameObject.GetComponent<Door>().locked == false)
             {
                 PublicVars.TransitionManager.DoorOpening.Play();
             }
-        }
+        }*/
 
     }
 
