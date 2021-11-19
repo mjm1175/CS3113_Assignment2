@@ -6,6 +6,7 @@ public class Door : MonoBehaviour
     public bool locked = true;
     public int doorIndex = 0;
     public int numPapers = 0;
+    public bool easterEgg = false;
 
     [Tooltip("The position where we will spawn the player when entering this door")]
     public Vector3 SpawnOffset;
@@ -45,6 +46,13 @@ public class Door : MonoBehaviour
             if (!locked || (PublicVars.PaperCount >= numPapers))
             {
                 _entered = true;
+
+                if (easterEgg)
+                {
+                    PublicVars.TransitionManager.CrossFadeTo(PublicVars.TransitionManager.WinMusic, PublicVars.MUSIC_TRANSITION_TIME);
+                    PublicVars.TransitionManager.FadeToScene("Win", PublicVars.GENERAL_FADE_TIME);
+                    return;
+                }
 
                 Room currentRoom = Room.CurrentRoom;
                 if (currentRoom == null)

@@ -22,7 +22,10 @@ public class Game : MonoBehaviour
 
         Room rm2 = new Room("Room2");
         Room rm3 = new Room("Room3");
+        Room rm7 = new Room("Room7");
         Room rm8 = new Room("Room8");
+
+        Room dummy = new Room("Dummy");
 
         // Connect the cell to the starting corridor
         // and the starting corridor to the secondary corridors
@@ -35,7 +38,8 @@ public class Game : MonoBehaviour
         //Room.BulkConnectRooms(c1, 1, new string[] { "Room1", "Room2", null, "Room3", "Room4", "Room5" });
         Room.BulkConnectRooms(c1, 4, new string[] { "Room1", null, "Room3" });
         rm2.Connect("Room11", 0, 0);
-        c1.Connect("Room7", 1, 0);
+        c1.Connect(rm7, 1, 0);
+        rm7.Connect(dummy, 1);
         c1.Connect("Room11", 2, 1);
         c1.Connect(c4, 3, 0);
 
@@ -66,7 +70,7 @@ public class Game : MonoBehaviour
         rm2.CameraConfig = CineConfig.Left;
         rm3.CameraConfig = CineConfig.Right;
         Room.FindRoomById("Room6").CameraConfig = CineConfig.Right;
-        Room.FindRoomById("Room7").CameraConfig = CineConfig.Left;
+        rm7.CameraConfig = CineConfig.Left;
         Room.FindRoomById("Room8").CameraConfig = CineConfig.Down;
         Room.FindRoomById("Room9").CameraConfig = CineConfig.Down;
         Room.FindRoomById("Room10").CameraConfig = CineConfig.Right;
