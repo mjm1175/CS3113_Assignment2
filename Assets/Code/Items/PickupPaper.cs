@@ -19,7 +19,7 @@ public class PickupPaper : MonoBehaviour
             if (Input.GetKeyDown("j")){
                 pickupText.enabled = false;
                 storyText.enabled = true; 
-                PublicVars.paper_count++;
+                PublicVars.PaperCount++;
                 Destroy(gameObject);   
             }
         }

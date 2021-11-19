@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (healthText) healthText.text = PublicVars.health.ToString();
+        if (healthText) healthText.text = PublicVars.Health.ToString();
         // left click to walk
         if (Input.GetMouseButtonDown(0))
         {
@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (PublicVars.health <= 0)
+        if (PublicVars.Health <= 0)
         {
             SceneManager.LoadScene("Dead");
         }
@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
         while (ticks < totalTicks)
         {
             ticks++;
-            PublicVars.health -= 5;  // Player takes 5 damage
+            PublicVars.Health -= 5;  // Player takes 5 damage
             yield return new WaitForSecondsRealtime(1);  // every 1 second
         }
     }
@@ -134,13 +134,12 @@ public class Player : MonoBehaviour
             {
                 Destroy(child.gameObject);
             }
-            PublicVars.health += 20;
+            PublicVars.Health += 20;
         }
 
         // if the player picks up a "power" energy drink
         if (other.gameObject.CompareTag("Power"))
         {
-            PublicVars.got_key = true;
             drinkingSound.Play();
             //setKey(currRoom, "true");
             Destroy(other.gameObject);
@@ -150,7 +149,6 @@ public class Player : MonoBehaviour
         // if the player picks up a "poison" energy drink
         if (other.gameObject.CompareTag("Poison"))
         {
-            PublicVars.got_key = true;
             drinkingSound.Play();
             //setKey(currRoom, "true");
             Destroy(other.gameObject);
@@ -160,7 +158,6 @@ public class Player : MonoBehaviour
         // if the player picks up a "nausea" energy drink
         if (other.gameObject.CompareTag("Nausea"))
         {
-            PublicVars.got_key = true;
             drinkingSound.Play();
             //setKey(currRoom, "true");
             Destroy(other.gameObject);
@@ -169,7 +166,6 @@ public class Player : MonoBehaviour
 
         if (other.gameObject.CompareTag("Boost"))
         {
-            PublicVars.got_key = true;
             drinkingSound.Play();
             //setKey(currRoom, "true");
             Destroy(other.gameObject);
@@ -195,7 +191,7 @@ public class Player : MonoBehaviour
 
         while (true)
         {
-            PublicVars.health -= 5;  // Player takes 5 damage
+            PublicVars.Health -= 5;  // Player takes 5 damage
             yield return new WaitForSecondsRealtime(2);  // every 2 seconds
         }
     }
@@ -214,7 +210,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             // reset to corridor, lose all papers
-            PublicVars.paper_count = 0;
+            PublicVars.PaperCount = 0;
             Room.Enter("Corridor");
         }
     }

@@ -101,7 +101,7 @@ public class FlashlightBot : MonoBehaviour
                     if (_lastDamageTimeElapsed >= DamageInterval && _withinDistanceTimeElapsed > 0)
                     {
                         _lastDamageTimeElapsed = 0;
-                        PublicVars.health -= PublicVars.ENEMY_DAMAGE;
+                        PublicVars.Health -= PublicVars.ENEMY_DAMAGE;
                     }
                 }
 

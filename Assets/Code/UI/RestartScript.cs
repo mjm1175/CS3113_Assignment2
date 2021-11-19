@@ -12,9 +12,7 @@ public class RestartScript : MonoBehaviour
         Time.timeScale = 1f;*/
 
         // cleanup
-        PublicVars.paper_count = 0;
-        PublicVars.got_key = false;
-        PublicVars.health = 100;
+        PublicVars.Game.InitializeGame();
 
         SceneManager.LoadScene("Menu");
     }

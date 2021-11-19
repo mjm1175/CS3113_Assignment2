@@ -31,6 +31,14 @@ public class Room
 
     private static List<Room> candidates = new List<Room>();
 
+    /// <summary>Reset all the static variables<summary>
+    public static void Reset()
+    {
+        candidates = new List<Room>();
+        CurrentRoom = null;
+        CurrentCheckPoint = null;
+    }
+
     /// <summary>
     /// Register a series of rooms sequentially.
     /// </summary>

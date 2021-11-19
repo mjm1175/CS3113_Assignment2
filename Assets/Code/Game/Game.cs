@@ -7,16 +7,9 @@ public class Game : MonoBehaviour
 {
     TransitionManager _transitionManager;
 
-    private void Awake()
+    public void SetupRooms()
     {
-        // If the game already exists
-        if (PublicVars.Game != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        DontDestroyOnLoad(this);
-
+        Room.Reset();
         // Initialize the rooms
 
         Room start = new Room("Corridor", 4, true);
@@ -55,14 +48,28 @@ public class Game : MonoBehaviour
             Debug.LogWarning($"{SceneManager.GetActiveScene().name} is not a existing room");
         }
     }
+
+    public void InitializeGame()
+    {
+        SetupRooms();
+        PublicVars.Reset();
+    }
+
+    private void Awake()
+    {
+        // If the game already exists
+        if (PublicVars.Game != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(this);
+
+        InitializeGame();
+    }
+
     void Start()
     {
         _transitionManager = FindObjectOfType<TransitionManager>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //_transitionManager.LoadScene("Start");
     }
 }

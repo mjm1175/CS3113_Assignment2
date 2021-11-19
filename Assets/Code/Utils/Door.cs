@@ -39,7 +39,7 @@ public class Door : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             AudioSource doorOpening = other.gameObject.GetComponent<AudioSource>();
-            if (!locked || (PublicVars.paper_count >= numPapers))
+            if (!locked || (PublicVars.PaperCount >= numPapers))
             {
                 Room currentRoom = Room.CurrentRoom;
                 currentRoom.Complete();
@@ -51,7 +51,8 @@ public class Door : MonoBehaviour
             }
             else
             {
-                if (lockedText != null){
+                if (lockedText != null)
+                {
                     lockedText.enabled = true;
                 }
             }
@@ -62,7 +63,8 @@ public class Door : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (lockedText != null){
+            if (lockedText != null)
+            {
                 lockedText.enabled = false;
             }
         }
