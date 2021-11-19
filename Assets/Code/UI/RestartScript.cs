@@ -7,10 +7,6 @@ public class RestartScript : MonoBehaviour
 {
     public void Restart()
     {
-        /*pauseMenu.SetActive(false);
-        isPaused = false;
-        Time.timeScale = 1f;*/
-
         // cleanup
         PublicVars.Game.InitializeGame();
 
