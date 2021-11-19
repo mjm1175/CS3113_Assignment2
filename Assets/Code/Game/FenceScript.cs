@@ -25,7 +25,8 @@ public class FenceScript : MonoBehaviour
     IEnumerator Delay()
     {
         PublicVars.TransitionManager.WireCutSound.Play();
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(1.5f);
+        PublicVars.TransitionManager.WireCutSound.Stop();
         PublicVars.TransitionManager.CrossFadeTo(PublicVars.TransitionManager.WinMusic, PublicVars.MUSIC_TRANSITION_TIME);
         PublicVars.TransitionManager.FadeToScene("Win", PublicVars.GENERAL_FADE_TIME);
     }

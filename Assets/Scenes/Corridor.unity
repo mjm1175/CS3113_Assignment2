@@ -2989,7 +2989,7 @@ PrefabInstance:
     - target: {fileID: 1505535298832840266, guid: bd09a5a47cb1bf34a8c583b16a734a2d, type: 3}
       propertyPath: m_Text
       value: "\u201CPatient XE-89: Male, Age 27, 180 cm, 72.5 kg. Athletically fit.
-        \nStatus: Alive.  Patient XE-88: Male, Age 34...\u201D  "
+        Status: Alive.  Patient XE-88: Male, Age 34...\u201D  "
       objectReference: {fileID: 0}
     - target: {fileID: 1505535298832840267, guid: bd09a5a47cb1bf34a8c583b16a734a2d, type: 3}
       propertyPath: m_Pivot.x

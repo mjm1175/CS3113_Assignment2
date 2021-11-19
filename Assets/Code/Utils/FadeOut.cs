@@ -15,7 +15,7 @@ public class FadeOut : MonoBehaviour
         int i = 0;
         while (i < 1)
         {
-            yield return new WaitForSeconds(Duration);
+            yield return new WaitForSeconds(Duration * 2);
             StartCoroutine(FadeTextToZeroAlpha(1f));
 
             i += 1;
