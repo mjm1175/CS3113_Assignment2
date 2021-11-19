@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
         while (ticks < totalTicks)
         {
             ticks++;
-            PublicVars.Health -= 5;  // Player takes 5 damage
+            PublicVars.Health -= 10;  // Player takes 5 damage
             yield return new WaitForSecondsRealtime(1);  // every 1 second
         }
     }

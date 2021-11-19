@@ -17,6 +17,7 @@ public class TransitionManager : MonoBehaviour
     public AudioSource CombatMusic;
     public AudioSource AlertMusic;
     public AudioSource ScaryMusic;
+    public AudioSource WinMusic;
 
     public RawImage ScreenOverlay;
 
