@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
             PublicVars.TransitionManager.CrossFadeTo(PublicVars.TransitionManager.ScaryMusic, PublicVars.MUSIC_TRANSITION_TIME);
             _isDead = true;
             _movement.Die();
-            Room.CurrentRoom.EnemyAlert = false;
+            if (Room.CurrentRoom != null) Room.CurrentRoom.EnemyAlert = false;
             PublicVars.TransitionManager.FadeToScene("Dead", PublicVars.DEATH_FADEOUT_TIME);
         }
 

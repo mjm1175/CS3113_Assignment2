@@ -47,7 +47,7 @@ Light:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 48.46
   m_Range: 16.47
-  m_SpotAngle: 30
+  m_SpotAngle: 52.87
   m_InnerSpotAngle: 20.643139
   m_CookieSize: 10
   m_Shadows:
@@ -105,7 +105,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 1.4999844
+  m_Radius: 2.77
   m_Height: 17.221106
   m_Direction: 2
   m_Center: {x: 0.022236506, y: -0.18638802, z: 10.425267}
@@ -121,3 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dba5cdbcb0e55b24c8f7d5d5767bea61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lo: -4
+  hi: 4
+  timeBtwn: 0.2
