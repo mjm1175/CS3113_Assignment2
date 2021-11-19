@@ -83,7 +83,7 @@ public class FlashlightBot : MonoBehaviour
                 if (Room.CurrentRoom != null && !Room.CurrentRoom.EnemyAlert)
                 {
                     Room.CurrentRoom.EnemyAlert = true;
-                    player.GetComponent<Player>().alertSound.Play();
+                    PublicVars.TransitionManager.AlertSound.Play();
                 }
 
                 Vector3 playerPos = player.transform.position, botPos = transform.position;

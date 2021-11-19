@@ -18,19 +18,10 @@ public class Player : MonoBehaviour
     bool poison = false;
     bool nausea = false;
 
-    public AudioSource poisonedSound;
-    public AudioSource nauseaedSound;
-    public AudioSource drinkingSound;
-    public AudioSource deathSound;
-    public AudioSource doorOpening;
-    public AudioSource alertSound;
-
     void Start()
     {
         mainCam = Camera.main;      // tag lookup, not instant, that's why cache
         _movement = GetComponent<Movement>();
-
-        PublicVars.doorOpening = doorOpening;
     }
 
     void Update()
@@ -71,7 +62,7 @@ public class Player : MonoBehaviour
     {
         int ticks = 0;
         int totalTicks = 5;
-        poisonedSound.Play();
+        PublicVars.TransitionManager.PoisonedSound.Play();
 
         while (ticks < totalTicks)
         {
@@ -84,7 +75,7 @@ public class Player : MonoBehaviour
     IEnumerator NauseaTime()
     {
         _movement.SetSpeed(_movement.GetSpeed() / 2);
-        nauseaedSound.Play();
+        PublicVars.TransitionManager.NauseaedSound.Play();
         yield return new WaitForSeconds(5);
         _movement.SetSpeed(_movement.GetSpeed() * 2);
     }
@@ -116,7 +107,7 @@ public class Player : MonoBehaviour
         /* if water bucket are a trigger*/
         if (other.gameObject.CompareTag("Water"))
         {
-            drinkingSound.Play();
+            PublicVars.TransitionManager.DrinkingSound.Play();
             foreach (Transform child in other.gameObject.transform)
             {
                 Destroy(child.gameObject);
@@ -127,7 +118,7 @@ public class Player : MonoBehaviour
         // if the player picks up a "power" energy drink
         if (other.gameObject.CompareTag("Power"))
         {
-            drinkingSound.Play();
+            PublicVars.TransitionManager.DrinkingSound.Play();
             Destroy(other.gameObject);
             attackDamage += 5;
         }
@@ -135,7 +126,7 @@ public class Player : MonoBehaviour
         // if the player picks up a "poison" energy drink
         if (other.gameObject.CompareTag("Poison"))
         {
-            drinkingSound.Play();
+            PublicVars.TransitionManager.DrinkingSound.Play();
             Destroy(other.gameObject);
             poison = true;
         }
@@ -143,14 +134,14 @@ public class Player : MonoBehaviour
         // if the player picks up a "nausea" energy drink
         if (other.gameObject.CompareTag("Nausea"))
         {
-            drinkingSound.Play();
+            PublicVars.TransitionManager.DrinkingSound.Play();
             Destroy(other.gameObject);
             nausea = true;
         }
 
         if (other.gameObject.CompareTag("Boost"))
         {
-            drinkingSound.Play();
+            PublicVars.TransitionManager.DrinkingSound.Play();
             Destroy(other.gameObject);
             StartCoroutine(BoostTime());
         }
@@ -160,7 +151,7 @@ public class Player : MonoBehaviour
         {
             if (other.gameObject.GetComponent<Door>().locked == false)
             {
-                doorOpening.Play();
+                PublicVars.TransitionManager.DoorOpening.Play();
             }
         }
 
@@ -168,7 +159,7 @@ public class Player : MonoBehaviour
 
     IEnumerator healthDecay()
     {
-        deathSound.Play();
+        PublicVars.TransitionManager.DeathSound.Play();
 
         while (true)
         {

@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
-    TransitionManager _transitionManager;
-
     public void SetupRooms()
     {
         Room.Reset();
@@ -42,7 +40,6 @@ public class Game : MonoBehaviour
         // Connect the rooms in c4
         c4.Connect(boss, 3);
 
-        PublicVars.Game = this;
         try
         {
             Room.Enter(SceneManager.GetActiveScene().name);
@@ -68,12 +65,8 @@ public class Game : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(this);
+        PublicVars.Game = this;
 
         InitializeGame();
-    }
-
-    void Start()
-    {
-        _transitionManager = FindObjectOfType<TransitionManager>();
     }
 }

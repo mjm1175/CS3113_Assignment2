@@ -3,10 +3,9 @@ using System.Collections.Generic;
 public static class PublicVars
 {
     public static Game Game;
+    public static TransitionManager TransitionManager;
 
     public static int LastEnteredDoorIndex = -1;
-
-    public static UnityEngine.AudioSource doorOpening;
 
     // =========================== Bot consts/vars ================================
     /// <value>The minimum magnitude of speed to be considered moving</value>
