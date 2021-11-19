@@ -1257,7 +1257,7 @@ MonoBehaviour:
   doorIndex: 1
   numPapers: 0
   easterEgg: 0
-  SpawnOffset: {x: 1.0254884, y: 0, z: -1.2003856}
+  SpawnOffset: {x: 1.4704828, y: 0, z: -1.1425204}
   lockedText: {fileID: 0}
 --- !u!1001 &304397203
 PrefabInstance:
@@ -7017,7 +7017,7 @@ MonoBehaviour:
   doorIndex: 0
   numPapers: 0
   easterEgg: 0
-  SpawnOffset: {x: -1.721262, y: 0, z: -0.5268786}
+  SpawnOffset: {x: -1.9170485, y: 0, z: -0.59171987}
   lockedText: {fileID: 0}
 --- !u!1001 &1858418364
 PrefabInstance:
