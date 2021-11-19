@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 
     private Movement _movement;
     private bool _isDead;
+    private float _damageCountdown;
     //private ManualRoomPath mrp;
 
     bool poison = false;
@@ -26,10 +27,12 @@ public class Player : MonoBehaviour
         mainCam = Camera.main;      // tag lookup, not instant, that's why cache
         _movement = GetComponent<Movement>();
         _isDead = false;
+        _damageCountdown = 0;
     }
 
     void Update()
     {
+        if (_damageCountdown > 0) _damageCountdown -= Time.deltaTime;
         if (healthText) healthText.text = PublicVars.Health.ToString();
         // left click to walk
         if (Input.GetMouseButtonDown(0))
@@ -163,6 +166,16 @@ public class Player : MonoBehaviour
             }
         }
 
+    }
+
+    public void Damage(int damage)
+    {
+        if (_damageCountdown > 0) return;
+
+        PublicVars.Health -= damage;
+        PublicVars.TransitionManager.DeathSound.Play();
+        _movement.Hit();
+        _damageCountdown = PublicVars.DAMAGE_INTERVAL;
     }
 
     IEnumerator healthDecay()

@@ -35,6 +35,12 @@ public class Movement : MonoBehaviour
         }
     }
 
+    public void Run()
+    {
+        Animator?.SetBool("IsRunning", true);
+        Animator?.SetTrigger("Animate");
+    }
+
     public void Die()
     {
         if (!Animator?.GetBool("IsDead") ?? false)
@@ -44,6 +50,11 @@ public class Movement : MonoBehaviour
             Animator?.SetBool("IsDead", true);
             Animator?.SetTrigger("Animate");
         }
+    }
+
+    public void Hit()
+    {
+        Animator.SetTrigger("Hit");
     }
 
     public void SetSpeed(float newSpeed)

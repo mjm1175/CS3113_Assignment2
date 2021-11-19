@@ -18,6 +18,7 @@ public static class PublicVars
 
     // ===== Player consts/vars =====
     public const int MAX_HEALTH = 100;
+    public const float DAMAGE_INTERVAL = 0.5f;
 
     public static int PaperCount = 4;
     public static int Health = MAX_HEALTH;

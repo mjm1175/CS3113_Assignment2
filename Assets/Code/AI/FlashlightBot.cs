@@ -105,8 +105,7 @@ public class FlashlightBot : MonoBehaviour
                     if (_lastDamageTimeElapsed >= DamageInterval && _withinDistanceTimeElapsed > 0)
                     {
                         _lastDamageTimeElapsed = 0;
-                        PublicVars.Health -= PublicVars.ENEMY_DAMAGE;
-                        PublicVars.TransitionManager.DeathSound.Play();
+                        player.Damage(PublicVars.ENEMY_DAMAGE);
                     }
                 }
 
