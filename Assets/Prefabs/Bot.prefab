@@ -84,6 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 2977104495102500980}
+  _hitAnimationCode: 0
 --- !u!114 &7128578777680027940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,7 +100,9 @@ MonoBehaviour:
   PathPoints:
   - {x: 0, y: 0, z: 0}
   MovementInterval: 2
+  DamageInterval: 1
   TimeToStay: 1
+  TimeToAttack: 0.2
   FrontAlertDistance: 16
   FrontAlertAngle: 60
   SideAlertDistance: 2
@@ -271,12 +274,24 @@ PrefabInstance:
       value: 0.80612457
       objectReference: {fileID: 0}
     - target: {fileID: 108003487599132438, guid: 0ddea81a21def2441b61569e0a44ca14, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 108003487599132438, guid: 0ddea81a21def2441b61569e0a44ca14, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 108003487599132438, guid: 0ddea81a21def2441b61569e0a44ca14, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 108003487599132438, guid: 0ddea81a21def2441b61569e0a44ca14, type: 3}
       propertyPath: m_Intensity
-      value: 3.96
+      value: 7.96
       objectReference: {fileID: 0}
     - target: {fileID: 108003487599132438, guid: 0ddea81a21def2441b61569e0a44ca14, type: 3}
       propertyPath: m_SpotAngle
-      value: 63.2
+      value: 74.5
       objectReference: {fileID: 0}
     - target: {fileID: 108003487599132438, guid: 0ddea81a21def2441b61569e0a44ca14, type: 3}
       propertyPath: m_InnerSpotAngle
