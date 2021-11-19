@@ -13,6 +13,26 @@ public class PickupPaper : MonoBehaviour
         storyText.enabled = false; 
     }
 
+        public IEnumerator TextFade(Text text){
+            int i=0;
+            while (i < 1){
+                yield return new WaitForSeconds(5f);
+                StartCoroutine(FadeTextToZeroAlpha(1f, text));
+                
+                i+=1;
+        }
+    }
+
+     public IEnumerator FadeTextToZeroAlpha(float t, Text i)
+    {
+        i.color = new Color(i.color.r, i.color.g, i.color.b, 1);
+        while (i.color.a > 0.0f)
+        {
+            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a - (Time.deltaTime / t));
+            yield return null;
+        }
+    }
+
     private void OnTriggerStay(Collider other) {
         if (other.CompareTag("Player")){
             pickupText.enabled = true;
@@ -29,6 +49,8 @@ public class PickupPaper : MonoBehaviour
     private void OnTriggerExit(Collider other) {
         if (other.CompareTag("Player")){
             pickupText.enabled = false;
+            //StartCoroutine(TextFade(storyText));
+            //Destroy(storyText.gameObject, 5.0f);
         }
     }
 }
