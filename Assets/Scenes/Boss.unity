@@ -997,6 +997,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3896971688883957169, guid: e58d9d87bb9542d42ae6d2cd89d265f5, type: 3}
+      propertyPath: hi
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3896971688883957169, guid: e58d9d87bb9542d42ae6d2cd89d265f5, type: 3}
+      propertyPath: lo
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3896971688883957169, guid: e58d9d87bb9542d42ae6d2cd89d265f5, type: 3}
+      propertyPath: timeBtwn
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 4740551393737739767, guid: e58d9d87bb9542d42ae6d2cd89d265f5, type: 3}
       propertyPath: m_Name
       value: GuardLight (2)
@@ -4213,6 +4225,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3896971688883957169, guid: e58d9d87bb9542d42ae6d2cd89d265f5, type: 3}
+      propertyPath: timeBtwn
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 4740551393737739767, guid: e58d9d87bb9542d42ae6d2cd89d265f5, type: 3}
       propertyPath: m_Name
       value: GuardLight (1)
@@ -6379,6 +6395,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3896971688883957169, guid: e58d9d87bb9542d42ae6d2cd89d265f5, type: 3}
+      propertyPath: hi
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3896971688883957169, guid: e58d9d87bb9542d42ae6d2cd89d265f5, type: 3}
+      propertyPath: lo
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3896971688883957169, guid: e58d9d87bb9542d42ae6d2cd89d265f5, type: 3}
+      propertyPath: timeBtwn
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4740551393737739767, guid: e58d9d87bb9542d42ae6d2cd89d265f5, type: 3}
       propertyPath: m_Name
       value: GuardLight (3)
@@ -10878,6 +10906,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3896971688883957169, guid: e58d9d87bb9542d42ae6d2cd89d265f5, type: 3}
+      propertyPath: hi
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3896971688883957169, guid: e58d9d87bb9542d42ae6d2cd89d265f5, type: 3}
+      propertyPath: lo
+      value: -5
+      objectReference: {fileID: 0}
     - target: {fileID: 4740551393737739767, guid: e58d9d87bb9542d42ae6d2cd89d265f5, type: 3}
       propertyPath: m_Name
       value: GuardLight

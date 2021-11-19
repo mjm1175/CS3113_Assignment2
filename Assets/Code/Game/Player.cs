@@ -180,7 +180,7 @@ public class Player : MonoBehaviour
 
     IEnumerator healthDecay()
     {
-        PublicVars.TransitionManager.DeathSound.Play();
+        //PublicVars.TransitionManager.DeathSound.Play();
 
         while (true)
         {

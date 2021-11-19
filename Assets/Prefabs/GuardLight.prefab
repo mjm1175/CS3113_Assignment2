@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4740551393737739770}
   - component: {fileID: 4740551393737739769}
-  - component: {fileID: 4740551393737739768}
   - component: {fileID: 4740551393737739771}
+  - component: {fileID: 3896971688883957169}
   m_Layer: 0
   m_Name: GuardLight
   m_TagString: GuardLight
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4740551393737739767}
-  m_LocalRotation: {x: 0.7070946, y: -0.0041572633, z: 0.0041572633, w: 0.7070946}
+  m_LocalRotation: {x: 0.70709455, y: -0.0041589844, z: 0.0041589844, w: 0.70709455}
   m_LocalPosition: {x: -41.5, y: 15.52, z: 14.92}
   m_LocalScale: {x: 1.41, y: 2.41, z: 1}
   m_Children: []
@@ -95,18 +95,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &4740551393737739768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4740551393737739767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f133812748125a1418e0e766265afbde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!136 &4740551393737739771
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -121,3 +109,15 @@ CapsuleCollider:
   m_Height: 17.221106
   m_Direction: 2
   m_Center: {x: 0.022236506, y: -0.18638802, z: 10.425267}
+--- !u!114 &3896971688883957169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4740551393737739767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dba5cdbcb0e55b24c8f7d5d5767bea61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
