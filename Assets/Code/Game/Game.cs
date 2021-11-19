@@ -18,7 +18,7 @@ public class Game : MonoBehaviour
         Room c2 = new Room("Corridor2", 6, true);
         Room c3 = new Room("Corridor3", 6, true);
         Room c4 = new Room("Corridor4", 4, true);
-        Room boss = new Room("BossScene", 1);
+        Room boss = new Room("Boss", 1);
 
         // Connect the cell to the starting corridor
         // and the starting corridor to the secondary corridors

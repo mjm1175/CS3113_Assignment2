@@ -4360,11 +4360,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644b43a8918de1a45917b90d9ec264ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RoomToLoad: 
   locked: 1
   doorIndex: 0
   numPapers: 0
-  SpawnOffset: {x: 0, y: 0, z: 0}
+  SpawnOffset: {x: -0.8599806, y: 0, z: -0.8718147}
   lockedText: {fileID: 0}
 --- !u!1001 &714181337
 PrefabInstance:
@@ -7107,11 +7106,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644b43a8918de1a45917b90d9ec264ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RoomToLoad: 
   locked: 1
   doorIndex: 1
   numPapers: 0
-  SpawnOffset: {x: 0, y: 0, z: 0}
+  SpawnOffset: {x: 1.1238132, y: 0, z: -1.5100166}
   lockedText: {fileID: 0}
 --- !u!1001 &1399816022
 PrefabInstance:
