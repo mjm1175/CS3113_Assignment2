@@ -3,8 +3,6 @@ using UnityEngine.UI;
 
 public class Door : MonoBehaviour
 {
-    [Tooltip("When unset, we will proceed to the next room by default; this hardcodes the next room to enter by id otherwise")]
-    public string RoomToLoad;
     public bool locked = true;
     public int doorIndex = 0;
     public int numPapers = 0;
@@ -42,12 +40,7 @@ public class Door : MonoBehaviour
             if (!locked || (PublicVars.PaperCount >= numPapers))
             {
                 Room currentRoom = Room.CurrentRoom;
-                currentRoom.Complete();
-
-                if (RoomToLoad.Length > 0)
-                    Room.Enter(RoomToLoad);
-                else
-                    currentRoom.EnterDoor(doorIndex);
+                currentRoom.Complete().EnterDoor(doorIndex);
             }
             else
             {

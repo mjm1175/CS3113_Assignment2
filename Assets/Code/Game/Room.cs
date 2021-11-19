@@ -64,6 +64,11 @@ public class Room
         int doorIndex = startDoorIndex;
         foreach (string roomId in roomIds)
         {
+            if (roomId == null)
+            {
+                doorIndex++;
+                continue;
+            }
             Room currentRoom = FindOrCreateRoomById(roomId);
             corridor.Connect(currentRoom, doorIndex++, 0);
         }
