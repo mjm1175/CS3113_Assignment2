@@ -19,7 +19,7 @@ public static class PublicVars
     // ===== Player consts/vars =====
     public const int MAX_HEALTH = 100;
 
-    public static int PaperCount = 0;
+    public static int PaperCount = 4;
     public static int Health = MAX_HEALTH;
     public static List<Item> Items = new List<Item>();
 

@@ -56,7 +56,9 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         isPaused = false;
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Menu");
+
+        PublicVars.Game.InitializeGame();
+        PublicVars.TransitionManager.FadeToScene("Menu", PublicVars.GENERAL_FADE_TIME);
     }
 
     public void Quit()
