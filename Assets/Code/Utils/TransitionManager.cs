@@ -11,6 +11,7 @@ public class TransitionManager : MonoBehaviour
     public AudioSource DeathSound;
     public AudioSource DoorOpening;
     public AudioSource AlertSound;
+    public AudioSource PickupPaperSound;
 
     public AudioSource RegularMusic;
     public AudioSource CombatMusic;

@@ -37,6 +37,7 @@ public class PickupPaper : MonoBehaviour
         if (other.CompareTag("Player")){
             pickupText.enabled = true;
             if (Input.GetKeyDown("j")){
+                PublicVars.TransitionManager.PickupPaperSound.Play();
                 pickupText.enabled = false;
                 storyText.enabled = true; 
                 PublicVars.PaperCount++;
