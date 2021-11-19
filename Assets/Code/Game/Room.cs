@@ -16,6 +16,9 @@ public class Room
     /// <value>The most recent checkpoint</value>
     public static Room CurrentCheckPoint { get; private set; }
 
+    /// <value>Whether the player has been discovered or not</value>
+    public bool EnemyAlert { get; set; }
+
     public string RoomId { get; private set; }
     public string RoomScene { get; private set; }
     public bool IsCompleted { get; private set; }
@@ -106,6 +109,7 @@ public class Room
         ConnectedRoomEdges = new RoomEdge[doorCount];
         IsCheckPoint = isCheckPoint;
         CurrentCheckPoint = null;
+        EnemyAlert = false;
     }
 
     /// <summary>Mark this room as completed and return itself</summary>
@@ -134,7 +138,7 @@ public class Room
     }
 
     /// <summary>Enter the room and update the current room</summary>
-    public void Enter(int doorIndex = 0)
+    public void Enter(int doorIndex = -1)
     {
         PublicVars.LastEnteredDoorIndex = doorIndex;
         CurrentRoom = this;

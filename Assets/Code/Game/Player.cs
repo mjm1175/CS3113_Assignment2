@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     public AudioSource drinkingSound;
     public AudioSource deathSound;
     public AudioSource doorOpening;
+    public AudioSource alertSound;
 
     void Start()
     {
@@ -46,7 +47,8 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (PublicVars.health <= 0){
+        if (PublicVars.health <= 0)
+        {
             SceneManager.LoadScene("Dead");
         }
 
@@ -88,7 +90,7 @@ public class Player : MonoBehaviour
     IEnumerator BoostTime()
     {
         _movement.SetSpeed(_movement.GetSpeed() * 2);
-        
+
         yield return new WaitForSeconds(5);
         _movement.SetSpeed(_movement.GetSpeed() / 2);
     }
@@ -109,12 +111,14 @@ public class Player : MonoBehaviour
         //string currRoom = SceneManager.GetActiveScene().name;
 
         // while player is within the light they take 5 damage every 2 seconds
-        if (other.CompareTag("GuardLight")){
+        if (other.CompareTag("GuardLight"))
+        {
             StartCoroutine(healthDecay());
-        }   
+        }
 
         // win state
-        if (other.CompareTag("Fence")){
+        if (other.CompareTag("Fence"))
+        {
             SceneManager.LoadScene("Win");
         }
 
@@ -172,7 +176,7 @@ public class Player : MonoBehaviour
             StartCoroutine(BoostTime());
         }
 
-        
+
         if (other.gameObject.CompareTag("Door"))
         {
             if (other.gameObject.GetComponent<Door>().locked == false)
@@ -182,10 +186,11 @@ public class Player : MonoBehaviour
             //doorOpening.Play();
             //LoadNextRoom(currRoom, 0);
         }
-        
+
     }
 
-    IEnumerator healthDecay(){
+    IEnumerator healthDecay()
+    {
         deathSound.Play();
 
         while (true)
@@ -195,15 +200,17 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other) {
-        if (other.CompareTag("GuardLight")){
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("GuardLight"))
+        {
             StopAllCoroutines();
         }
     }
 
     private void OnCollisionEnter(Collision other)
     {
-    //Debug.Log("collding");
+        //Debug.Log("collding");
         if (other.gameObject.CompareTag("Enemy"))
         {
             // reset to corridor, lose all papers

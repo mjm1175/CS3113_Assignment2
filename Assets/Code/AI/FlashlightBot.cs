@@ -56,6 +56,7 @@ public class FlashlightBot : MonoBehaviour
             _stayedTimeElapsed = 0;
         else
             _stayedTimeElapsed += Time.deltaTime;
+        if (CurrentState != BotState.ALERT && Room.CurrentRoom.EnemyAlert) CurrentState = BotState.ALERT;
 
         // Always transit from idle state to patrol state
         switch (CurrentState)
@@ -79,6 +80,12 @@ public class FlashlightBot : MonoBehaviour
                 }
                 break;
             case BotState.ALERT:
+                if (!Room.CurrentRoom.EnemyAlert)
+                {
+                    Room.CurrentRoom.EnemyAlert = true;
+                    player.GetComponent<Player>().alertSound.Play();
+                }
+
                 Vector3 playerPos = player.transform.position, botPos = transform.position;
                 if (Vector3.Distance(playerPos, botPos) <= PublicVars.MINIMUM_CHASE_DISTANCE * 2)
                     _withinDistanceTimeElapsed += Time.deltaTime;
