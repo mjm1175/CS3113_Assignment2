@@ -109,12 +109,6 @@ public class Player : MonoBehaviour
             StartCoroutine(healthDecay());
         }
 
-        // win state
-        if (other.CompareTag("Fence"))
-        {
-            SceneManager.LoadScene("Win");
-        }
-
         /* if water bucket are a trigger*/
         if (other.gameObject.CompareTag("Water"))
         {
