@@ -844,7 +844,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: cb84895fb8822224d8d0d7137f57d2c7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0259fd5ffbfd2e544a1ef4e637c5cd24, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1463,7 +1463,7 @@ MonoBehaviour:
   DeathSound: {fileID: 2685734597839008375}
   DoorOpening: {fileID: 7052727867007004159}
   AlertSound: {fileID: 6963442222982301133}
-  PickupPaperSound: {fileID: 0}
+  PickupPaperSound: {fileID: 5627074047118632833}
   RegularMusic: {fileID: 4019834255408543581}
   CombatMusic: {fileID: 4812272178898751442}
   AlertMusic: {fileID: 7962196415506246925}
