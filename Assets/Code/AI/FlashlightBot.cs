@@ -56,7 +56,7 @@ public class FlashlightBot : MonoBehaviour
             _stayedTimeElapsed = 0;
         else
             _stayedTimeElapsed += Time.deltaTime;
-        if (CurrentState != BotState.ALERT && Room.CurrentRoom.EnemyAlert) CurrentState = BotState.ALERT;
+        if (Room.CurrentRoom != null && CurrentState != BotState.ALERT && Room.CurrentRoom.EnemyAlert) CurrentState = BotState.ALERT;
 
         // Always transit from idle state to patrol state
         switch (CurrentState)
@@ -80,7 +80,7 @@ public class FlashlightBot : MonoBehaviour
                 }
                 break;
             case BotState.ALERT:
-                if (!Room.CurrentRoom.EnemyAlert)
+                if (Room.CurrentRoom != null && !Room.CurrentRoom.EnemyAlert)
                 {
                     Room.CurrentRoom.EnemyAlert = true;
                     player.GetComponent<Player>().alertSound.Play();
@@ -97,7 +97,7 @@ public class FlashlightBot : MonoBehaviour
                     Vector3 target = playerPos - botPos;
                     target.y = 0;
                     Quaternion rotation = Quaternion.LookRotation(target);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Mathf.Clamp(_movement.AngularSpeed * Time.deltaTime, 0, 1));
+                    transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 3f * Time.deltaTime);
                     if (_lastDamageTimeElapsed >= DamageInterval && _withinDistanceTimeElapsed > 0)
                     {
                         _lastDamageTimeElapsed = 0;
