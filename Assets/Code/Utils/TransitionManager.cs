@@ -35,7 +35,8 @@ public class TransitionManager : MonoBehaviour
 
     public void CrossFadeTo(AudioSource audioSource, float duration)
     {
-        if (_isTransiting || _currentMusic == audioSource) return;
+        if (_currentMusic == audioSource) return;
+        if (_isTransiting) FinishAudioFade();
 
         _isTransiting = true;
         _endVolume = audioSource.volume;
@@ -49,7 +50,7 @@ public class TransitionManager : MonoBehaviour
 
     public void FadeToScene(string scene, float duration)
     {
-        if (_isOverlayFading) return;
+        if (_isOverlayFading) FinishFade(true);
 
         _isOverlayFading = true;
         ScreenOverlay.gameObject.SetActive(true);
@@ -62,7 +63,7 @@ public class TransitionManager : MonoBehaviour
 
     public void FadeOut(float duration)
     {
-        if (_isOverlayFading) return;
+        if (_isOverlayFading) FinishFade(true);
 
         _isOverlayFading = true;
         ScreenOverlay.gameObject.SetActive(true);
@@ -95,11 +96,7 @@ public class TransitionManager : MonoBehaviour
             _transitionMusic.volume += _fadeInRate * Time.deltaTime;
             if (_transitionMusic.volume >= _endVolume)
             {
-                _isTransiting = false;
-                _currentMusic.Stop();
-                _currentMusic.volume = _endVolume;
-                _currentMusic = _transitionMusic;
-                _transitionMusic = null;
+                FinishAudioFade();
             }
         }
 
@@ -111,15 +108,35 @@ public class TransitionManager : MonoBehaviour
             ScreenOverlay.color = new Color(0, 0, 0, _overlayAlpha > 0 ? (_overlayAlpha < 1 ? _overlayAlpha : 1) : 0);
             if (_overlayAlpha > 1 || _overlayAlpha < 0)
             {
-                _isOverlayFading = false;
-                if (_sceneToLoad != null) SceneManager.LoadSceneAsync(_sceneToLoad).completed += HandleComplete;
-                else if (_overlayAlpha < 0) ScreenOverlay.gameObject.SetActive(false);
+                FinishFade(false);
             }
         }
     }
 
+    private void FinishAudioFade()
+    {
+        _isTransiting = false;
+        _currentMusic.Stop();
+        _currentMusic.volume = _endVolume;
+        _transitionMusic.volume = _endVolume;
+
+        _currentMusic = _transitionMusic;
+        _transitionMusic = null;
+    }
+
+    private void FinishFade(bool quickLoad)
+    {
+        _isOverlayFading = false;
+        if (_sceneToLoad != null)
+        {
+            if (quickLoad) SceneManager.LoadScene(_sceneToLoad);
+            else SceneManager.LoadSceneAsync(_sceneToLoad).completed += HandleComplete;
+        }
+        else if (_overlayAlpha < 0) ScreenOverlay.gameObject.SetActive(false);
+    }
+
     void HandleComplete(AsyncOperation operation)
     {
-        FadeOut(0.5f);
+        FadeOut(PublicVars.GENERAL_FADE_TIME);
     }
 }

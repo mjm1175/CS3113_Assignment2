@@ -161,7 +161,7 @@ public class Room
         {
             if (doorIndex != -1) PublicVars.TransitionManager.DoorOpening.Play();
             PublicVars.TransitionManager.CrossFadeTo(PublicVars.TransitionManager.RegularMusic, PublicVars.MUSIC_TRANSITION_TIME);
-            SceneManager.LoadScene(RoomScene);
+            PublicVars.TransitionManager.FadeToScene(RoomScene, PublicVars.ROOM_FADEOUT_TIME);
             temp.EnemyAlert = false;
         }
     }

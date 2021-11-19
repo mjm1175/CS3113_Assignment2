@@ -27,6 +27,8 @@ public static class PublicVars
     public const float MUSIC_TRANSITION_TIME = 1f;
     public const float OVERLAY_FADING_TIME = 1.5f;
     public const float DEATH_FADEOUT_TIME = 5f;
+    public const float ROOM_FADEOUT_TIME = 0.3f;
+    public const float GENERAL_FADE_TIME = 0.5f;
 
     /// <summary>Reset all the public vars</summary>
     public static void Reset()

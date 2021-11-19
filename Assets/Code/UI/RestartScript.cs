@@ -10,6 +10,6 @@ public class RestartScript : MonoBehaviour
         // cleanup
         PublicVars.Game.InitializeGame();
 
-        SceneManager.LoadScene("Menu");
+        PublicVars.TransitionManager.FadeToScene("Menu", PublicVars.GENERAL_FADE_TIME);
     }
 }
