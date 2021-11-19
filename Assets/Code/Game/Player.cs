@@ -12,7 +12,10 @@ public class Player : MonoBehaviour
     Camera mainCam;
     public int attackDamage = 5;
     public TextMeshProUGUI healthText;
+    public bool IsDead => _isDead;
+
     private Movement _movement;
+    private bool _isDead;
     //private ManualRoomPath mrp;
 
     bool poison = false;
@@ -22,6 +25,7 @@ public class Player : MonoBehaviour
     {
         mainCam = Camera.main;      // tag lookup, not instant, that's why cache
         _movement = GetComponent<Movement>();
+        _isDead = false;
     }
 
     void Update()
@@ -42,7 +46,11 @@ public class Player : MonoBehaviour
 
         if (PublicVars.Health <= 0)
         {
-            SceneManager.LoadScene("Dead");
+            PublicVars.TransitionManager.CrossFadeTo(PublicVars.TransitionManager.ScaryMusic, PublicVars.MUSIC_TRANSITION_TIME);
+            _isDead = true;
+            _movement.Die();
+            Room.CurrentRoom.EnemyAlert = false;
+            PublicVars.TransitionManager.FadeToScene("Dead", PublicVars.DEATH_FADEOUT_TIME);
         }
 
         if (poison == true)

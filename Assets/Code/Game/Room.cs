@@ -154,12 +154,15 @@ public class Room
     public void Enter(int doorIndex = -1)
     {
         PublicVars.LastEnteredDoorIndex = doorIndex;
+        Room temp = CurrentRoom;
         CurrentRoom = this;
         if (IsCheckPoint) CurrentCheckPoint = this;
         if (SceneManager.GetActiveScene().name != RoomScene)
         {
-            PublicVars.TransitionManager.DoorOpening.Play();
+            if (doorIndex != -1) PublicVars.TransitionManager.DoorOpening.Play();
+            PublicVars.TransitionManager.CrossFadeTo(PublicVars.TransitionManager.RegularMusic, PublicVars.MUSIC_TRANSITION_TIME);
             SceneManager.LoadScene(RoomScene);
+            temp.EnemyAlert = false;
         }
     }
 

@@ -8,7 +8,7 @@ using UnityEngine;
 public class FlashlightBot : MonoBehaviour
 {
     BotState CurrentState;
-    GameObject player;
+    Player player;
 
     [Tooltip("The points for patrolling")]
     public Vector3[] PathPoints = new Vector3[] { };
@@ -35,17 +35,19 @@ public class FlashlightBot : MonoBehaviour
     float _stayedTimeElapsed;
     float _withinDistanceTimeElapsed;
     float _lastDamageTimeElapsed;
+    Room _currentRoom;
 
     void Start()
     {
         _movement = GetComponent<Movement>();
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         CurrentState = BotState.IDLE;
         _patrolEnumerator = NextPoint();
         _lastMoveTimeElapsed = MovementInterval;
         _stayedTimeElapsed = 0;
         _withinDistanceTimeElapsed = 0;
         _lastDamageTimeElapsed = DamageInterval;
+        _currentRoom = Room.CurrentRoom;
     }
 
     private void Update()
@@ -57,6 +59,7 @@ public class FlashlightBot : MonoBehaviour
         else
             _stayedTimeElapsed += Time.deltaTime;
         if (Room.CurrentRoom != null && CurrentState != BotState.ALERT && Room.CurrentRoom.EnemyAlert) CurrentState = BotState.ALERT;
+        if (player.IsDead) CurrentState = BotState.IDLE;
 
         // Always transit from idle state to patrol state
         switch (CurrentState)
@@ -80,10 +83,11 @@ public class FlashlightBot : MonoBehaviour
                 }
                 break;
             case BotState.ALERT:
-                if (Room.CurrentRoom != null && !Room.CurrentRoom.EnemyAlert)
+                if (Room.CurrentRoom != null && Room.CurrentRoom == _currentRoom && !Room.CurrentRoom.EnemyAlert)
                 {
                     Room.CurrentRoom.EnemyAlert = true;
                     PublicVars.TransitionManager.AlertSound.Play();
+                    PublicVars.TransitionManager.CrossFadeTo(PublicVars.TransitionManager.AlertMusic, PublicVars.MUSIC_TRANSITION_TIME);
                 }
 
                 Vector3 playerPos = player.transform.position, botPos = transform.position;
@@ -102,6 +106,7 @@ public class FlashlightBot : MonoBehaviour
                     {
                         _lastDamageTimeElapsed = 0;
                         PublicVars.Health -= PublicVars.ENEMY_DAMAGE;
+                        PublicVars.TransitionManager.DeathSound.Play();
                     }
                 }
 
@@ -166,6 +171,8 @@ public class FlashlightBot : MonoBehaviour
     /// <summary>Detect whether the player within a sector</summary>
     private bool RayCastSector(float start, float end, float distance)
     {
+        if (player.IsDead) return false;
+
         Vector3 botToPlayer = player.transform.position - transform.position;
         float angle = Vector3.Angle(transform.forward, botToPlayer);
 
@@ -175,6 +182,6 @@ public class FlashlightBot : MonoBehaviour
         RaycastHit hit;
         Ray ray = new Ray(transform.position, botToPlayer.normalized);
         Physics.Raycast(ray, out hit, botToPlayer.magnitude, ~Physics.IgnoreRaycastLayer);
-        return hit.collider.gameObject == player;
+        return hit.collider.gameObject == player.gameObject;
     }
 }
