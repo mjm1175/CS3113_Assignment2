@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6237325586635737827}
-  m_LocalRotation: {x: -0.00000003774895, y: 0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.0114479065, y: 0.79, z: -7.3067784}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
@@ -94,8 +94,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.59113246, y: 0, z: 0.82675266}
-  m_Center: {x: 0.020185739, y: 0.000508, z: 0.04699427}
+  m_Size: {x: 0.5911325, y: 0, z: 0.82675266}
+  m_Center: {x: 0.02018575, y: 0.000508, z: 0.04699429}
 --- !u!114 &6235524865651151511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,5 +108,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddd56e9ae785c5d468f77bbc66c3841e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupText: {fileID: 6536665997850820201, guid: 87ee26ecf91fd1b49b0ab8fb47198f73, type: 3}
-  storyText: {fileID: 3527920531897381393, guid: 31c3afdae360bb841a9ee5f387ad67c0, type: 3}
+  pickupText: {fileID: 0}
+  storyText: {fileID: 0}
