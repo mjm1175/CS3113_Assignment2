@@ -2783,8 +2783,8 @@ RectTransform:
   - {fileID: 1845941566}
   - {fileID: 1196436973}
   - {fileID: 769226033}
-  - {fileID: 1225492592}
   - {fileID: 2090432498}
+  - {fileID: 1225492592}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3009,7 +3009,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7367046585166701642, guid: 7272c68588e24ad469d79d6dc8f68093, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7367046585166701642, guid: 7272c68588e24ad469d79d6dc8f68093, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3089,7 +3089,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7367046585166701645, guid: 7272c68588e24ad469d79d6dc8f68093, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7367046585173526065, guid: 7272c68588e24ad469d79d6dc8f68093, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -4872,7 +4872,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4908860332014094257, guid: 543d9e348a23445489b75700760e15ce, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4908860332014094257, guid: 543d9e348a23445489b75700760e15ce, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4932,7 +4932,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4908860332014094257, guid: 543d9e348a23445489b75700760e15ce, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 43
+      value: 73.33
       objectReference: {fileID: 0}
     - target: {fileID: 4908860332014094257, guid: 543d9e348a23445489b75700760e15ce, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4945,6 +4945,12 @@ PrefabInstance:
     - target: {fileID: 4908860332014094257, guid: 543d9e348a23445489b75700760e15ce, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4908860332014094258, guid: 543d9e348a23445489b75700760e15ce, type: 3}
+      propertyPath: m_Text
+      value: 'It''s locked.
+
+        (3 evidence required)'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 543d9e348a23445489b75700760e15ce, type: 3}
