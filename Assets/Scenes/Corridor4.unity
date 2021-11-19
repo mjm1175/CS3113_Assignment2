@@ -3684,7 +3684,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: <insert story text here>
+  m_Text: These'll help me get through the fence.
 --- !u!222 &1767067632
 CanvasRenderer:
   m_ObjectHideFlags: 0
