@@ -158,6 +158,7 @@ public class Room
         if (IsCheckPoint) CurrentCheckPoint = this;
         if (SceneManager.GetActiveScene().name != RoomScene)
         {
+            PublicVars.doorOpening.Play();
             SceneManager.LoadScene(RoomScene);
         }
     }

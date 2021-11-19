@@ -6,6 +6,8 @@ public static class PublicVars
 
     public static int LastEnteredDoorIndex = -1;
 
+    public static UnityEngine.AudioSource doorOpening;
+
     // =========================== Bot consts/vars ================================
     /// <value>The minimum magnitude of speed to be considered moving</value>
     public const float MINIMUM_MOVEMENT_SPEED = 0.2f;

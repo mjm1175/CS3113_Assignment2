@@ -36,7 +36,6 @@ public class Door : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
-            AudioSource doorOpening = other.gameObject.GetComponent<AudioSource>();
             if (!locked || (PublicVars.PaperCount >= numPapers))
             {
                 Room currentRoom = Room.CurrentRoom;

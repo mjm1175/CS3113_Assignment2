@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
     {
         mainCam = Camera.main;      // tag lookup, not instant, that's why cache
         _movement = GetComponent<Movement>();
+
+        PublicVars.doorOpening = doorOpening;
     }
 
     void Update()
