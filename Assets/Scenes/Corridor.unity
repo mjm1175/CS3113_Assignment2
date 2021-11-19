@@ -3764,7 +3764,15 @@ PrefabInstance:
     - target: {fileID: 2130908426, guid: 7272c68588e24ad469d79d6dc8f68093, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1092267983}
+      objectReference: {fileID: 1092267978}
+    - target: {fileID: 2130908426, guid: 7272c68588e24ad469d79d6dc8f68093, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 2130908426, guid: 7272c68588e24ad469d79d6dc8f68093, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 7367046585166701642, guid: 7272c68588e24ad469d79d6dc8f68093, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

@@ -3813,10 +3813,14 @@ PrefabInstance:
     - target: {fileID: 2130908426, guid: 7272c68588e24ad469d79d6dc8f68093, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 153520734}
+      objectReference: {fileID: 153520733}
     - target: {fileID: 2130908426, guid: 7272c68588e24ad469d79d6dc8f68093, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Restart
+      value: Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 2130908426, guid: 7272c68588e24ad469d79d6dc8f68093, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7367046584139916899, guid: 7272c68588e24ad469d79d6dc8f68093, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
