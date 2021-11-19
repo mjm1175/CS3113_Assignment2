@@ -2609,7 +2609,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7367046585166701642, guid: 7272c68588e24ad469d79d6dc8f68093, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7367046585166701642, guid: 7272c68588e24ad469d79d6dc8f68093, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3750,7 +3750,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4908860332014094257, guid: 543d9e348a23445489b75700760e15ce, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4908860332014094257, guid: 543d9e348a23445489b75700760e15ce, type: 3}
       propertyPath: m_AnchorMax.x
@@ -5301,7 +5301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
       propertyPath: locked
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1385761979, guid: 4f13c956f2c771542a07a197a4d6fdf5, type: 3}
       propertyPath: doorIndex
