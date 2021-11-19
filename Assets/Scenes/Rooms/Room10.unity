@@ -1964,12 +1964,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: StoryText
       objectReference: {fileID: 0}
-    - target: {fileID: 1505535298832840266, guid: bd09a5a47cb1bf34a8c583b16a734a2d, type: 3}
-      propertyPath: m_Text
-      value: "\u201CPatient XE-89 seems to be showing signs of change. The growth
-        is\nsignificantly higher than other patients. This seems promising. I will
-        \nmake a new report after a few more tests.\u201D "
-      objectReference: {fileID: 0}
     - target: {fileID: 1505535298832840267, guid: bd09a5a47cb1bf34a8c583b16a734a2d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2067,7 +2061,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 775475837}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
@@ -2250,7 +2244,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 844146593}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
