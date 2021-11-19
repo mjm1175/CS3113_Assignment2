@@ -7,9 +7,16 @@ public class RestartScript : MonoBehaviour
 {
     public void Restart()
     {
-        // cleanup
-        PublicVars.Game.InitializeGame();
+        if (Room.CurrentCheckPoint != null)
+        {
+            PublicVars.Reset(false);
+            Room.EnterCheckPoint();
+        }
+        else
+        {
+            PublicVars.Game.InitializeGame();
+            PublicVars.TransitionManager.FadeToScene("Menu", PublicVars.GENERAL_FADE_TIME);
+        }
 
-        PublicVars.TransitionManager.FadeToScene("Menu", PublicVars.GENERAL_FADE_TIME);
     }
 }

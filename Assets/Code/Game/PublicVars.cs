@@ -31,12 +31,15 @@ public static class PublicVars
     public const float GENERAL_FADE_TIME = 0.5f;
 
     /// <summary>Reset all the public vars</summary>
-    public static void Reset()
+    public static void Reset(bool hard)
     {
         LastEnteredDoorIndex = -1;
-
-        PaperCount = 0;
         Health = MAX_HEALTH;
-        Items = new List<Item>();
+
+        if (hard)
+        {
+            PaperCount = 0;
+            Items = new List<Item>();
+        }
     }
 }
