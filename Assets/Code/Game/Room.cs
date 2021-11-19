@@ -193,6 +193,11 @@ public class Room
         room.AddRoomEdge(this, toDoorIndex, fromDoorIndex);
     }
 
+    public void Connect(string room, int fromDoorIndex, int toDoorIndex = 0)
+    {
+        Connect(FindOrCreateRoomById(room), fromDoorIndex, toDoorIndex);
+    }
+
     protected void AddRoomEdge(Room room, int doorIndex, int connectedDoorIndex)
     {
         try
