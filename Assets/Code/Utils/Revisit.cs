@@ -8,7 +8,8 @@ public class Revisit : MonoBehaviour
     void Start()
     {
         Room currentRoom = Room.CurrentRoom;
-        if (currentRoom.IsCompleted){
+        if (currentRoom != null && currentRoom.IsCompleted)
+        {
             //gameObject.SetActive(false);
             Destroy(gameObject);
         }
