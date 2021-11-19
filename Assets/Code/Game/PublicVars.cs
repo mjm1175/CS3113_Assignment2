@@ -20,7 +20,7 @@ public static class PublicVars
     public const int MAX_HEALTH = 100;
     public const float DAMAGE_INTERVAL = 1f;
 
-    public static int PaperCount = 4;
+    public static int PaperCount = 0;
     public static int Health = MAX_HEALTH;
     public static List<Item> Items = new List<Item>();
 
