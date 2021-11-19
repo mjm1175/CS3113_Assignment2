@@ -1339,7 +1339,7 @@ MonoBehaviour:
   CombatMusic: {fileID: 4812272178898751442}
   AlertMusic: {fileID: 7962196415506246925}
   ScaryMusic: {fileID: 2489127415513831429}
-  ScreenOverlay: {fileID: 0}
+  ScreenOverlay: {fileID: 3577249562599393132}
 --- !u!81 &4746653088481697927
 AudioListener:
   m_ObjectHideFlags: 0
