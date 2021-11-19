@@ -12,6 +12,8 @@ public class Door : MonoBehaviour
 
     public Text lockedText = null;
 
+    private bool _entered;
+
     private void Start()
     {
         if (lockedText) lockedText.enabled = false;
@@ -20,10 +22,12 @@ public class Door : MonoBehaviour
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             if (player != null && SpawnOffset != null) player.transform.position = transform.position + SpawnOffset;
         }
+        _entered = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (_entered) return;
         // don't think we are using keys for doors anymore
         Inventory inventory;
         if (other.TryGetComponent<Inventory>(out inventory))
@@ -38,6 +42,8 @@ public class Door : MonoBehaviour
         {
             if (!locked || (PublicVars.PaperCount >= numPapers))
             {
+                _entered = true;
+
                 Room currentRoom = Room.CurrentRoom;
                 if (currentRoom == null)
                 {

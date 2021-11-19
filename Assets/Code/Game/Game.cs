@@ -17,7 +17,7 @@ public class Game : MonoBehaviour
         Room c3 = new Room("Corridor3", 6, true);
         Room c4 = new Room("Corridor4", 4, true);
         Room boss = new Room("Boss", 1);
-        
+
         Room rm3 = new Room("Room3");
 
         // Connect the cell to the starting corridor
@@ -29,7 +29,7 @@ public class Game : MonoBehaviour
 
         // Connect the rooms in c1
         //Room.BulkConnectRooms(c1, 1, new string[] { "Room1", "Room2", null, "Room3", "Room4", "Room5" });
-        Room.BulkConnectRooms(c1, 1, new string[] { null, null, null, "Room1", "Room4", "Room3" });
+        Room.BulkConnectRooms(c1, 4, new string[] { "Room1", "Room4", "Room3" });
         c1.Connect("Room11", 1, 0);
         c1.Connect("Room11", 2, 1);
         c1.Connect(c4, 3, 0);
@@ -39,14 +39,14 @@ public class Game : MonoBehaviour
 
         // Connect the rooms in c2
         //Room.BulkConnectRooms(c2, 1, new string[] { "Room6", "Room7", null, "Room8", "Room9" });
-        Room.BulkConnectRooms(c2, 1, new string[] { null, null, null, "Room5", "Room10" });
+        Room.BulkConnectRooms(c2, 4, new string[] { "Room5", "Room10" });
         c2.Connect("Room8", 1, 0);
         c2.Connect("Room8", 2, 1);
         c2.Connect(c4, 3, 1);
 
         // Connect the rooms in c3
         //Room.BulkConnectRooms(c3, 1, new string[] { "Room10", "Room11", null, "Room12", "Room13" });
-        Room.BulkConnectRooms(c3, 1, new string[] { null, null, null, "Room12", "Room13" });
+        Room.BulkConnectRooms(c3, 4, new string[] { "Room12", "Room13" });
         c3.Connect("Room9", 1, 0);
         c3.Connect("Room9", 2, 1);
         c3.Connect(c4, 3, 2);
@@ -67,7 +67,7 @@ public class Game : MonoBehaviour
     public void InitializeGame()
     {
         SetupRooms();
-        PublicVars.Reset();
+        PublicVars.Reset(true);
     }
 
     private void Awake()

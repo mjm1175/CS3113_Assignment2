@@ -182,6 +182,6 @@ public class FlashlightBot : MonoBehaviour
         RaycastHit hit;
         Ray ray = new Ray(transform.position, botToPlayer.normalized);
         Physics.Raycast(ray, out hit, botToPlayer.magnitude, ~Physics.IgnoreRaycastLayer);
-        return hit.collider.gameObject == player.gameObject;
+        return hit.collider != null && hit.collider.gameObject == player.gameObject;
     }
 }
