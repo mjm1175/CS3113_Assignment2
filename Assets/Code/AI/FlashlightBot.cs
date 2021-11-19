@@ -151,16 +151,6 @@ public class FlashlightBot : MonoBehaviour
         }
     }
 
-    /*private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Bullet"))
-        {
-            Destroy(other.gameObject);
-            _movement.Die();
-            Destroy(gameObject, 2);
-        }
-    }*/
-
     /// <summary>Detect whether the player in front of you or not</summary>
     private bool DetectFront()
     {
@@ -185,8 +175,6 @@ public class FlashlightBot : MonoBehaviour
         RaycastHit hit;
         Ray ray = new Ray(transform.position, botToPlayer.normalized);
         Physics.Raycast(ray, out hit, botToPlayer.magnitude, ~Physics.IgnoreRaycastLayer);
-        Debug.Log(hit.collider.gameObject);
-        Debug.DrawRay(transform.position, botToPlayer, (hit.collider.gameObject == player) ? Color.red : Color.white, (hit.collider.gameObject == player) ? 1f : 0.1f);
         return hit.collider.gameObject == player;
     }
 }

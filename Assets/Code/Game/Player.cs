@@ -97,17 +97,6 @@ public class Player : MonoBehaviour
         _movement.SetSpeed(_movement.GetSpeed() / 2);
     }
 
-    /*
-    public void setKey(string currRoom, string ifGotKey)
-    {
-        gotKey[currRoom] = ifGotKey;
-    }
-
-    public string getKey(string currRoom)
-    {
-        return gotKey[currRoom];
-    }*/
-
     void OnTriggerEnter(Collider other)
     {
         //string currRoom = SceneManager.GetActiveScene().name;
@@ -127,10 +116,6 @@ public class Player : MonoBehaviour
         /* if water bucket are a trigger*/
         if (other.gameObject.CompareTag("Water"))
         {
-            //PublicVars.got_key = true;
-
-            //setKey(currRoom, "true");
-            //Destroy(other.gameObject);
             drinkingSound.Play();
             foreach (Transform child in other.gameObject.transform)
             {
@@ -143,7 +128,6 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Power"))
         {
             drinkingSound.Play();
-            //setKey(currRoom, "true");
             Destroy(other.gameObject);
             attackDamage += 5;
         }
@@ -152,7 +136,6 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Poison"))
         {
             drinkingSound.Play();
-            //setKey(currRoom, "true");
             Destroy(other.gameObject);
             poison = true;
         }
@@ -161,7 +144,6 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Nausea"))
         {
             drinkingSound.Play();
-            //setKey(currRoom, "true");
             Destroy(other.gameObject);
             nausea = true;
         }
@@ -169,7 +151,6 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Boost"))
         {
             drinkingSound.Play();
-            //setKey(currRoom, "true");
             Destroy(other.gameObject);
             StartCoroutine(BoostTime());
         }
@@ -181,8 +162,6 @@ public class Player : MonoBehaviour
             {
                 doorOpening.Play();
             }
-            //doorOpening.Play();
-            //LoadNextRoom(currRoom, 0);
         }
 
     }
@@ -208,7 +187,6 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        //Debug.Log("collding");
         if (other.gameObject.CompareTag("Enemy"))
         {
             // reset to corridor, lose all papers
