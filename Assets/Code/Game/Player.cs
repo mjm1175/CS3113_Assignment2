@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (PublicVars.Health <= 0)
+        if (PublicVars.Health <= 0 && !_isDead)
         {
             PublicVars.TransitionManager.CrossFadeTo(PublicVars.TransitionManager.ScaryMusic, PublicVars.MUSIC_TRANSITION_TIME);
             _isDead = true;

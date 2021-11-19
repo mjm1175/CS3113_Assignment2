@@ -28,8 +28,10 @@ public class TransitionManager : MonoBehaviour
     private float _fadeOutRate;
 
     private bool _isOverlayFading;
+    private float _overlayAlpha;
     private float _overlayFadingRate;
     private string _sceneToLoad;
+    private string _startScene;
 
     public void CrossFadeTo(AudioSource audioSource, float duration)
     {
@@ -53,7 +55,22 @@ public class TransitionManager : MonoBehaviour
         ScreenOverlay.gameObject.SetActive(true);
         ScreenOverlay.color = new Color(0, 0, 0, 0);
         _overlayFadingRate = 1 / duration;
+        _overlayAlpha = 0;
         _sceneToLoad = scene;
+        _startScene = SceneManager.GetActiveScene().name;
+    }
+
+    public void FadeOut(float duration)
+    {
+        if (_isOverlayFading) return;
+
+        _isOverlayFading = true;
+        ScreenOverlay.gameObject.SetActive(true);
+        ScreenOverlay.color = new Color(0, 0, 0, 1f);
+        _overlayFadingRate = -1 / duration;
+        _overlayAlpha = 1;
+        _sceneToLoad = null;
+        _startScene = SceneManager.GetActiveScene().name;
     }
 
     private void Awake()
@@ -85,15 +102,24 @@ public class TransitionManager : MonoBehaviour
                 _transitionMusic = null;
             }
         }
-        if (_isOverlayFading && _sceneToLoad != null)
+
+        if (_startScene != SceneManager.GetActiveScene().name) _isOverlayFading = false;
+
+        if (_isOverlayFading)
         {
-            float alpha = ScreenOverlay.color.a + _overlayFadingRate * Time.deltaTime;
-            ScreenOverlay.color = new Color(0, 0, 0, alpha < 1 ? alpha : 1);
-            if (alpha >= 1)
+            _overlayAlpha += _overlayFadingRate * Time.deltaTime;
+            ScreenOverlay.color = new Color(0, 0, 0, _overlayAlpha > 0 ? (_overlayAlpha < 1 ? _overlayAlpha : 1) : 0);
+            if (_overlayAlpha > 1 || _overlayAlpha < 0)
             {
                 _isOverlayFading = false;
-                SceneManager.LoadSceneAsync(_sceneToLoad);
+                if (_sceneToLoad != null) SceneManager.LoadSceneAsync(_sceneToLoad).completed += HandleComplete;
+                else if (_overlayAlpha < 0) ScreenOverlay.gameObject.SetActive(false);
             }
         }
+    }
+
+    void HandleComplete(AsyncOperation operation)
+    {
+        FadeOut(0.5f);
     }
 }
