@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.63964283, g: 0.63964283, b: 0.7338973, a: 1}
+  m_IndirectSpecularColor: {r: 0.5254071, g: 0.5254071, b: 0.6416234, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1469,11 +1469,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1505535298832840266, guid: bd09a5a47cb1bf34a8c583b16a734a2d, type: 3}
       propertyPath: m_Text
-      value: "\u201CWe woke up this morning and headed to our respective workstations.
-        Only to find a broken cabinet and cut up electrical wires. There seems to
-        be a bunch of energy drinks missing. I wonder which cursed brat stole our
-        supply and why. The energy drinks are a big concern but why are electrical
-        wires, and how were they even cut?\u201D"
+      value: "\u201CWe woke up this morning and headed to our respective \nworkstations.
+        Only to find a broken cabinet and cut up electrical \nwires. There seems
+        to be a bunch of energy drinks missing. I \nwonder which cursed brat stole
+        our supply and why. The energy \ndrinks are a big concern but why are electrical
+        wires, and how \nwere they even cut?\u201D"
       objectReference: {fileID: 0}
     - target: {fileID: 1505535298832840267, guid: bd09a5a47cb1bf34a8c583b16a734a2d, type: 3}
       propertyPath: m_Pivot.x
@@ -1545,7 +1545,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1505535298832840267, guid: bd09a5a47cb1bf34a8c583b16a734a2d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 43
+      value: 200.8
       objectReference: {fileID: 0}
     - target: {fileID: 1505535298832840267, guid: bd09a5a47cb1bf34a8c583b16a734a2d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3691,6 +3691,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6235524865651151510, guid: 31c2889107775e44f8e8eef251862bba, type: 3}
+      propertyPath: m_Size.x
+      value: 2.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235524865651151510, guid: 31c2889107775e44f8e8eef251862bba, type: 3}
+      propertyPath: m_Size.y
+      value: 3.33
+      objectReference: {fileID: 0}
     - target: {fileID: 6235524865651151511, guid: 31c2889107775e44f8e8eef251862bba, type: 3}
       propertyPath: storyText
       value: 
@@ -3941,6 +3949,7 @@ GameObject:
   - component: {fileID: 1767067630}
   - component: {fileID: 1767067632}
   - component: {fileID: 1767067631}
+  - component: {fileID: 1767067633}
   m_Layer: 5
   m_Name: StoryText
   m_TagString: Untagged
@@ -4009,6 +4018,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1767067629}
   m_CullTransparentMesh: 1
+--- !u!114 &1767067633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767067629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ded2583d08cf0a24d81bc411d35beb8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Duration: 3
 --- !u!1001 &1797463573
 PrefabInstance:
   m_ObjectHideFlags: 0

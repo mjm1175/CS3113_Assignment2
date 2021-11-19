@@ -1484,6 +1484,10 @@ PrefabInstance:
       value: 1.338867
       objectReference: {fileID: 0}
     - target: {fileID: 6235524865651151510, guid: 31c2889107775e44f8e8eef251862bba, type: 3}
+      propertyPath: m_Size.y
+      value: 1.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235524865651151510, guid: 31c2889107775e44f8e8eef251862bba, type: 3}
       propertyPath: m_Size.z
       value: 1.0053447
       objectReference: {fileID: 0}
@@ -2941,6 +2945,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StoryText
       objectReference: {fileID: 0}
+    - target: {fileID: 1505535298832840266, guid: bd09a5a47cb1bf34a8c583b16a734a2d, type: 3}
+      propertyPath: m_Text
+      value: "\u201CPatient XE-89: Male, Age 27, 180 cm, 72.5 kg. Athletically fit.
+        \nStatus: Alive.  Patient XE-88: Male, Age 34...\u201D  "
+      objectReference: {fileID: 0}
     - target: {fileID: 1505535298832840267, guid: bd09a5a47cb1bf34a8c583b16a734a2d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3011,7 +3020,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1505535298832840267, guid: bd09a5a47cb1bf34a8c583b16a734a2d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 43
+      value: 72.7
       objectReference: {fileID: 0}
     - target: {fileID: 1505535298832840267, guid: bd09a5a47cb1bf34a8c583b16a734a2d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

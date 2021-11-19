@@ -533,6 +533,10 @@ PrefabInstance:
       value: 0.6786617
       objectReference: {fileID: 0}
     - target: {fileID: 6235524865651151510, guid: 31c2889107775e44f8e8eef251862bba, type: 3}
+      propertyPath: m_Size.y
+      value: 2.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235524865651151510, guid: 31c2889107775e44f8e8eef251862bba, type: 3}
       propertyPath: m_Size.z
       value: 1.4883977
       objectReference: {fileID: 0}
@@ -2074,9 +2078,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1505535298832840266, guid: bd09a5a47cb1bf34a8c583b16a734a2d, type: 3}
       propertyPath: m_Text
-      value: "\u201CThese highly developed energy drinks seem to trigger innate responses
-        within the patients. We had to tone down the dosage after multiple patients
-        died after an intake of a single energy drink.\u201D"
+      value: "\u201CThese highly developed energy drinks seem to trigger \ninnate
+        responses within the patients. We had to tone \ndown the dosage after multiple
+        patients died after an \nintake of a single energy drink.\u201D"
       objectReference: {fileID: 0}
     - target: {fileID: 1505535298832840267, guid: bd09a5a47cb1bf34a8c583b16a734a2d, type: 3}
       propertyPath: m_Pivot.x
@@ -2148,7 +2152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1505535298832840267, guid: bd09a5a47cb1bf34a8c583b16a734a2d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 43
+      value: 140.2
       objectReference: {fileID: 0}
     - target: {fileID: 1505535298832840267, guid: bd09a5a47cb1bf34a8c583b16a734a2d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

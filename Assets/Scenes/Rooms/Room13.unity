@@ -1914,6 +1914,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6235524865651151510, guid: 31c2889107775e44f8e8eef251862bba, type: 3}
+      propertyPath: m_Size.y
+      value: 0.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235524865651151510, guid: 31c2889107775e44f8e8eef251862bba, type: 3}
       propertyPath: m_Size.z
       value: 1.71
       objectReference: {fileID: 0}
@@ -2620,9 +2624,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1505535298832840266, guid: bd09a5a47cb1bf34a8c583b16a734a2d, type: 3}
       propertyPath: m_Text
-      value: "\u201CQueen Rene came through to check on us the other day. Her presence,
-        her gaze was more intimidating than the warden himself. We had to muster
-        the courage to keep things under control and show the results of our findings.\u201D"
+      value: "\u201CQueen Rene came through to check on us the other day. Her \npresence,
+        her gaze was more intimidating than the warden \nhimself. We had to muster
+        the courage to keep things under \ncontrol and show the results of our findings.\u201D"
       objectReference: {fileID: 0}
     - target: {fileID: 1505535298832840267, guid: bd09a5a47cb1bf34a8c583b16a734a2d, type: 3}
       propertyPath: m_Pivot.x
@@ -2694,7 +2698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1505535298832840267, guid: bd09a5a47cb1bf34a8c583b16a734a2d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 43
+      value: 142.5
       objectReference: {fileID: 0}
     - target: {fileID: 1505535298832840267, guid: bd09a5a47cb1bf34a8c583b16a734a2d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

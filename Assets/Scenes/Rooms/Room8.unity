@@ -1333,6 +1333,10 @@ PrefabInstance:
       value: 0.7972511
       objectReference: {fileID: 0}
     - target: {fileID: 6235524865651151510, guid: 31c2889107775e44f8e8eef251862bba, type: 3}
+      propertyPath: m_Size.y
+      value: 5.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 6235524865651151510, guid: 31c2889107775e44f8e8eef251862bba, type: 3}
       propertyPath: m_Size.z
       value: 0.9991809
       objectReference: {fileID: 0}
@@ -5944,9 +5948,9 @@ PrefabInstance:
     - target: {fileID: 1505535298832840266, guid: bd09a5a47cb1bf34a8c583b16a734a2d, type: 3}
       propertyPath: m_Text
       value: "\u201CAh shoot! Some of the patients have broken out of their cells.
-        They are starting to attack each other, wrecking everything they see. The
-        guards are trying to get the patients under control but I fear it may be
-        too hard on them. I hope peace will return to this prison soon.\u201D "
+        They \nare starting to attack each other, wrecking everything they see. The\nguards
+        are trying to get the patients under control but I fear it may be \ntoo hard
+        on them. I hope peace will return to this prison soon.\u201D "
       objectReference: {fileID: 0}
     - target: {fileID: 1505535298832840267, guid: bd09a5a47cb1bf34a8c583b16a734a2d, type: 3}
       propertyPath: m_Pivot.x
@@ -5958,7 +5962,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1505535298832840267, guid: bd09a5a47cb1bf34a8c583b16a734a2d, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1505535298832840267, guid: bd09a5a47cb1bf34a8c583b16a734a2d, type: 3}
       propertyPath: m_AnchorMax.x
@@ -6018,7 +6022,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1505535298832840267, guid: bd09a5a47cb1bf34a8c583b16a734a2d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 43
+      value: 141.5
       objectReference: {fileID: 0}
     - target: {fileID: 1505535298832840267, guid: bd09a5a47cb1bf34a8c583b16a734a2d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7055,9 +7059,9 @@ RectTransform:
   m_Children:
   - {fileID: 236598722}
   - {fileID: 463101868}
-  - {fileID: 575027916}
   - {fileID: 1628101201}
   - {fileID: 1038978343}
+  - {fileID: 575027916}
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7859,7 +7863,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4401401437492919644, guid: c238e618a2fe1d94893f38005e4c6b6b, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4401401437492919644, guid: c238e618a2fe1d94893f38005e4c6b6b, type: 3}
       propertyPath: m_AnchorMax.x
