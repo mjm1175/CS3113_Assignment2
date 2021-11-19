@@ -167,6 +167,7 @@ public class Player : MonoBehaviour
         if (_damageCountdown > 0) return;
 
         PublicVars.Health -= damage;
+        if (PublicVars.Health < 0) PublicVars.Health = 0;
         PublicVars.TransitionManager.DeathSound.Play();
         _movement.Hit();
         _damageCountdown = PublicVars.DAMAGE_INTERVAL;
