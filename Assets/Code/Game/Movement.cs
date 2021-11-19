@@ -5,13 +5,17 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Movement : MonoBehaviour
 {
-    [Tooltip("Non-mandatory animator object to animate the moving object")]
+    public const int GETHIT_ANIM_COUNT = 5;
+
+    [Tooltip("Mandatory animator object to animate the moving object")]
     public Animator Animator;
 
     /// <value>Whether the agent is moving or not</value>
     public bool IsMoving => _navMeshAgent.velocity.magnitude > PublicVars.MINIMUM_MOVEMENT_SPEED;
     public bool IsAttacking => Animator?.GetBool("IsAttacking") ?? false;
     public float AngularSpeed => _navMeshAgent.angularSpeed;
+
+    public int _hitAnimationCode = 0;
 
     private NavMeshAgent _navMeshAgent;
 
@@ -22,23 +26,23 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        Animator?.SetBool("IsMoving", IsMoving);
+        Animator.SetBool("IsMoving", IsMoving);
     }
 
     public void SetAttacking(bool isAttacking)
     {
-        if (Animator?.GetBool("IsAttacking") != isAttacking)
+        if (Animator.GetBool("IsAttacking") != isAttacking)
         {
             _navMeshAgent.updateRotation = !isAttacking;
-            Animator?.SetBool("IsAttacking", isAttacking);
-            Animator?.SetTrigger("Animate");
+            Animator.SetBool("IsAttacking", isAttacking);
+            Animator.SetTrigger("Animate");
         }
     }
 
     public void Run()
     {
-        Animator?.SetBool("IsRunning", true);
-        Animator?.SetTrigger("Animate");
+        Animator.SetBool("IsRunning", true);
+        Animator.SetTrigger("Animate");
     }
 
     public void Die()
@@ -47,13 +51,15 @@ public class Movement : MonoBehaviour
         {
             _navMeshAgent.speed = 0;
             _navMeshAgent.enabled = false;
-            Animator?.SetBool("IsDead", true);
-            Animator?.SetTrigger("Animate");
+            Animator.SetBool("IsDead", true);
+            Animator.SetTrigger("Animate");
         }
     }
 
     public void Hit()
     {
+        _hitAnimationCode = ++_hitAnimationCode % GETHIT_ANIM_COUNT;
+        Animator.SetInteger("AnimCode", _hitAnimationCode);
         Animator.SetTrigger("Hit");
     }
 
